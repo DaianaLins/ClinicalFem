@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+
+<html xmlns:th="http://thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	lang="pt-br">
+	<!-- IMPORTAÇÕES DO MATERIALIZER -->
+<!-- SITE: https://materializecss.com/getting-started.html -->
+<!--Import Google Icon Font-->
+
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons"
+	rel="stylesheet" />
+<!--Import materialize.css-->
+<link type="text/css" rel="stylesheet"
+	href="materialize/css/materialize.min.css" media="screen,projection" />
+
+<!--Let browser know website is optimized for mobile-->
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta charset="UTF-8">
+<link rel="stylesheet" href="materialize/style/styleformAgendamento.css" />
+<head>
+<title>Consultas Agendadas</title>
+</head>
+<body>
+
+
+	   <header>
+        <h1>CLINICALFEM</h1>
+    </header>
+    <nav>
+       <a href="#">Home</a>
+       <a href="#">Serviços</a>
+       <a href="#">Contatos</a>
+       <a href="#">Sobre nós</a>
+    </nav>
+	<h2>Consultas</h2>
+	<h3>
+		<a href="/agendarConsulta" class="waves-effect waves-light btn #ef9a9a red lighten-3"><i class="material-icons left">add_circle_outline</i>Agendar Consulta</a>
+		<h4> <a href="/tela" class="waves-effect waves-light btn #ef9a9a red lighten-3"><i class="material-icons left">home</i> Início</a></h3>
+	</h3>
+	<table class="container">
+		<thead>
+			<tr>
+				<th>Nome</th>
+				<th>Serviço</th>
+				<th>Médico</th>
+				<th>Data</th>
+				<th>Horário</th>
+				<th>Pagamento</th>
+				<th>Deletar</th>
+				<th>Editar</th>
+			</tr>
+		</thead>
+		<tbody>
+
+
+			 <tr th:each="agendamento : ${agendamentos}">
+
+				<td>
+						<a th:href="@{/agendamentos/{codigo} (codigo=${agendamento.codigo})}"><span th:text="${agendamento.nome}"> </span>
+				</a></td>
+				<td><span th:text="${agendamento.servico}"></span></td>
+				<td><span th:text="${agendamento.medico}"></span></td>
+				<td><span th:text="${agendamento.dataC}"></span></td>
+				<td><span th:text="${agendamento.horario}"></span></td>
+				<td><span th:text="${agendamento.pagamento}"></span></td>
+				<td><a class="waves-effect waves-light " th:href="@{/{codigo}/deletarAgendamento/(codigo=${agendamento.codigo})} "><i class="material-icons left">delete</i></a></td>
+				<td><a class="waves-effect waves-light " th:href="@{/{codigo}/alterarAgendamento/(codigo=${agendamento.codigo})}"><i class="material-icons left">edit</i></a></td>
+			</tr>
+		</tbody>
+	</table>
+		 <footer>
+        <p>Site criado por Daiana Lins e Letícia Almeida</p>
+    </footer>
+	<!--JavaScript at end of body for optimized loading-->
+	<script type="text/javascript" src="materialize/js/materialize.min.js"></script>
+</body>
+</html>

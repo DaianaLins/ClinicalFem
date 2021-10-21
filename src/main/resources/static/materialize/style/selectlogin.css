@@ -1,0 +1,100 @@
+@charset "UTF-8";
+
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+header{
+    background-color: #f2a7a7;
+    padding: 40px;
+    text-align: center;
+
+}
+
+header > h1{
+    color: white;
+}
+
+nav{
+    background-color: #fac6c6;
+    padding: 19px;
+    text-align: center;
+}
+
+nav > a{
+    color: white;
+    text-decoration: none;
+    padding: 10px;
+    border-radius: 5px;
+    font-weight: bold;
+    transition: .5s;
+}
+
+nav > a:hover{
+    background-color: white;
+    color: #f2a7a7;
+}
+
+a{
+    text-decoration: none;
+    color: white;
+}
+
+.menu{
+    display: flex;
+}
+
+.menu li{
+    margin-left: 5 px; 
+}
+.menu li a{
+   display: block; 
+   padding: 10 px;
+   margin-left: 10px;
+}
+
+body > h1{
+    text-align: center;
+    margin-top: 40px;
+    color: #bf7373;
+    margin-bottom: 30px;
+
+}
+
+img{
+    max-width: 100%;
+    display: block;
+    margin: 20px;
+    margin-left: 0px;
+
+
+ }
+ .flex{
+    display: flex;
+    flex-wrap: wrap;
+    max-width: 800px;
+    margin: 0 auto;
+ }
+ .flex > div{
+    flex: 1 1 200px;
+    margin: 0 10px;
+ }
+
+
+ footer{
+    background-color: #f2a7a7;
+    color: white;
+    width: 100%;
+    height: 100px;
+    position: absolute;
+    bottom: -330px; left: 0px;
+}
+
+footer > p{
+    padding: 35px;
+    text-align: center;
+}

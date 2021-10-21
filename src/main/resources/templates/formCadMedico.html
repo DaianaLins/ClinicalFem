@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+
+<html xmlns:th="http://thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	lang="pt-br">
+	<!-- IMPORTAÇÕES DO MATERIALIZER -->
+<!-- SITE: https://materializecss.com/getting-started.html -->
+<!--Import Google Icon Font-->
+
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons"
+	rel="stylesheet" />
+<!--Import materialize.css-->
+<link type="text/css" rel="stylesheet"
+	href="materialize/css/materialize.min.css" media="screen,projection" />
+
+<!--Let browser know website is optimized for mobile-->
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta charset="UTF-8">
+<link rel="stylesheet" href="materialize/style/formCadMedico.css"/>
+<head>
+<title>Cadastro do Medico</title>
+</head>
+<body>
+
+    <header>
+		<h1>CLINICALFEM</h1>
+	</header>
+	<nav>
+		<a href="#">Home</a> <a href="#">Serviços</a> <a href="#">Contatos</a>
+		<a href="#">Sobre nós</a>
+	</nav>
+		<h2>Cadastrar Médico</h2>
+    	 <h3><a href="/medicos" class="waves-effect waves-light btn #ef9a9a red lighten-3"><i class="material-icons left">format_list_bulleted</i>Médicos Cadastrados</a></h3>
+    	 <h4><a href="/tela" class="waves-effect waves-light btn #ef9a9a red lighten-3"><i class="material-icons left">home</i>Início</a></h3>
+            <!-- <th:block th:include="mensagemValidacao"></th:block> -->
+            <form class="container" method="post">
+               
+              
+                Nome Completo: <input  type="text" name="nome" placeholder="Nome"/>
+                <div class="row">  
+                <div class="input-field col s3">          
+                CPF: <input  type="text" name="cpf" maxlength="11" placeholder="Digite o CPF"/>
+                </div>
+                <div class="input-field col s3">  
+                RG: <input  type="text" name="rg" placeholder="RG"/>
+                </div>
+                <div class="input-field col s3">
+                Telefone: <input type="text" name="telefone" maxlength="12" placeholder="Digite o Número"/>
+                 </div>
+                 <div class="input-field col s3">
+                CRM: <input  type="text" name="crm" maxlength="6" placeholder="CRM"/>
+                </div>
+                
+                <label for="especialidade"> Especialidade:</label>
+                <input list="especialidade" placeholder="Especialidade" name="especialidade">
+                <datalist id="especialidade">
+                    <option>Dermatologista</option>
+                    <option>Ginecologista</option>
+                    <option>Otorrinolaringologista</option>
+                    <option>Infectologista</option>
+                    <option>Angiologista</option>
+                    <option>Endocrinologista</option>
+                    <option>Cardiologista</option>
+                    <option>Neufrologista</option>
+                    <option>Proctologista</option>
+                    <option>Oftalmologista</option>
+                    <option>Ortopedista</option>
+                    <option>Urologista</option>
+                </datalist>
+               </div>
+                  <button type="submit" class="waves-effect waves-light btn #ef9a9a red lighten-3" >Finalizar Cadastro</button>
+            </form>
+            <footer>
+        <p>Site criado por Daiana Lins e Letícia Almeida</p>
+    </footer>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js"></script>
+	<script type="text/javascript" src="materialize/js/materialize.min.js"></script>
+
+</body>
+</html>

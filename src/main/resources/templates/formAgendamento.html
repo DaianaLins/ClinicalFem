@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+
+<html xmlns:th="http://thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	lang="pt-br">
+	<!-- IMPORTAÇÕES DO MATERIALIZER -->
+<!-- SITE: https://materializecss.com/getting-started.html -->
+<!--Import Google Icon Font-->
+
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons"
+	rel="stylesheet" />
+<!--Import materialize.css-->
+<link type="text/css" rel="stylesheet"
+	href="materialize/css/materialize.min.css" media="screen,projection" />
+
+<!--Let browser know website is optimized for mobile-->
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta charset="UTF-8">
+<link rel="stylesheet" href="materialize/style/styleformAgendamento.css"/>
+
+<head>
+
+<title>Agendamento</title>
+</head>
+<body>
+
+        <header>
+        <h1>CLINICALFEM</h1>
+    </header>
+    <nav>
+       <a href="#">Home</a>
+       <a href="#">Serviços</a>
+       <a href="#">Contatos</a>
+       <a href="#">Sobre nós</a>
+    </nav>
+    <h2>Agendamento</h2>
+ 
+ <h3><a href="/consultas" class="waves-effect waves-light btn #ef9a9a red lighten-3"><i class="material-icons left">format_list_bulleted</i>Consultas Agendadas</a></h3>
+ <h4><a href="/tela" class="waves-effect waves-light btn #ef9a9a red lighten-3"><i class="material-icons left">home</i>Início</a></h3>
+    <!-- <th:block th:include="mensagemValidacao"></th:block> -->
+	<form class="container" method="post" th:object="${agendamento}">
+		
+
+		Nome Completo: <input  type="text" name="nome" th:field="*{nome}" required />    	
+		Médico: <input type="text" value="" name="medico" th:field="*{medico}" required />
+		Servico: <input type="text" value="" name="servico" th:field="*{servico}" required />
+		<div class="row">
+		
+		
+		<div class="input-field col s3">
+		Data: <input type="date" value="" name="dataC" th:field="*{dataC}" required/>
+		</div>
+		<div class="input-field col s3">
+		Horario: <input type="time" value="" name="horario" th:field="*{horario}" required/>
+		</div>
+		<div class="input-field col s2">
+		Valor: <input type="text" name="valorC" th:field="*{valorC}" required/>  		
+		</div>
+ 			<div class="input-field col s2">
+    		Situação<select name="pagamento" th:field="*{pagamento}" required>
+      		<option value="Pago">Pago</option>
+      		<option value="Pendente">Pendente</option>
+    		</select>
+   		</div>
+   	
+ 		</div>
+        <button type="submit" class="waves-effect waves-light btn #ef9a9a red lighten-3" th:value="${agendamento.codigo == null ? 'cadastrar' : 'editar'}" >Agendar</button>
+        </form>
+        
+		<script>
+			var NomeRepetido = "[[${Nomerepetido}]]";
+        if (NomeRepetido != "") {
+            alert(NomeRepetido);
+        }
+		</script>
+
+	 <footer>
+        <p>Site criado por Daiana Lins e Letícia Almeida</p>
+    </footer>
+
+
+  	
+	 
+	<!--JavaScript at end of body for optimized loading-->
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js"></script>
+	<script type="text/javascript" src="materialize/js/materialize.min.js"></script>
+	  
+	<script>
+	document.addEventListener('DOMContentLoaded', function() {
+	    var elems = document.querySelectorAll('select');
+	    var instances = M.FormSelect.init(elems);
+	});
+	
+	 </script>
+
+</body>
+</html>
