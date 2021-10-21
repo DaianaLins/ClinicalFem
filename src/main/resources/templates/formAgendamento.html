@@ -40,6 +40,7 @@
     <!-- <th:block th:include="mensagemValidacao"></th:block> -->
 	<form class="container" method="post" th:object="${agendamento}">
 		
+		<input type="hidden" name="id" th:field="*{codigo}">
 
 		Nome Completo: <input  type="text" name="nome" th:field="*{nome}" required />    	
 		Médico: <input type="text" value="" name="medico" th:field="*{medico}" required />
