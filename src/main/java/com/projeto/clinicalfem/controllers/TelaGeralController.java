@@ -26,4 +26,14 @@ public class TelaGeralController {
         ModelAndView modelo = new ModelAndView("telaloginat");
         return modelo;
     }
+    @GetMapping("/loginPaciente")
+    public ModelAndView loginP() {
+        ModelAndView modelo = new ModelAndView("telaloginP");
+        return modelo;
+    }
+    @GetMapping("/loginMedico")
+    public ModelAndView loginMed() {
+        ModelAndView modelo = new ModelAndView("telaloginMed");
+        return modelo;
+    }
 }

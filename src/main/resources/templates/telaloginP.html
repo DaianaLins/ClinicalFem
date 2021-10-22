@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+
+<html xmlns:th="http://thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	lang="pt-br">
+	<!-- IMPORTAÇÕES DO MATERIALIZER -->
+<!-- SITE: https://materializecss.com/getting-started.html -->
+<!--Import Google Icon Font-->
+
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons"
+	rel="stylesheet" />
+<!--Import materialize.css-->
+<link type="text/css" rel="stylesheet"
+	href="materialize/css/materialize.min.css" media="screen,projection" />
+
+<!--Let browser know website is optimized for mobile-->
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta charset="UTF-8">
+<link rel="stylesheet" href="materialize/style/telaloginat.css"/>
+<head>
+     <title>Login do Paciente</title>
+</head>
+
+<body>
+    <header>
+        <h1>CLINICALFEM</h1>
+    </header>
+    <nav>
+       <a href="#">Home</a>
+       <a href="#">Serviços</a>
+       <a href="#">Contatos</a>
+       <a href="#">Sobre nós</a>
+    </nav>
+ <h2> <a th:href="@{/selecionar}" class="waves-effect waves-light btn #e57373 red lighten-2" style="margin: 0 10px;"><i class="material-icons left">undo</i>Voltar</a></h4> 
+    <main>
+        <article>
+            <form th:action="@{/loginP}" method="POST" class="row">
+                <h3>LOGIN - PACIENTE</h3><br>
+                <label>
+                <i class="material-icons left">face</i>
+                Usuário:<input type="text" name="username" placeholder=" Seu usuario..." >
+                </label>
+                <label>
+                 <i class="material-icons left">lock_outline</i>
+                Senha:<input id="password" type="password" name="password" placeholder=" Sua senha...">
+                </label> 
+                <button type="submit" class="waves-effect waves-light btn #ef9a9a red lighten-3"> Entrar</button>
+			<div class="row">
+          	<div class="input-field col s6 m6 l6">
+            <p class="margin medium-small"><a href="/cadastrarUsuario">Cadastre-se!</a></p>
+          	</div>
+          	<div class="input-field col s6 m6 l6">
+              <p class="margin right-align medium-small"><a href="#">Esqueceu a senha?</a></p>
+          	</div>          
+        	</div> 
+            </form>
+            
+            
+	  
+      
+
+        </article>
+    </main>
+    <footer>
+        <p>Site criado por Daiana Lins e Letícia Almeida</p>
+    </footer>
+    <!--JavaScript at end of body for optimized loading-->
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js"></script>
+	<script type="text/javascript" src="/materialize/js/materialize.min.js"></script>
+	   
+	<!--JavaScript at end of body for optimized loading-->
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js"></script>
+	<script type="text/javascript" src="/materialize/js/materialize.min.js"></script>
+</body>
+</html>
