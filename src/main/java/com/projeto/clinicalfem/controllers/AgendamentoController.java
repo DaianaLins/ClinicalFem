@@ -1,6 +1,5 @@
 package com.projeto.clinicalfem.controllers;
 
-import java.util.ArrayList;
 import java.util.concurrent.ExecutionException;
 
 import com.projeto.clinicalfem.models.Agendamento;

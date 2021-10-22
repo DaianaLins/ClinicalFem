@@ -53,7 +53,7 @@ public class AgendamentoService {
     public Agendamento getAgendamentoByCodigo(String codigo) throws InterruptedException, ExecutionException {
         Agendamento agendamento = new Agendamento();
         
-        CollectionReference agendamentos = (CollectionReference) conex.collection("Agendamento");
+        CollectionReference agendamentos = (CollectionReference) conex.collection("Agendamentos");
 
         Query query = (Query) agendamentos.whereEqualTo("codigo", codigo);
         

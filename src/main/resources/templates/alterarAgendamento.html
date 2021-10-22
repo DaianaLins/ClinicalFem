@@ -39,7 +39,7 @@
  <h3><a th:href="@{/consultas}" class="waves-effect waves-light btn #ef9a9a red lighten-3"><i class="material-icons left">format_list_bulleted</i> Consultas Agendadas</a></h3>
 	<!-- <th:block th:include="mensagemValidacao"></th:block> -->
 	<form class="container"  method="post" action="/alterarAgendamento" th:object="${agendamento}">
-		<input type="hidden" th:field="*{codigo}" > <!-- achava q era do  to saindo aqui firebase nem assdjashdja vish blzzz-->
+		<input type="hidden" name="id" th:field="*{codigo}" > 
 		
 		Nome Completo: <input  type="text" name="nome"  th:field="*{nome}" required/>
 		

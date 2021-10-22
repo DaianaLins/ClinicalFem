@@ -35,24 +35,25 @@
     	 <h3><a href="/pacientes" class="waves-effect waves-light btn #ef9a9a red lighten-3"><i class="material-icons left">format_list_bulleted</i>Pacientes Cadastrados</a></h3>
     	 <h4><a href="/tela" class="waves-effect waves-light btn #ef9a9a red lighten-3"><i class="material-icons left">home</i>Início</a></h3>
             <!-- <th:block th:include="mensagemValidacao"></th:block> -->
-            <form class="container" method="post">
+            <form class="container" method="post" th:object="${cadPaciente}">
+              <input type="hidden" name="id" th:field="*{id}">
               	<div class="row">
-                Nome Completo: <input  type="text" name="nome" placeholder="Nome" required/>
+                Nome Completo: <input  type="text" name="nome" th:field="*{nome}" placeholder="Nome" required/>
                 <div class="input-field col s3">  
-                Data de Nascimento: <input  type="date" name="datanasc" required/>
+                Data de Nascimento: <input  type="date" name="datanasc" th:field="*{datanasc}" required/>
                 </div>
                 <div class="input-field col s3">  
-                Telefone: <input type="tel" name="telefone" maxlength="12" placeholder="Digite o Número" required/>
+                Telefone: <input type="tel" name="telefone" maxlength="12" th:field="*{telefone}" placeholder="Digite o Número" required/>
                 </div>
                 <div class="input-field col s3">  
-                CPF: <input  type="text" name="cpf" maxlength="11" placeholder="Digite o CPF" required/>  
+                CPF: <input  type="text" name="cpf" maxlength="11" placeholder="Digite o CPF" th:field="*{cpf}" required/>  
                 </div>
                 <div class="input-field col s3">  
-                RG: <input  type="text" name="rg" placeholder="RG" required/>
+                RG: <input  type="text" name="rg" placeholder="RG" th:field="*{rg}" required/>
                	</div>
-               	Email: <input  type="text" name="email" placeholder="Email" required/>
+               	Email: <input  type="text" name="email" placeholder="Email" th:field="*{email}" required/>
                	</div>
-                  <button type="submit" class="waves-effect waves-light btn #ef9a9a red lighten-3" >Finalizar Cadastro</button>
+                  <button type="submit" class="waves-effect waves-light btn #ef9a9a red lighten-3" th:value="${cadPaciente.id == null ? 'cadastrar' : 'editar'}">Finalizar Cadastro</button>
             </form>
             
              <footer>

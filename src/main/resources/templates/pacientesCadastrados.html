@@ -50,7 +50,7 @@
    		<tbody>
    		
    		
- 		<!-- <tr th:each="cadpaciente : ${cadpacientes}">
+ 		 <tr th:each="cadpaciente : ${cadpacientes}">
  			
  				<td><span th:text="${cadpaciente.nome}"></span></td>
  				<td><span th:text="${cadpaciente.datanasc}"></span></td>
@@ -58,9 +58,9 @@
  				<td><span th:text="${cadpaciente.rg}"></span></td>
  				<td><span th:text="${cadpaciente.email}"></span></td>
  				<td><span th:text="${cadpaciente.telefone}"></span></td>
- 				<td><a class="waves-effect waves-light " th:href="${(#mvc.url('CPC#deletarPaciente').arg(0, cadpaciente.id)).build()}"><i class="material-icons left">delete</i></a></td>
-				<td><a class="waves-effect waves-light " th:href="@{alterarCadPaciente/{id}(id=${cadpaciente.id})}"><i class="material-icons left">edit</i></a></td>
- 		</tr> -->
+ 				<td><a class="waves-effect waves-light " th:href="@{/{id}/deletarPaciente/(id=${cadpaciente.id})} "><i class="material-icons left">delete</i></a></td>
+				<td><a class="waves-effect waves-light " th:href="@{/{id}/alterarPaciente/(id=${cadpaciente.id})} "><i class="material-icons left">edit</i></a></td>
+ 		</tr> 
  		</tbody>
  		</table>
  		 <footer>
