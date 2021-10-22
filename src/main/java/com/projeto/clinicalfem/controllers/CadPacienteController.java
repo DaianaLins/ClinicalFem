@@ -6,6 +6,7 @@ import com.projeto.clinicalfem.models.CadPaciente;
 import com.projeto.clinicalfem.service.CadPacienteService;
 
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -41,6 +42,11 @@ public class CadPacienteController {
         return modelo;
     }
     //fala gay já mandei o link gay ta bom
-   
+    @GetMapping("/{codigo}/deletarPaciente")
+	public ModelAndView deletarPaciente(@PathVariable String id) throws InterruptedException, ExecutionException{
+        ModelAndView modelo = new ModelAndView("redirect:/consultas");
+        service.deletar(id);
+		return modelo;
+	}
 
 }
