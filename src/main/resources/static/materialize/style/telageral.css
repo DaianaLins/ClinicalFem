@@ -49,7 +49,7 @@ body > h1{
     flex-wrap: wrap;
     max-width: 1150px;
     margin: 0 auto;
-    margin-top: 75px;
+    margin-top: 50px;
  }
  .flex > div{
     flex: 5 5 100px;
