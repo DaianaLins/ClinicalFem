@@ -39,12 +39,12 @@
 <div th:each="cadpaciente : ${paciente}">
 	
 	<div class="container" id="nv">
-			<p><span th:text="${cadpaciente.nome}"></span></p>
-			<p><span th:text="${cadpaciente.datanasc}"></span></p>
-			<p><span th:text="${cadpaciente.telefone}"></span></p>
-			<p><span th:text="${cadpaciente.cpf}"></span></p>
-			<p><span th:text="${cadpaciente.rg}"></span></p>
-			<p><span th:text="${cadpaciente.email}"></span></p>
+			<p>Nome: <span th:text="${cadpaciente.nome}"></span></p>
+			<p>Data de Nascimento: <span th:text="${cadpaciente.datanasc}"></span></p>
+			<p>Telefone: <span th:text="${cadpaciente.telefone}"></span></p>
+			<p>CPF: <span th:text="${cadpaciente.cpf}"></span></p>
+			<p>RG: <span th:text="${cadpaciente.rg}"></span></p>
+			<p>Email: <span th:text="${cadpaciente.email}"></span></p>
 		
 
 	</div>

@@ -2,14 +2,17 @@ package com.projeto.clinicalfem.models;
 
 import java.time.LocalDate;
 
-public class Noticias {
+import org.springframework.format.annotation.DateTimeFormat;
+
+public class Noticia {
     
     private String id;
     private String titulo;
     private String autor;
+    @DateTimeFormat(pattern = "dd/MM/yyyy")
     private LocalDate data;
     private String texto;
-    
+
     public String getId() {
         return id;
     }
