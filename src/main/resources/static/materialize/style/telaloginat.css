@@ -13,7 +13,7 @@ body{
 
 header{
     background-color: #f2a7a7;
-    padding: 40px;
+    padding: 10px;
     text-align: center;
 }
 
@@ -24,7 +24,7 @@ header > h1{
 
 nav{
     background-color: #fac6c6;
-    padding: 19px;
+    padding: 0px;
     text-align: center;
 }
 
@@ -51,7 +51,7 @@ article{
     padding: 20px;
     position: absolute;
     left: 50%;
-    top: 80%;
+    top: 75%;
     transform: translate(-50%, -50%);
 }
 

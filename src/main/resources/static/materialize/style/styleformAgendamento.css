@@ -18,7 +18,7 @@ header > h1{
 
 nav{
     background-color: #fac6c6;
-    padding: 19px;
+    padding: 0px;
     text-align: center;
 }
 
@@ -41,7 +41,7 @@ form{
 	padding-top: 30px;
 	padding-left: 30px;
 	padding-bottom: 30px;
-	margin-botton: 80px;
+	margin-bottom: 80px;
 	background-color: white;
     max-width: 500px;
     width: 70%;
@@ -57,7 +57,7 @@ form{
 	padding-top: 30px;
 	padding-left: 30px;
 	padding-bottom: 30px;
-	margin-botton: 80px;
+	margin-bottom: 80px;
 	background-color: white;
     max-width: 500px;
     width: 70%;
