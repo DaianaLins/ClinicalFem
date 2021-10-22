@@ -45,6 +45,13 @@ public class AgendamentoController {
 		modelo.addObject("agendamentos", service.getAllAgendamentos());
 		return modelo;
     }
+    @GetMapping("/{codigo}/detalhesConsulta")
+	public ModelAndView detalhesConsulta(@PathVariable String codigo) throws InterruptedException, ExecutionException {
+		Agendamento agendamento = service.getAgendamentoByCodigo(codigo);
+		ModelAndView mv = new ModelAndView("detalhes");
+		mv.addObject("agendamentos", agendamento);
+		return mv;
+	}
 
     @GetMapping("/{codigo}/deletarAgendamento")
 	public ModelAndView deletarAgendamento(@PathVariable String codigo) throws InterruptedException, ExecutionException{

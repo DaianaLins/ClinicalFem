@@ -56,7 +56,7 @@
 			 <tr th:each="agendamento : ${agendamentos}">
 
 				<td>
-						<a th:href="@{/agendamentos/{codigo} (codigo=${agendamento.codigo})}"><span th:text="${agendamento.nome}"> </span>
+						<a th:href="@{/{codigo}/detalhesConsulta/(codigo=${agendamento.codigo})}"><span th:text="${agendamento.nome}"> </span>
 				</a></td>
 				<td><span th:text="${agendamento.servico}"></span></td>
 				<td><span th:text="${agendamento.medico}"></span></td>

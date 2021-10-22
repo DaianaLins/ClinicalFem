@@ -6,6 +6,8 @@ public class Agendamento {
 
     private String codigo;
 
+    private String cpf;
+
     private String nome;
 
     private String servico;
@@ -23,6 +25,14 @@ public class Agendamento {
 
     public String getCodigo() {
         return codigo;
+    }
+
+    public String getCpf() {
+        return cpf;
+    }
+
+    public void setCpf(String cpf) {
+        this.cpf = cpf;
     }
 
     public void setCodigo(String codigo) {
