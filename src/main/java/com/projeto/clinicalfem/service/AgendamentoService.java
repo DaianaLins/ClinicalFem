@@ -37,6 +37,22 @@ public class AgendamentoService {
         return true;
     }
 
+    public Agendamento getAgendamentoByCPF(String cpf) throws InterruptedException, ExecutionException{
+        Agendamento agendamento = new Agendamento();
+        
+        CollectionReference agendamentos = (CollectionReference) conex.collection("Agendamentos");
+
+        Query query = (Query) agendamentos.whereEqualTo("cpf", cpf);
+        List<QueryDocumentSnapshot> querySnapshot = query.get().get().getDocuments();
+
+
+        for (DocumentSnapshot document : querySnapshot){
+            agendamento = document.toObject(Agendamento.class);
+        }
+
+        return agendamento;
+    }
+
     public ArrayList<Agendamento> getAllAgendamentos() throws InterruptedException, ExecutionException {
         ArrayList<Agendamento> lista = new ArrayList<Agendamento>();
 

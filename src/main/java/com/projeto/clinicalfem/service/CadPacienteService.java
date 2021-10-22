@@ -32,6 +32,8 @@ public class CadPacienteService {
         return true;
     }
 
+
+
     public ArrayList<CadPaciente> getAllCadPacientes() throws InterruptedException, ExecutionException {
         ArrayList<CadPaciente> lista = new ArrayList<CadPaciente>();
 
@@ -63,6 +65,23 @@ public class CadPacienteService {
         return cadpaciente;
 
     }
+
+    public CadPaciente getCadPacienteByCPF(String cpf) throws InterruptedException, ExecutionException{
+        CadPaciente cadpaciente = new CadPaciente();
+        
+        CollectionReference cadpacientes = (CollectionReference) conex.collection("CadPacientes");
+
+        Query query = (Query) cadpacientes.whereEqualTo("cpf", cpf);
+        List<QueryDocumentSnapshot> querySnapshot = query.get().get().getDocuments();
+
+
+        for (DocumentSnapshot document : querySnapshot){
+            cadpaciente = document.toObject(CadPaciente.class);
+        }
+
+        return cadpaciente;
+    }
+
     public void deletar(String id){
         ApiFuture<WriteResult> writeResult = conex.collection("CadPacientes").document(id).delete();
     }

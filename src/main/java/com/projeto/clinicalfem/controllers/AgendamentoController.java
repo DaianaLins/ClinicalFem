@@ -3,7 +3,9 @@ package com.projeto.clinicalfem.controllers;
 import java.util.concurrent.ExecutionException;
 
 import com.projeto.clinicalfem.models.Agendamento;
+import com.projeto.clinicalfem.models.CadPaciente;
 import com.projeto.clinicalfem.service.AgendamentoService;
+import com.projeto.clinicalfem.service.CadPacienteService;
 
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -19,10 +21,15 @@ import org.springframework.web.servlet.ModelAndView;
 @RequestMapping("/")
 public class AgendamentoController {
 
-    AgendamentoService service;
-	public AgendamentoController(AgendamentoService serv){
-        service = serv;
-    }
+        AgendamentoService service;
+        CadPacienteService servPaciente;
+        public AgendamentoController(AgendamentoService serv, CadPacienteService servp){
+            service = serv;
+            servPaciente = servp;
+         
+        }
+
+
 
     @GetMapping("/agendarConsulta")
     public ModelAndView agendar() {
@@ -45,11 +52,16 @@ public class AgendamentoController {
 		modelo.addObject("agendamentos", service.getAllAgendamentos());
 		return modelo;
     }
+
     @GetMapping("/{codigo}/detalhesConsulta")
 	public ModelAndView detalhesConsulta(@PathVariable String codigo) throws InterruptedException, ExecutionException {
 		Agendamento agendamento = service.getAgendamentoByCodigo(codigo);
+
+        CadPaciente cadpaciente = servPaciente.getCadPacienteByCPF(agendamento.getCpf());
+
 		ModelAndView mv = new ModelAndView("detalhes");
 		mv.addObject("agendamentos", agendamento);
+        mv.addObject("paciente", cadpaciente);
 		return mv;
 	}
 

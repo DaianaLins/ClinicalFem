@@ -36,16 +36,17 @@
     <h2>Dados do Paciente</h2>
 
 <a href="/consultas" class="waves-effect waves-light btn #ef9a9a red lighten-3"><i class="material-icons left">undo</i>Retornar</a>
-<div th:each="agendamento : ${agendamentos}">
+<div th:each="cadpaciente : ${paciente}">
 	
 	<div class="container" id="nv">
-			<p><span th:text="${agendamento.nome}"></span></p>
-			<p><span th:text="${agendamento.cpf}"></span></p>
-			<p><span th:text="${agendamento.servico}"></span></p>
-			<p><span th:text="${agendamento.medico}"></span></p>
-			<p><span th:text="${agendamento.dataC}"></span></p>
-			<p><span th:text="${agendamento.horario}"></span></p>
-			<p><span th:text="${agendamento.pagamento}"></span></p>
+			<p><span th:text="${cadpaciente.nome}"></span></p>
+			<p><span th:text="${cadpaciente.datanasc}"></span></p>
+			<p><span th:text="${cadpaciente.telefone}"></span></p>
+			<p><span th:text="${cadpaciente.cpf}"></span></p>
+			<p><span th:text="${cadpaciente.rg}"></span></p>
+			<p><span th:text="${cadpaciente.email}"></span></p>
+		
+
 	</div>
 	
 </div>
