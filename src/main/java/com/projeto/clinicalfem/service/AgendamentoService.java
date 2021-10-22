@@ -59,8 +59,7 @@ public class AgendamentoService {
         
         List<QueryDocumentSnapshot> querySnapshot = query.get().get().getDocuments();
 
-        //diz add cast to HUMMMMM KKKKKKKK FOIIII  :D
-
+        
 
         for (DocumentSnapshot document : querySnapshot){
             agendamento = document.toObject(Agendamento.class);

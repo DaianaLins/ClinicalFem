@@ -24,13 +24,13 @@ public class CadPacienteController {
     @GetMapping("/cadastrarPaciente")
     public ModelAndView cadastrarPaciente() {
         ModelAndView modelo = new ModelAndView("formCadPaciente");
-        modelo.addObject("cadPaciente", new CadPaciente());
+        modelo.addObject("cadpaciente", new CadPaciente());
         return modelo;
     }
     @PostMapping("/cadastrarPaciente")
-    public ModelAndView cadastrarPaciente(CadPaciente cadPaciente) {
+    public ModelAndView cadastrarPaciente(CadPaciente cadpaciente) throws InterruptedException, ExecutionException{
         ModelAndView modelo = new ModelAndView("redirect:/pacientes");
-        service.cadastrar(cadPaciente);
+        service.cadastrar(cadpaciente);
 
         return modelo;
     }
@@ -41,12 +41,25 @@ public class CadPacienteController {
         modelo.addObject("cadpacientes", service.getAllCadPacientes());
         return modelo;
     }
-    //fala gay já mandei o link gay ta bom
-    @GetMapping("/{codigo}/deletarPaciente")
+    
+    @GetMapping("/{id}/deletarPaciente")
 	public ModelAndView deletarPaciente(@PathVariable String id) throws InterruptedException, ExecutionException{
-        ModelAndView modelo = new ModelAndView("redirect:/consultas");
+        ModelAndView modelo = new ModelAndView("redirect:/pacientes");
         service.deletar(id);
 		return modelo;
 	}
+    @GetMapping("/{id}/alterarPaciente")
+	public ModelAndView alterarPaciente(@PathVariable String id) throws InterruptedException, ExecutionException{
+		ModelAndView mv = new ModelAndView("alterarPaciente");
 
+		mv.addObject("cadpaciente", service.getCadPacienteById(id));
+	
+		return mv;
+	}
+    @PostMapping("/alterarPaciente")
+	public ModelAndView alterarPaciente(CadPaciente cadpaciente) throws InterruptedException, ExecutionException{
+		ModelAndView modelo = new ModelAndView("redirect:/pacientes");
+		service.editar(cadpaciente);
+		return modelo;
+	}
 }

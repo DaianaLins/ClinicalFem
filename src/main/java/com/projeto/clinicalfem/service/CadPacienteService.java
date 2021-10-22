@@ -22,12 +22,16 @@ import org.springframework.stereotype.Service;
 public class CadPacienteService {
     Firestore conex = FirestoreClient.getFirestore();
 
-    public boolean cadastrar(CadPaciente cadpaciente){
+    public boolean cadastrar(CadPaciente cadpaciente) throws InterruptedException, ExecutionException{
         DocumentReference doc = conex.collection("CadPacientes").document();
+
         cadpaciente.setId(doc.getId());
+
         ApiFuture<WriteResult> writeResult = doc.set(cadpaciente);
+        
         return true;
     }
+
     public ArrayList<CadPaciente> getAllCadPacientes() throws InterruptedException, ExecutionException {
         ArrayList<CadPaciente> lista = new ArrayList<CadPaciente>();
 
@@ -43,13 +47,13 @@ public class CadPacienteService {
     public CadPaciente getCadPacienteById(String id) throws InterruptedException, ExecutionException {
         CadPaciente cadpaciente = new CadPaciente();
         
-        CollectionReference CadPacientes = (CollectionReference) conex.collection("CadPacientes");
+        CollectionReference cadpacientes = (CollectionReference) conex.collection("CadPacientes");
 
-        Query query = (Query) CadPacientes.whereEqualTo("id", id);
+        Query query = (Query) cadpacientes.whereEqualTo("id", id);
         
         List<QueryDocumentSnapshot> querySnapshot = query.get().get().getDocuments();
 
-        //diz add cast to HUMMMMM KKKKKKKK FOIIII  :D
+        
 
 
         for (DocumentSnapshot document : querySnapshot){
@@ -63,12 +67,12 @@ public class CadPacienteService {
         ApiFuture<WriteResult> writeResult = conex.collection("CadPacientes").document(id).delete();
     }
 
-    public void editar(CadPaciente cadPaciente) {
+    public void editar(CadPaciente cadpaciente) {
       
 
-        DocumentReference doc = conex.collection("CadPacientes").document(cadPaciente.getId()); // resgata o doc pelo ID
+        DocumentReference doc = conex.collection("CadPacientes").document(cadpaciente.getId()); // resgata o doc pelo ID
 
-        ApiFuture<WriteResult> writeResult = doc.set(cadPaciente); 
+        ApiFuture<WriteResult> writeResult = doc.set(cadpaciente); 
     }
 
 }

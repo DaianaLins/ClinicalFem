@@ -3,6 +3,7 @@ package com.projeto.clinicalfem.models;
 import org.springframework.format.annotation.DateTimeFormat;
 
 public class CadPaciente {
+    
     private String id;
 
     private String rg;
