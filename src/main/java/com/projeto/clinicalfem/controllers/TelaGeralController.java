@@ -15,6 +15,18 @@ public class TelaGeralController {
         return modelo;
     }
 
+    @GetMapping("/telaPaciente")
+    public ModelAndView indexP() {
+        ModelAndView modelo = new ModelAndView("telaPaciente");
+        return modelo;
+    }
+
+    @GetMapping("/telaMedico")
+    public ModelAndView indexM() {
+        ModelAndView modelo = new ModelAndView("telaMedico");
+        return modelo;
+    }
+
     @GetMapping("/selecionar")
     public ModelAndView Selecionar() {
         ModelAndView modelo = new ModelAndView("telaselecionarlogin");
