@@ -1,17 +1,17 @@
 package com.projeto.clinicalfem.models;
 
-import java.time.LocalDate;
-
-import org.springframework.format.annotation.DateTimeFormat;
+import java.util.Map;
 
 public class Noticia {
     
     private String id;
     private String titulo;
     private String autor;
-    @DateTimeFormat(pattern = "dd/MM/yyyy")
-    private LocalDate data;
+    private Map<String, String> timestamp;
     private String texto;
+
+    public void setTimestamp(Map<String, String> timeStamp) {this.timestamp= timestamp;}
+    public Map<String, String> getTimestamp() {return timestamp;}
 
     public String getId() {
         return id;
@@ -22,12 +22,7 @@ public class Noticia {
     public void setTexto(String texto) {
         this.texto = texto;
     }
-    public LocalDate getData() {
-        return data;
-    }
-    public void setData(LocalDate data) {
-        this.data = data;
-    }
+    
     public String getAutor() {
         return autor;
     }

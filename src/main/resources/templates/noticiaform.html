@@ -28,7 +28,7 @@
  </style>
 
 <header>
-  <h1><img class="responsive-img" src="materialize/style/logos/logos/LOGOBRANCA.png" style="margin:-60px 0px; width: 25%;"></h1>
+    <h1><img class="responsive-img" src="materialize/style/logos/logos/LOGOBRANCA.png" style="margin:-60px 0px; width: 25%;"></h1>
 </header>
     <nav>
        <a href="#">Home</a>
@@ -43,27 +43,22 @@
 
      <section>    
 
-         <div class="container" style="width: 60%; padding-bottom: 30px;">
+        <form method="post" th:object="${noticia}" style="">
             
-            
-            
-            <div class="row">
-                <div class="col s12 m6">
-                  <div class="card" style="margin-top: 20px;" th:each="noticia : ${noticias}">
-                    <div class="card-content black-text">
-                      <p class="card-subtitle mb-2 text-muted" style="font-size: 0.8rem;">
-                      <span th:text="${noticia.autor}"></span>
-                      <span th:text="${noticia.data}"></span>
-                      </p>
-                      <a th:href="@{/{id}/getNoticiasDetails/(id=${noticia.id})}"><h4 class="card-title" style="font-weight: bold; color: black; padding-top: 5px;"><span th:text="${noticia.titulo}"></span></h4></a>
-                      
-                      <p class="card-text"> <span th:utext="${#strings.abbreviate(noticia.texto,400)}"></span></p>
-                    </div>
-                    
-                  </div>
-                </div>
-              </div>
-         </div>
+            <div class="form-group">
+                <input type="text" class="form-control" name="titulo"  placeholder="Título *">
+            </div>
+            <div class="form-group">
+                <input type="text" class="form-control" name="autor" placeholder="Autor *">
+            </div>
+
+            <textarea id="summernote" type="text" class="form-control" name="texto" placeholder="Texto *"></textarea>
+
+            <small class="form-text text-muted">(*) Campos obrigatórios</small>
+
+            <button type="submit" class="btn btn-primary #ef9a9a red lighten-3" style="margin-top: 10px;">Publicar</button>
+            <a href="/noticias" class="btn btn-light #ef9a9a red lighten-3" role="button" style="margin-top: 10px;">Cancelar</a>
+
      </section>   
 
     <footer>
@@ -79,7 +74,11 @@
 	    var elems = document.querySelectorAll('select');
 	    var instances = M.FormSelect.init(elems);
 	});
-	
+	$('#summernote').summernote({
+        placeholder: 'Texto *',
+        tabsize: 2,
+        height: 300
+    });
 	 </script>
 </body>
 </html>
