@@ -1,5 +1,6 @@
 package com.projeto.clinicalfem.service;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.ExecutionException;
@@ -34,6 +35,8 @@ public class NoticiaService {
 
         // salva os dados do membro :)
         ApiFuture<WriteResult> writeResult = doc.set(noticia); // salva os dados do membro :)
+
+        
 
         return true;
     }

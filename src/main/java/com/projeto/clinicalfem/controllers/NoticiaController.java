@@ -11,6 +11,7 @@ import com.google.firebase.database.ServerValue;
 import com.projeto.clinicalfem.models.Noticia;
 import com.projeto.clinicalfem.service.NoticiaService;
 
+import org.apache.tomcat.jni.Local;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -55,11 +56,10 @@ public class NoticiaController {
         return modelo;
     }
     @PostMapping("/novaNoticia")
-    public ModelAndView getNoticiaFom(Noticia noticia, long timeStamp) throws InterruptedException, ExecutionException{
+    public ModelAndView getNoticiaFom(Noticia noticia) throws InterruptedException, ExecutionException{
         
         ModelAndView modelo = new ModelAndView("redirect:/noticias");  
-        Map<String, Object> value = new HashMap<>();
-            value.put("timestamp", ServerValue.TIMESTAMP);
+            noticia.setData(LocalDate.now().toString());
             service.salvar(noticia);
             return modelo;
     }

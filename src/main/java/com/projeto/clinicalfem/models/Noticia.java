@@ -1,20 +1,24 @@
 package com.projeto.clinicalfem.models;
 
-import java.util.Map;
+import java.time.LocalDate;
 
 public class Noticia {
     
     private String id;
     private String titulo;
     private String autor;
-    private Map<String, String> timestamp;
+    private String data;
     private String texto;
 
-    public void setTimestamp(Map<String, String> timeStamp) {this.timestamp= timestamp;}
-    public Map<String, String> getTimestamp() {return timestamp;}
-
+    
     public String getId() {
         return id;
+    }
+    public String getData() {
+        return data;
+    }
+    public void setData(String data) {
+        this.data = data;
     }
     public String getTexto() {
         return texto;

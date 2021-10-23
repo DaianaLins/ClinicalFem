@@ -55,7 +55,7 @@
                       <span th:text="${noticia.autor}"></span>
                       <span th:text="${noticia.data}"></span>
                       </p>
-                      <a th:href="@{/{id}/getNoticiasDetails/(id=${noticia.id})}"><h4 class="card-title" style="font-weight: bold; color: black; padding-top: 5px;"><span th:text="${noticia.titulo}"></span></h4></a>
+                      <a th:href="@{/{id}/noticias/(id=${noticia.id})}"><h4 class="card-title" style="font-weight: bold; color: black; padding-top: 5px;"><span th:text="${noticia.titulo}"></span></h4></a>
                       
                       <p class="card-text"> <span th:utext="${#strings.abbreviate(noticia.texto,400)}"></span></p>
                     </div>
