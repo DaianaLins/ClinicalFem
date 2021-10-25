@@ -23,8 +23,19 @@ public class Agendamento {
 
     private String valorC;
 
+    private String obs;
+
+
     public String getCodigo() {
         return codigo;
+    }
+
+    public String getObs() {
+        return obs;
+    }
+
+    public void setObs(String obs) {
+        this.obs = obs;
     }
 
     public String getCpf() {

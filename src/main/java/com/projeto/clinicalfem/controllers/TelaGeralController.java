@@ -14,7 +14,11 @@ public class TelaGeralController {
         ModelAndView modelo = new ModelAndView("telaGeral");
         return modelo;
     }
-
+    @GetMapping("/pageHome")
+    public ModelAndView inicio() {
+        ModelAndView modelo = new ModelAndView("TelaInicial");
+        return modelo;
+    }
     @GetMapping("/telaPaciente")
     public ModelAndView indexP() {
         ModelAndView modelo = new ModelAndView("telaPaciente");

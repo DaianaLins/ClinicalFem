@@ -59,11 +59,15 @@
 		Valor: <input type="text" name="valorC" th:field="*{valorC}" required/>  		
 		</div>
  			<div class="input-field col s2">
-    		Situação<select name="pagamento" th:field="*{pagamento}" required>
+    		Situação:<select name="pagamento" th:field="*{pagamento}" required>
       		<option value="Pago">Pago</option>
       		<option value="Pendente">Pendente</option>
     		</select>
    		</div>
+		   <div>
+			   <textarea id="summernote" type="text" class="form-control" name="obs" th:field="*{obs}" placeholder="Observações"></textarea>
+			   <label for="summernote">Observações</label>
+			</div>
    	
  		</div>
         <button type="submit" class="waves-effect waves-light btn #ef9a9a red lighten-3" th:value="${agendamento.codigo == null ? 'cadastrar' : 'editar'}" >Agendar</button>
@@ -92,7 +96,8 @@
 	    var elems = document.querySelectorAll('select');
 	    var instances = M.FormSelect.init(elems);
 	});
-	
+	$('#summernote').val('New Text');
+  M.textareaAutoResize($('#summernote'))
 	 </script>
 
 </body>
