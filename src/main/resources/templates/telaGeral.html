@@ -21,12 +21,9 @@
         <h1><img class="responsive-img" src="materialize/style/logos/logos/LOGOBRANCA.png" style="margin:-60px 0px; width: 25%;"></h1>
     </header>
     <nav>
-       <a href="#">Home</a>
-       <a href="#">Serviços</a>
-       <a href="#">Contatos</a>
-       <a href="#">Sobre nós</a>
+        <a th:href="@{/logout}" class="waves-effect waves-light btn center-align #ef9a9a red lighten-3"><i class="material-icons left" style="margin-top:-10px" >exit_to_app</i>SAIR</a>
     </nav>
-  <h4> <a th:href="@{/logout}" class="waves-effect waves-light btn #e57373 red lighten-2" style="margin: 0 10px;"><i class="material-icons left">exit_to_app</i>Sair</a></h4> 
+  <!-- <h4> <a th:href="@{/logout}" class="waves-effect waves-light btn #e57373 red lighten-2" style="margin: 0 10px;"><i class="material-icons left">exit_to_app</i>Sair</a></h4>  -->
   
 </form>
     <h1>SELECIONE O SERVIÇO</h1>

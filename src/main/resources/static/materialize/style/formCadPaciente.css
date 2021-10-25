@@ -1,7 +1,7 @@
 
 header{
     background-color: #f2a7a7;
-    padding: 40px;
+    padding: 30px;
     text-align: center;
 
 }
@@ -18,34 +18,25 @@ header > h1{
 nav{
     background-color: #fac6c6;
     padding: 0px;
+    margin: 0%;
     text-align: center;
+    
 }
 
-nav > a{
+/* nav > a{
     color: white;
     text-decoration: none;
-    padding: 10px;
+    padding: 0px;
     border-radius: 5px;
     font-weight: bold;
-    transition: .5s;
+    transition: .5s; */
 }
 
-nav > a:hover{
+/* nav > a:hover{
     background-color: white;
-    color: #f2a7a7;
-}
-footer{
-    background-color: #f2a7a7;
-    color: white;
-    width: 100%;
-    height: 100px;
-    position: absolute;
-    bottom: -450px; left: 0px;
+    color: #f2a7a7; */
 }
 
-footer > p{
-    padding: 35px;
-    text-align: center;
 }
 article{
 
@@ -54,7 +45,7 @@ article{
     padding: 20px;
     position: absolute;
     left: 50%;
-    top: 55%;
+    top: 35%;
     transform: translate(-50%, -50%);
 }
 
@@ -80,4 +71,15 @@ h5 {
     font-family: Arial,'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
 }
 
+footer{
+    background-color: #f2a7a7;
+    color: white;
+    width: 100%;
+    height: 20%;
+    position: absolute;
+    bottom: -350px; left: 0px;
+}
 
+footer > p{
+    padding: 35px;
+    text-align: center;
