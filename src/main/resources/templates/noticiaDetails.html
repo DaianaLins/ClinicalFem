@@ -12,7 +12,8 @@
 <!--Import materialize.css-->
 <link type="text/css" rel="stylesheet"
 	href="/materialize/css/materialize.min.css" media="screen,projection" />
-
+<!-- Bootstrap CSS -->
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 <!--Let browser know website is optimized for mobile-->
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <meta charset="UTF-8">
@@ -44,8 +45,15 @@
      <main>    
         
             
-         <div class="row" style="width: 60%; padding-bottom: 30px;">
+         <div class="container" style="width: 60%; padding-bottom: 30px;">
          
+            <nav aria-label="breadcrumb" class="z-depth-0">
+                <ol class="breadcrumb" style="background-color: white; padding-left: 0px;">
+                    <li class="breadcrumb-item"><a class="grey-text"  href="/noticias">Notícias</a></li>
+                    <li class="breadcrumb-item active" aria-current="page">Notícia</li>
+                </ol>
+            </nav>
+
             <article>
                 <h1 class="card-title" style="font-weight: bold; margin-bottom: 20px;"><span th:text="${noticia.titulo}"></span></h1>
                 <p class="card-subtitle mb-2 text-muted">

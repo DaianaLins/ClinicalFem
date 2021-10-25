@@ -14,11 +14,7 @@ public class TelaGeralController {
         ModelAndView modelo = new ModelAndView("telaGeral");
         return modelo;
     }
-    @GetMapping("/cadastroAtendente")
-    public ModelAndView cadUsuA() {
-        ModelAndView modelo = new ModelAndView("usuarioatendenteform");
-        return modelo;
-    }
+    
     @GetMapping("/pageHome")
     public ModelAndView inicio() {
         ModelAndView modelo = new ModelAndView("TelaInicial");
