@@ -1,81 +1,89 @@
-h5 > header{
-    padding: 50px;
-    border-radius: 100px;
+/* Custom Stylesheet */
+/**
+ * Use this file to override Materialize files so you can update
+ * the core Materialize files in the future
+ *
+ * Made By MaterializeCSS.com
+ */
+
+ h5 > header{
+  padding: 50px;
+  border-radius: 100px;
+}
+
+h5 > .row center{
+
+  padding: 50px;
+}
+
+nav{
+  color: #fac6c6;
+  height: 100px;
+}
+
+.nav-wrapper {
+  padding: 15px;
+  justify-content: center;
+}
+
+nav h1 {
+  color: #ef9a9a;
+}
+
+nav ul a,
+nav .brand-logo {
+  color: white;
+}
+
+p {
+  line-height: 2rem;
+}
+
+.sidenav-trigger {
+  color: white;
+}
+
+ .carrousel{
+  height: 500px;
+}
+
+  .carrousel .carousel-item{
+    width: 400px;
   }
-  
-  h5 > .row center{
-  
-    padding: 50px;
+
+.parallax-container {
+  min-height: 380px;
+  line-height: 0;
+  height: auto;
+  color: rgba(255,255,255,.9);
+}
+  .parallax-container .section {
+    width: 100%;
   }
-  
-  nav{
-    color: #fac6c6;
-    height: 100px;
+
+@media only screen and (max-width : 992px) {
+  .parallax-container .section {
+    position: absolute;
+    top: 40%;
   }
-  
-  .nav-wrapper {
-    padding: 15px;
-    justify-content: center;
+  #index-banner .section {
+    top: 10%;
   }
-  
-  nav h1 {
-    color: #ef9a9a;
+}
+
+@media only screen and (max-width : 600px) {
+  #index-banner .section {
+    top: 0;
   }
-  
-  nav ul a,
-  nav .brand-logo {
-    color: white;
-  }
-  
-  p {
-    line-height: 2rem;
-  }
-  
-  .sidenav-trigger {
-    color: white;
-  }
-  
-   .carrousel{
-    height: 500px;
-  }
-  
-    .carrousel .carousel-item{
-      width: 400px;
-    }
-  
-  .parallax-container {
-    min-height: 380px;
-    line-height: 0;
-    height: auto;
-    color: rgba(255,255,255,.9);
-  }
-    .parallax-container .section {
-      width: 100%;
-    }
-  
-  @media only screen and (max-width : 992px) {
-    .parallax-container .section {
-      position: absolute;
-      top: 40%;
-    }
-    #index-banner .section {
-      top: 10%;
-    }
-  }
-  
-  @media only screen and (max-width : 600px) {
-    #index-banner .section {
-      top: 0;
-    }
-  }
-  
-  .icon-block {
-    padding: 0 15px;
-  }
-  .icon-block .material-icons {
-    font-size: inherit;
-  }
-  
-  footer.page-footer {
-    margin: 0;
-  }
+}
+
+.icon-block {
+  padding: 0 15px;
+}
+.icon-block .material-icons {
+  font-size: inherit;
+}
+
+footer.page-footer {
+  margin: 0;
+}
