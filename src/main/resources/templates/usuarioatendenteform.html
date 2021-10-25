@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+
+<html xmlns:th="http://thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	lang="pt-br">
+	<!-- IMPORTAÇÕES DO MATERIALIZER -->
+<!-- SITE: https://materializecss.com/getting-started.html -->
+<!--Import Google Icon Font-->
+
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons"
+	rel="stylesheet" />
+<!--Import materialize.css-->
+<link type="text/css" rel="stylesheet"
+	href="materialize/css/materialize.min.css" media="screen,projection" />
+
+<!--Let browser know website is optimized for mobile-->
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta charset="UTF-8">
+<link rel="stylesheet" href="materialize/style/styleformAgendamento.css"/>
+
+<head>
+
+<title>Cadastro do Atendente</title>
+</head>
+<body>
+
+        <header>
+			<h1><img class="responsive-img" src="materialize/style/logos/logos/LOGOBRANCA.png" style="margin:-60px 0px; width: 25%;"></h1>
+    </header>
+    <nav>
+		<a href="/tela" class="waves-effect waves-light btn center-align #ef9a9a red lighten-3"><i class="material-icons left" style="margin-top:-10px" >home</i>Início</a>
+    </nav>
+    <h2 style="padding-top: 30px;" >Cadastro</h2>
+ 
+ <!-- <h3><a href="/consultas" class="waves-effect waves-light btn #ef9a9a red lighten-3"><i class="material-icons left">format_list_bulleted</i>Consultas Agendadas</a></h3>
+ <h4><a href="/tela" class="waves-effect waves-light btn #ef9a9a red lighten-3"><i class="material-icons left">home</i>Início</a></h3> -->
+    <!-- <th:block th:include="mensagemValidacao"></th:block> -->
+	<form class="row" method="post" >
+		
+		<!-- <input type="hidden" name="id" th:field="*{codigo}"> -->
+
+		Nome Completo: <input  type="text" name="nome"  required />    	
+		Email: <input  type="text" name="email"  required />    	
+		Numero: <input  type="text" name="nome"  required />    	
+        Data de Nascimento: <input type="date" value="" name="dataC"  required/>
+		Senha: <input  type="text" name="senha"  required />    	
+		
+	    <button type="submit" class="waves-effect waves-light btn #ef9a9a red lighten-3">Agendar</button>
+        </form>
+        
+		<script>
+			var NomeRepetido = "[[${Nomerepetido}]]";
+        if (NomeRepetido != "") {
+            alert(NomeRepetido);
+        }
+		</script>
+
+	 <footer>
+        <p>Copyright ® Todos os direitos reservados</p>
+    </footer>
+
+
+  	
+	 
+	<!--JavaScript at end of body for optimized loading-->
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js"></script>
+	<script type="text/javascript" src="materialize/js/materialize.min.js"></script>
+	  
+	<script>
+	document.addEventListener('DOMContentLoaded', function() {
+	    var elems = document.querySelectorAll('select');
+	    var instances = M.FormSelect.init(elems);
+	});
+	$('#summernote').val('New Text');
+  M.textareaAutoResize($('#summernote'))
+	 </script>
+
+</body>
+</html>
