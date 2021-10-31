@@ -25,17 +25,16 @@
 <body>
 
         <header>
-        <h1>CLINICALFEM</h1>
+			<h1><img class="responsive-img" src="materialize/style/logos/logos/LOGOBRANCA.png" style="margin:-60px 0px; width: 25%;"></h1>
     </header>
     <nav>
-       <a href="#">Home</a>
-       <a href="#">Serviços</a>
-       <a href="#">Contatos</a>
-       <a href="#">Sobre nós</a>
-    </nav>
-    <h2>Dados do Paciente</h2>
+       
+	   <a href="/consultas" class="waves-effect waves-light btn #ef9a9a red lighten-3"><i class="material-icons left" style="margin-top:-10px" >undo</i>Retornar</a>
 
-<a href="/consultas" class="waves-effect waves-light btn #ef9a9a red lighten-3"><i class="material-icons left">undo</i>Retornar</a>
+    </nav>
+    <h2>DADOS DO PACIENTE</h2>
+
+
 <div th:each="cadpaciente : ${paciente}">
 	
 	<div class="container" id="nv">
