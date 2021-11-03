@@ -1,20 +1,24 @@
 package com.projeto.clinicalfem.config;
 
-import com.projeto.clinicalfem.service.UserDetailsImplService;
 import com.projeto.clinicalfem.enums.Perfil;
+import com.projeto.clinicalfem.service.UserDetailsImplService;
+
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
+import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
-import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 
+@Configuration
 @EnableWebSecurity
 public class WebSecurityConfig extends WebSecurityConfigurerAdapter{
    
    @Autowired
-   private UserDetailsImplService detalhes;
+   private UserDetailsImplService user;
    
     @Override
     protected void configure(HttpSecurity http) throws Exception{
@@ -43,12 +47,14 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter{
        http.formLogin().loginPage("/loginAtendente")
        .defaultSuccessUrl("/telaGeral/")
         .permitAll();
-        http.logout()
-        .logoutRequestMatcher(new AntPathRequestMatcher("/telageral/logout/","GET"))
-        .logoutSuccessUrl("/pageHome");
+       
     }
     public void configure(AuthenticationManagerBuilder builder) throws Exception{
-        builder.userDetailsService(detalhes)
+        builder.userDetailsService(user)
         .passwordEncoder(new BCryptPasswordEncoder());
+    }
+    @Bean
+    public AuthenticationManager customAuthenticationManager() throws Exception {
+    return authenticationManager();
     }
 }
