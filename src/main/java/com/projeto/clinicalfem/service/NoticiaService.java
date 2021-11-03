@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.ExecutionException;
 
+import com.google.api.Page;
 import com.google.api.core.ApiFuture;
 import com.google.cloud.firestore.CollectionReference;
 import com.google.cloud.firestore.DocumentReference;
@@ -16,11 +17,15 @@ import com.google.cloud.firestore.WriteResult;
 import com.google.firebase.cloud.FirestoreClient;
 import com.projeto.clinicalfem.models.Noticia;
 
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;
+
 
 @Service
 public class NoticiaService {
     Firestore conex = FirestoreClient.getFirestore();
+
+    private int pageSize = 10;
 
     public boolean salvar(Noticia noticia) throws InterruptedException, ExecutionException {
         
@@ -69,4 +74,5 @@ public class NoticiaService {
         }
         return lista;
     }
+  
 }
