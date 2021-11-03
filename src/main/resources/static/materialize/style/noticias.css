@@ -8,7 +8,7 @@ body{
 
 header{
     background-color: #f2a7a7;
-    padding: 30px;
+    padding: 50px;
     text-align: center;
 }
 
@@ -48,7 +48,7 @@ form{
     padding: 30px;
     position: absolute;
     left: 50%;
-    top: 110%;
+    top: 95%;
     transform: translate(-50%, -50%);
 	
 }
@@ -90,75 +90,3 @@ footer > p{
     padding: 35px;
     text-align: center;
 }  
-#lista__artesanatos {
-    padding: 0;
-    list-style: none;
-    display: flex;
-    max-width: 90%;
-    margin: auto;
-    flex-wrap: wrap;
-}
-
-.item__artesanato {
-    background: white;
-    border: 1px solid var(--cor-verde-escuro);
-    box-shadow: 0px 1px 4px #cecece;
-    width: 300px;
-    height: 200px;
-    padding: 8px;
-    border-radius: 8px;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    margin: 8px;
-}
-
-.item__rodape {
-    align-items: center;
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-}
-
-.item__comprar {
-    background: var(--cor-verde-escuro);
-    border-color: var(--cor-verde-escuro);
-    border-radius: 4px;
-    color: white;
-    padding: 4px 8px
-}
-
-#filtros__entradas input {
-    padding: 4px
-}
-
-#botao__filtrar {
-    padding: 4px 8px;
-}
-.botao__primario {
-    background: var(--cor-verde-escuro);
-    border-color: var(--cor-verde-escuro);
-    border-radius: 8px;
-    color: white;
-    cursor: pointer;
-}
-
-.botao__primario:hover {
-    background: var(--cor-verde-claro);
-    border-color: var(--cor-verde-claro);
-}
-
-.fieldset__padrao {
-    border-radius: 4px;
-    border-color: var(--cor-verde-escuro);
-}
-
-.fieldset__padrao label {
-    font-size: 12px;
-    font-weight: bold;
-}
-
-.fieldset__padrao input, .fieldset__padrao textarea {
-    border-color: var(--cor-verde-claro);
-    border-radius: 8px;
-}

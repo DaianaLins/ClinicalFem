@@ -8,7 +8,7 @@ body{
 
 header{
     background-color: #f2a7a7;
-    padding: 30px;
+    padding: 50px;
     text-align: center;
 }
 
@@ -48,7 +48,7 @@ form{
     padding: 30px;
     position: absolute;
     left: 50%;
-    top: 110%;
+    top: 95%;
     transform: translate(-50%, -50%);
 	
 }
