@@ -13,7 +13,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ClinicalFem</title>
-    <link rel="stylesheet" href="materialize/style/telageral.css">
+    <link rel="stylesheet" href="materialize/style/telaMedico.css">
 
 </head>
 <body>
@@ -21,32 +21,35 @@
         <h1><img class="responsive-img" src="materialize/style/logos/logos/LOGOBRANCA.png" style="margin:-60px 0px; width: 25%;"></h1>
     </header>
     <nav>
-       <a href="#">Home</a>
-       <a href="#">Serviços</a>
-       <a href="#">Contatos</a>
-       <a href="#">Sobre nós</a>
+        <a th:href="@{/logout}" class="waves-effect waves-light btn #e57373 red lighten-2" style="margin: 0 10px;"><i class="material-icons left" style="margin-top:-10px" >exit_to_app</i>Sair</a>
     </nav>
-  <h4> <a th:href="@{/logout}" class="waves-effect waves-light btn #e57373 red lighten-2" style="margin: 0 10px;"><i class="material-icons left">exit_to_app</i>Sair</a></h4> 
-  
+
 </form>
     <h1>SELECIONE O SERVIÇO</h1>
     <hr color="white">
     <section class="flex">
+
+        <div >
+            <img class="responsive-img" src="materialize/style/logos/logos/perfil.png" style="margin: 0 -5px;">
+           <a href="/noticias" class="waves-effect waves-light btn #e57373 red lighten-2" style="margin: 0 5px;"> DADOS DO PERFIL </a>
+       </div>
+
         <div >
              <img class="responsive-img" src="materialize/style/logos/logos/cliente.png" style="margin: 0 15px;">
-            <a href="" class="waves-effect waves-light btn #e57373 red lighten-2" style="margin: 0 -5px;"> Verificar Pacientes</a>
+            <a href="" class="waves-effect waves-light btn #e57373 red lighten-2" style="margin: 0 12px;"> Verificar Pacientes</a>
         </div>
     
            
         <div>
-          
             <img class="responsive-img" src="materialize/style/logos/logos/lista-de-controle.png" style="margin: 0 15px;">
             <a href="" class="waves-effect waves-light btn #e57373 red lighten-2"  style="margin: 0 20px;">Verificar Consultas </a>
         </div>
-        <div >''
+        <div >
             <img class="responsive-img" src="materialize/style/logos/logos/news.png" style="margin: 0 15px;">
            <a href="/noticias" class="waves-effect waves-light btn #e57373 red lighten-2" style="margin: 0 30px;"> Notícias da clínica</a>
        </div>
+
+       
     </section>
     
     <footer>
