@@ -6,8 +6,15 @@ public class UsuarioAtendente {
     private String senha;
     private String id;
     private String numero;
+    private boolean adm;
     public String getNome() {
         return nome;
+    }
+    public boolean isAdm() {
+        return adm;
+    }
+    public void setAdm(boolean adm) {
+        this.adm = adm;
     }
     public String getNumero() {
         return numero;
