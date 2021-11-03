@@ -1,6 +1,5 @@
 package com.projeto.clinicalfem.service;
 
-import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.ExecutionException;
@@ -16,7 +15,6 @@ import com.google.cloud.firestore.QuerySnapshot;
 import com.google.cloud.firestore.WriteResult;
 import com.google.firebase.cloud.FirestoreClient;
 import com.projeto.clinicalfem.models.Noticia;
-
 
 import org.springframework.stereotype.Service;
 
