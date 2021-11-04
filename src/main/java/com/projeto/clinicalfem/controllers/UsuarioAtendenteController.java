@@ -22,7 +22,7 @@ public class UsuarioAtendenteController {
     }
 
     @GetMapping("/cadastroAtendente")
-    public ModelAndView cadUsuA() {
+    public ModelAndView cadastrar() {
         ModelAndView modelo = new ModelAndView("usuarioatendenteform");
         modelo.addObject("usuarioatendente", new UsuarioAtendente());
         

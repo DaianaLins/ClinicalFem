@@ -35,24 +35,20 @@
  <!-- <h3><a href="/consultas" class="waves-effect waves-light btn #ef9a9a red lighten-3"><i class="material-icons left">format_list_bulleted</i>Consultas Agendadas</a></h3>
  <h4><a href="/tela" class="waves-effect waves-light btn #ef9a9a red lighten-3"><i class="material-icons left">home</i>Início</a></h3> -->
     <!-- <th:block th:include="mensagemValidacao"></th:block> -->
-	<form class="row" method="post" >
+	<form class="row" method="post" th:object="${atendente}" >
 		
-		<!-- <input type="hidden" name="id" th:field="*{codigo}"> -->
-
+		<!-- <input type="hidden" name="id" th:field="*{id}" > -->		
 		Nome Completo: <input  type="text" name="nome"  required />    	
 		Email: <input  type="text" name="email"  required />    	
-		Numero: <input  type="text" name="nome"  required />    	
-        Data de Nascimento: <input type="date" value="" name="dataC"  required/>
-		Senha: <input  type="text" name="senha"  required />    	
+		Numero: <input  type="text" name="numero" required />    	
+        Data de Nascimento: <input type="date" value="" name="datanasc"  required/>
+		Senha: <input  type="text" name="senha" required />    	
 		
 	    <button type="submit" class="waves-effect waves-light btn #ef9a9a red lighten-3"> Cadastrar</button>
         </form>
         
 		<script>
-			var NomeRepetido = "[[${Nomerepetido}]]";
-        if (NomeRepetido != "") {
-            alert(NomeRepetido);
-        }
+		
 		</script>
 
 	 <footer>
@@ -73,7 +69,9 @@
 	});
 	$('#summernote').val('New Text');
   M.textareaAutoResize($('#summernote'))
-	 </script>
 
+  
+	 </script>
+	
 </body>
 </html>

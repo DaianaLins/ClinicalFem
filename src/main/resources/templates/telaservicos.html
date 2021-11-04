@@ -1,0 +1,354 @@
+<!DOCTYPE html>
+
+<html xmlns:th="http://thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	lang="pt-br">
+	<!-- IMPORTAÇÕES DO MATERIALIZER -->
+<!-- SITE: https://materializecss.com/getting-started.html -->
+<!--Import Google Icon Font-->
+
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons"
+	rel="stylesheet" />
+<!--Import materialize.css-->
+<link type="text/css" rel="stylesheet"
+	href="materialize/css/materialize.min.css" media="screen,projection" />
+
+<!--Let browser know website is optimized for mobile-->
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta charset="UTF-8">
+<link rel="stylesheet" href="/materialize/style/style.css"/>
+<head>
+     <title>Serviços </title>
+</head>
+<body>
+  <nav class="#ef9a9a red lighten-3" role="navigation">
+    <div class="nav-wrapper container">
+      <a id="logo-container" href="#" class="brand-logo"><img src="/materialize/style/logos/logos/LOGOpequena1.png" alt=""></a>
+      <ul class="right hide-on-med-and-down">
+        <li><a href="#">INÍCIO</a></li>
+        <li><a href="#">SERVIÇOS</a></li>
+        <li><a href="#">LOGIN</a></li>
+      </ul>
+
+      <ul id="nav-mobile" class="sidenav">
+        <li><a href="#">Navbar Link</a></li>
+      </ul>
+      <a href="#" data-target="nav-mobile" class="sidenav-trigger"><i class="material-icons">menu</i></a>
+    </div>
+  </nav>
+
+  <!-- <div id="index-banner" class="parallax-container">
+    <div class="section no-pad-bot">
+      <div class="container">
+        <br><br>
+        <div class="row center">
+          <h1 class = "header center" style="color: #ef9a9a; font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;">UMA CLÍNICA PARA MULHERES</h1>
+          <h5 class="header col s12 light"style="color: #ef9a9a;  font-weight: 400; ">FAÇA PARTE DA NOSSA CLÍNICA</h5>
+        </div>
+        <div class="row center">
+          <a href="http://materializecss.com/getting-started.html" id="download-button" class="btn-large waves-effect waves-light #ef9a9a red lighten-3">CLIQUE AQUI</a>
+        </div>
+        <br><br>
+      </div>
+    </div>
+    <div class="parallax"><img src="imagem1m.png" alt="Unsplashed background img 1"></div>
+  </div>
+  <div class="container">
+    <div class="section">
+        Icon Section   -->
+
+      <section class="flex">
+      
+        
+          <div class="card" style="width: 50%; margin: 0 10px;">
+            <div class="card-image waves-effect waves-block waves-light">
+              <img src="/materialize/style/logos/logos/ginecologista.jpg">
+            </div>
+            <div class="card-content">
+              <span class="card-title activator grey-text text-darken-4">GINECOLOGIA<i class="material-icons right">more_vert</i></span>
+              <p><a class="waves-effect waves-light btn #ef9a9a red lighten-3" href="#">AGENDE UMA CONSULTA</a></p>
+            </div>
+            <div class="card-reveal">
+              <span class="card-title grey-text text-darken-4">GINECOLOGIA<i class="material-icons right">close</i></span>
+              <p>​​​​​A Ginecologia é a especialidade médica que cuida da saúde da mulher em todas as fases da vida. Tem um papel importantíssimo tanto na prevenção, quanto no tratamento de doenças relacionadas aos órgãos genitais femininos. Isso inclui vulva e vagina, colo do útero, útero, ovários, trompas e mamas.</p>
+            </div>
+          </div>
+        </div>
+
+        
+
+          <div class="card" style="width: 50%; margin: 0 10px;">
+            <div class="card-image waves-effect waves-block waves-light">
+              <img src="/materialize/style/logos/logos/mastologista.jpg">
+            </div>
+            <div class="card-content">
+              <span class="card-title activator grey-text text-darken-4">MASTOLOGIA<i class="material-icons right">more_vert</i></span>
+              <p><a class="waves-effect waves-light btn #ef9a9a red lighten-3" href="#">AGENDE UMA CONSULTA</a></p>
+            </div>
+            <div class="card-reveal">
+              <span class="card-title grey-text text-darken-4">MASTOLOGIA<i class="material-icons right">close</i></span>
+              <p>A mastologia ou senologia é especialidade médica que se dedica ao estudo das glândulas mamárias. O mastologista é o especialista que estuda, previne, diagnostica, trata e reabilita todas as doenças da mama.</p>
+            </div>
+        </div>
+
+        
+          <div class="card" style="width: 50%; margin: 0 10px;">
+            <div class ="card-image waves-effect waves-block waves-light">
+              <img src="/materialize/style/logos/logos/oftalmo.jpg">
+            </div>
+            <div class="card-content">
+              <span class="card-title activator grey-text text-darken-4">OFTALMOLOGIA<i class="material-icons right">more_vert</i></span>
+              <p><a class="waves-effect waves-light btn #ef9a9a red lighten-3" href="#">AGENDE UMA CONSULTA</a></p>
+            </div>
+            <div class="card-reveal">
+              <span class="card-title grey-text text-darken-4">OFTALMOLOGIA<i class="material-icons right">close</i></span>
+              <p>A oftalmologia é uma especialidade da medicina que estuda e trata as doenças relacionadas ao olho, à refração e aos olhos e seus anexos. O médico oftalmologista realiza cirurgias, prescreve tratamentos e correções para os distúrbios de visão.</p>
+            </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <section class="flex">
+      
+        
+    <div class="card" style="width: 50%; margin: 0 10px;">
+      <div class="card-image waves-effect waves-block waves-light">
+        <img src="/materialize/style/logos/logos/obstetricia.jpg">
+      </div>
+      <div class="card-content">
+        <span class="card-title activator grey-text text-darken-4">OBSTETRÍCIA<i class="material-icons right">more_vert</i></span>
+        <p><a class="waves-effect waves-light btn #ef9a9a red lighten-3" href="#">AGENDE UMA CONSULTA</a></p>
+      </div>
+      <div class="card-reveal">
+        <span class="card-title grey-text text-darken-4">OBSTETRÍCIA<i class="material-icons right">close</i></span>
+        <p>Obstetrícia é a especialidade médica que atua no cuidado das gestantes. O especialista acompanha todo o pré-natal, realizando exames clínicos e solicitando exames complementares e também é o responsável central pelo momento do parto.</p>
+      </div>
+    </div>
+  </div>
+
+  
+
+    <div class="card" style="width: 50%; margin: 0 10px;">
+      <div class="card-image waves-effect waves-block waves-light">
+        <img src="/materialize/style/logos/logos/dermo.jpg">
+      </div>
+      <div class="card-content">
+        <span class="card-title activator grey-text text-darken-4">DERMATOLOGIA<i class="material-icons right">more_vert</i></span>
+        <p><a class="waves-effect waves-light btn #ef9a9a red lighten-3" href="#">AGENDE UMA CONSULTA</a></p>
+      </div>
+      <div class="card-reveal">
+        <span class="card-title grey-text text-darken-4">DERMATOLOGIA</span><i class="material-icons right">close</i></span>
+        <p>A Dermatologia é uma especialidade médica cuja área de conhecimento se concentra no diagnóstico, prevenção e tratamento de doenças e afecções relacionadas à pele, pelos, mucosas, cabelo e unhas. É também especialidade indicada para atuação em procedimentos médicos estéticos, cirúrgicos, oncológicos.</p>
+      </div>
+  </div>
+
+  
+    <div class="card" style="width: 50%; margin: 0 10px;">
+      <div class="card-image waves-effect waves-block waves-light">
+        <img src="/materialize/style/logos/logos/cardio.jpg">
+      </div>
+      <div class="card-content">
+        <span class="card-title activator grey-text text-darken-4">CARDIOLOGIA<i class="material-icons right">more_vert</i></span>
+        <p><a class="waves-effect waves-light btn #ef9a9a red lighten-3" href="#">AGENDE UMA CONSULTA</a></p>
+      </div>
+      <div class="card-reveal">
+        <span class="card-title grey-text text-darken-4">CARDIOLOGIA<i class="material-icons right">close</i></span>
+        <p>Cardiologia é a especialidade médica que se ocupa do diagnóstico e tratamento das doenças que acometem o coração bem como os outros componentes do sistema circulatório. O médico especialista nessa área é o cardiologista.</p>
+      </div>
+  </div>
+</div>
+
+<section class="flex">
+      
+        
+  <div class="card" style="width: 50%; margin: 0 10px;">
+    <div class="card-image waves-effect waves-block waves-light">
+      <img src="/materialize/style/logos/logos/oncologia.jpg">
+    </div>
+    <div class="card-content">
+      <span class="card-title activator grey-text text-darken-4">ONCOLOGIA<i class="material-icons right">more_vert</i></span>
+      <p><a class="waves-effect waves-light btn #ef9a9a red lighten-3" href="#">AGENDE UMA CONSULTA</a></p>
+    </div>
+    <div class="card-reveal">
+      <span class="card-title grey-text text-darken-4">ONCOLOGIA<i class="material-icons right">close</i></span>
+      <p>A oncologia ou cancerologia, também chamada cancrologia, é a especialidade médica que, à procura do tratamento do paciente, estuda os cânceres, também chamados cancros, que são tumores malignos, e a forma como essas doenças desenvolvem-se nos organismos em que estão.</p>
+    </div>
+  </div>
+</div>
+
+
+
+  <div class="card" style="width: 50%; margin: 0 10px;">
+    <div class="card-image waves-effect waves-block waves-light">
+      <img src="/materialize/style/logos/logos/ortopedia.jpg">
+    </div>
+    <div class="card-content">
+      <span class="card-title activator grey-text text-darken-4">ORTOPEDIA<i class="material-icons right">more_vert</i></span>
+      <p><a class="waves-effect waves-light btn #ef9a9a red lighten-3" href="#">AGENDE UMA CONSULTA</a></p>
+    </div>
+    <div class="card-reveal">
+      <span class="card-title grey-text text-darken-4">ORTOPEDIA<i class="material-icons right">close</i></span>
+      <p>Ortopedia é a especialidade médica que utiliza métodos clínicos, físicos e cirúrgicos para tratar, corrigir enfermidades, lesões e deformidades ósseas, dos músculos, dos tendões, articulações e ligamentos, e tudo o que relaciona-se ao aparelho locomotor, ao sistema esquelético e estruturas associadas.</p>
+    </div>
+</div>
+
+
+  <div class="card" style="width: 50%; margin: 0 10px;">
+    <div class ="card-image waves-effect waves-block waves-light">
+      <img src="/materialize/style/logos/logos/otorrinolaringologista.jpg">
+    </div>
+    <div class="card-content">
+      <span class="card-title activator grey-text text-darken-4">OTORRINOLARINGOLOGIA<i class="material-icons right">more_vert</i></span>
+      <p><a class="waves-effect waves-light btn #ef9a9a red lighten-3" href="#">AGENDE UMA CONSULTA</a></p>
+    </div>
+    <div class="card-reveal">
+      <span class="card-title grey-text text-darken-4">OTORRINOLARINGOLOGIA<i class="material-icons right">close</i></span>
+      <p>A otorrinolaringologia cuida da audição, das vias respiratórias, da garganta e das cordas vocais. A audição é importante para qualquer pessoa, pois ouvir bem é parte de poder se comunicar bem. </p>
+    </div>
+  </div>
+  </div>
+
+  </div>
+  </div>
+
+
+
+  </div>
+  </div>
+
+  <section class="flex">
+      
+        
+    <div class="card" style="width: 50%; margin: 0 10px;">
+      <div class="card-image waves-effect waves-block waves-light">
+        <img src="/materialize/style/logos/logos/neuro.jpg">
+      </div>
+      <div class="card-content">
+        <span class="card-title activator grey-text text-darken-4">NEUROLOGIA<i class="material-icons right">more_vert</i></span>
+        <p><a class="waves-effect waves-light btn #ef9a9a red lighten-3" href="#">AGENDE UMA CONSULTA</a></p>
+      </div>
+      <div class="card-reveal">
+        <span class="card-title grey-text text-darken-4">NEUROLOGIA<i class="material-icons right">close</i></span>
+        <p>O neurologista é o especialista que trata doenças no cérebro e medula espinhal (sistema nervoso central), nervos periféricos (nervos que conectam o cérebro e a coluna vertebral aos órgãos, como pulmões ou fígado) e músculos.</p>
+      </div>
+    </div>
+  </div>
+
+  
+
+    <div class="card" style="width: 50%; margin: 0 10px;">
+      <div class="card-image waves-effect waves-block waves-light">
+        <img src="/materialize/style/logos/logos/fisioterapia.jpg">
+      </div>
+      <div class="card-content">
+        <span class="card-title activator grey-text text-darken-4">FISIOTERAPIA<i class="material-icons right">more_vert</i></span>
+        <p><a class="waves-effect waves-light btn #ef9a9a red lighten-3" href="#">AGENDE UMA CONSULTA</a></p>
+      </div>
+      <div class="card-reveal">
+        <span class="card-title grey-text text-darken-4">FISIOTERAPIA<i class="material-icons right">close</i></span>
+        <p>Fisioterapia é uma ciência da saúde aplicada ao estudo, diagnóstico, prevenção e tratamento de disfunções cinéticas funcionais de órgãos e sistemas. ... O objetivo desta área é preservar, manter, desenvolver ou restaurar (reabilitação) a integridade de órgãos, sistemas ou funções.</p>
+      </div>
+  </div>
+
+  
+    <div class="card" style="width: 50%; margin: 0 10px;">
+      <div class ="card-image waves-effect waves-block waves-light">
+        <img src="/materialize/style/logos/logos/urogineco.jpg">
+      </div>
+      <div class="card-content">
+        <span class="card-title activator grey-text text-darken-4">UROGINECOLOGIA<i class="material-icons right">more_vert</i></span>
+        <p><a class="waves-effect waves-light btn #ef9a9a red lighten-3" href="#">AGENDE UMA CONSULTA</a></p>
+      </div>
+      <div class="card-reveal">
+        <span class="card-title grey-text text-darken-4">UROGINECOLOGIA<i class="material-icons right">close</i></span>
+        <p>O foco desse profissional está no assoalho pélvico feminino, mais conhecido como períneo - um conjunto de treze músculos que garante a sustentação dos órgãos pélvicos. O funcionamento desses músculos, fáscias e ligamentos, tem implicância nas funções sexuais, urinárias reprodutivas, impactando a qualidade de vida das mulheres em vários momentos da vida.</p>
+        
+      </div>
+  </div>
+</div>
+
+</div>
+</div>
+
+<section class="flex">
+
+
+
+ 
+
+ <footer class="page-footer #ef9a9a red lighten-3">
+    <div class="container">
+      <div class="row">
+        <div class="col l6 s12">
+          <a id="logo-container" href="#" class="brand-logo"><img src="/materialize/style/logos/logos/LOGOpequena1.png" alt=""></a>
+          <p class="grey-text text-lighten-4">Somos uma equipe de profissionais prontos para atender você e cuidar da sua saúde! Agende uma consulta</p>
+
+
+        </div>
+        <div class="col l3 s12">
+          <h5 class="white-text">FAÇA PARTE DA CLÍNICA</h5>
+          <ul>
+            <li><a class="white-text" href="#!">Fazer cadastro</a></li>
+            <li><a class="white-text" href="#!">Fazer login</a></li>
+            <li><a class="white-text" href="#!">Consultar serviços</a></li>
+          </ul>
+        </div>
+        <div class="col l3 s12">
+          <h5 class="white-text">REDES SOCIAIS</h5>
+          <ul>
+            <li><a class="white-text" href="#!">Instagram</a></li>
+            <li><a class="white-text" href="#!">Facebook</a></li>
+            <li><a class="white-text" href="#!">Site próprio</a></li> 
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="footer-copyright">
+      <div class="container">
+        Copyright ® Todos os direitos reservados <a class="white-text text-lighten-3"></a>
+      </div>
+    </div>
+  </footer> 
+
+
+  <!--  Scripts-->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+  <script src="js/materialize.js"></script>
+  <script src="js/init.js"></script>
+
+  <script>
+    M.AutoInit();
+    </script>
+
+    <script>
+        $(document).ready(function(){
+    $('.carousel').carousel({
+      indicators: true,
+      dist: -100
+    });
+  });
+      
+    </script>
+
+    <style>
+
+      .brand-logo image{
+        width: 5%;
+        height: 5%
+      }
+
+      .carousel{
+        height: 500px;
+      }
+      
+      .carousel .carousel-item{
+      width: 400px;
+      justify-content: center;
+      padding: 0%;
+      }
+    </style> 
+
+  </body>
+</html>
