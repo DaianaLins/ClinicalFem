@@ -28,6 +28,7 @@ public class UsuarioAtendenteController {
         
         return modelo;
     }
+
     @PostMapping("/cadastroAtendente")
     public ModelAndView cadastrar(UsuarioAtendente atendente)
             throws InterruptedException, ExecutionException {
@@ -38,14 +39,15 @@ public class UsuarioAtendenteController {
         BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
         String senhaEncript = encoder.encode(atendente.getSenha());
         atendente.setSenha(senhaEncript);
+        service.cadastrar(atendente);
 
        
-        if (!service.cadastrar(atendente)) {
+        /*if (!service.cadastrar(atendente)) {
             modelo.setViewName("usuarioatendenteform");
             modelo.addObject("emailrepetido", "email já cadastrado");
             atendente.setId(null);
             modelo.addObject("usuarioatendente", atendente);
-        }
+        }*/
 
         return modelo;
     }

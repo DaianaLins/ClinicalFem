@@ -10,6 +10,17 @@ public class Noticia {
     private String data;
     private String texto;
 
+    public Noticia(){
+    }
+
+    public Noticia(String id, String titulo, String autor, String data, String texto){
+        this.id = id;
+        this.titulo = titulo;
+        this.autor = autor;
+        this.data = data;
+        this.texto = texto;
+    }
+
     
     public String getId() {
         return id;

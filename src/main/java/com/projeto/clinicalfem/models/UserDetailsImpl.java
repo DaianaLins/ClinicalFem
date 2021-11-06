@@ -10,16 +10,16 @@ import org.springframework.security.core.userdetails.UserDetails;
 
 public class UserDetailsImpl implements UserDetails{
 
-    private UsuarioAtendente atendente;
+    private UsuarioAtendente usuarioatendente;
 
-    public UserDetailsImpl(UsuarioAtendente atendente){
-        this.atendente = atendente;
+    public UserDetailsImpl(UsuarioAtendente usuarioatendente){
+        this.usuarioatendente = usuarioatendente;
     }
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
         // TODO Auto-generated method stub
-        Perfil perfil = atendente.isAdm() ? Perfil.ADMIN : Perfil.USER;
+        Perfil perfil = usuarioatendente.isAdm() ? Perfil.ADMIN : Perfil.USER;
         
         return AuthorityUtils.createAuthorityList(perfil.toString());
     }
@@ -27,13 +27,13 @@ public class UserDetailsImpl implements UserDetails{
     @Override
     public String getPassword() {
         // TODO Auto-generated method stub
-        return atendente.getSenha();
+        return usuarioatendente.getSenha();
     }
 
     @Override
     public String getUsername() {
         // TODO Auto-generated method stub
-        return atendente.getEmail();
+        return usuarioatendente.getEmail();
     }
 
     @Override

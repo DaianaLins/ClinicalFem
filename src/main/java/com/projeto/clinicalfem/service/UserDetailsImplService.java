@@ -20,16 +20,16 @@ public class UserDetailsImplService implements UserDetailsService{
 
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-        UsuarioAtendente atendente = null;
+        UsuarioAtendente usuarioatendente = null;
         // TODO Auto-generated method stub
         try{
-            atendente = service.getUsuarioAtendenteByEmail(username);
+            usuarioatendente = service.getMembroByEmail(username);
         }catch(InterruptedException | ExecutionException e){
             e.printStackTrace();
         }
-        if (atendente.getId() == null || atendente == null) {
+        if (usuarioatendente.getId() == null || usuarioatendente == null) {
             throw new UsernameNotFoundException("Usuário não encontrado");
         }
-        return new UserDetailsImpl(atendente);
+        return new UserDetailsImpl(usuarioatendente);
     }
 }

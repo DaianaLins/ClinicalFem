@@ -7,9 +7,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
+import org.springframework.security.config.annotation.web.builders.WebSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 
 @Configuration
 @EnableWebSecurity
@@ -21,31 +23,34 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter{
     @Override
     protected void configure(HttpSecurity http) throws Exception{
        http.authorizeRequests()
-       .antMatchers("/css/**").permitAll()
-        .antMatchers("/images/**").permitAll()
-        .antMatchers("/js/**").permitAll()
-        .antMatchers("/materialize/**").permitAll()
         .antMatchers("/pageHome").permitAll()
         .antMatchers("/servicos").permitAll()
         .antMatchers("/selecionar").permitAll()
-        .antMatchers("/cadastroAtendente").permitAll()
-        .antMatchers("/cadastrarPaciente").hasAuthority(Perfil.ADMIN.toString())
-        .antMatchers("/cadastrarMedico").hasAuthority(Perfil.ADMIN.toString())
-        .antMatchers("/alterarPaciente").hasAuthority(Perfil.ADMIN.toString())
-        .antMatchers("/alterarMedico").hasAuthority(Perfil.ADMIN.toString())
-        .antMatchers("/agendarConsulta").hasAuthority(Perfil.ADMIN.toString())
-        .antMatchers("/alterarAgendamento").hasAuthority(Perfil.ADMIN.toString())
-        .antMatchers("/pacientes").hasAuthority(Perfil.ADMIN.toString())
-        .antMatchers("/medicos").hasAuthority(Perfil.ADMIN.toString())
-        .antMatchers("/consultas/").hasAuthority(Perfil.ADMIN.toString())
-        .antMatchers("/{codigo}/detalhesConsulta").hasAuthority(Perfil.ADMIN.toString())
-        .antMatchers("/{codigo}/deletarAgendamento").hasAuthority(Perfil.ADMIN.toString())
-        .antMatchers("{cod}/deletarMedico").hasAuthority(Perfil.ADMIN.toString())
-        .anyRequest().authenticated();
+        .antMatchers("/loginPaciente").permitAll()
+        .antMatchers("/loginAtendente").permitAll()
+        .antMatchers("/loginMedico").permitAll()
+        .antMatchers("/cadastrarAtendente").permitAll()
+        .antMatchers("/cadastrarPaciente").permitAll()
+        .antMatchers("/cadastrarMedico").permitAll()
+        .antMatchers("/alterarPaciente").permitAll()
+        .antMatchers("/alterarMedico").permitAll()
+        .antMatchers("/").permitAll()
+        .antMatchers("/agendarConsulta").permitAll()
+        .antMatchers("/alterarAgendamento").permitAll()
+        .antMatchers("/pacientes").permitAll()
+        .antMatchers("/medicos").permitAll()
+        .antMatchers("/tela").permitAll()
+        .antMatchers("/consultas").permitAll()
+        .antMatchers("/detalhesConsulta").permitAll()
+        .antMatchers("/{codigo}/deletarAgendamento").permitAll()
+        .antMatchers("{cod}/deletarMedico").permitAll()
+        .anyRequest().authenticated()
+        .and().logout().logoutRequestMatcher(new AntPathRequestMatcher("/logout"));
 
        http.formLogin().loginPage("/loginAtendente")
-       .defaultSuccessUrl("/telaGeral")
+       .defaultSuccessUrl("/tela")
         .permitAll();
+       
        
     }
     @Override
@@ -53,5 +58,8 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter{
         auth.userDetailsService(detalhes)
         .passwordEncoder(new BCryptPasswordEncoder());
     }
-    
+    @Override
+	public void configure(WebSecurity web) throws Exception{
+		web.ignoring().antMatchers("/materialize/**", "/static/**" ,"/bootstrap/**" ,"/style/**");
+	}
 }

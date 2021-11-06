@@ -25,7 +25,19 @@ public class Agendamento {
 
     private String obs;
 
-
+    public Agendamento(){
+    }
+    public Agendamento(String codigo, String nome, String servico, String medico, String dataC, String horario, String valorC, String pagamento, String obs){
+        this.codigo = codigo;
+        this.nome = nome;
+        this.servico = servico;
+        this.medico = medico;
+        this.dataC = dataC;
+        this.horario = horario;
+        this.pagamento = pagamento;
+        this.valorC = valorC;
+        this.obs = obs;
+    }
     public String getCodigo() {
         return codigo;
     }

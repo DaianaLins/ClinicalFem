@@ -7,6 +7,19 @@ public class UsuarioAtendente {
     private String id;
     private String numero;
     private boolean adm;
+
+    public UsuarioAtendente(){
+    }
+    //ta lagado pra krl KKKKKKKKKK MANO SILiM AAAAAAAAAAAAAAAAAAAAA surtos
+    public UsuarioAtendente(String nome, String email, String senha, String id, String numero, boolean adm){
+        this.nome = nome;
+        this.email = email;
+        this.senha = senha;
+        this.id = id;
+        this.numero = numero;
+        this.adm = adm;
+    }
+    
     public String getNome() {
         return nome;
     }

@@ -19,6 +19,17 @@ public class CadPaciente {
 
     private String cpf;
 
+    public CadPaciente(){
+    }
+    public CadPaciente(String id, String rg, String nome, String datanas, String email, String telefone, String cpf){
+        this.id = id;
+        this.rg = rg;
+        this.nome = nome;
+        this.datanasc = datanasc;
+        this.email = email;
+        this.telefone = telefone;
+        this.cpf = cpf; 
+    }
     public String getId() {
         return id;
     }

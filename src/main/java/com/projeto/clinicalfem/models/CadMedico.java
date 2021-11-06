@@ -15,7 +15,18 @@ public class CadMedico {
 
     private String rg;
 
-    public String getCod() {
+    public CadMedico(){
+    }
+    public CadMedico(String cod, String nome, String especialidade, String crm, String telefone, String cpf, String rg){
+        this.cod = cod;
+        this.nome = nome;
+        this.especialidade = especialidade;
+        this.telefone = telefone;
+        this.crm = crm;
+        this.cpf = cpf;
+        this.rg = rg;
+    }
+    public String getCod(){
         return cod;
     }
 

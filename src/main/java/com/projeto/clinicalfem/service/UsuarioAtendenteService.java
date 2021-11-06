@@ -20,36 +20,37 @@ import org.springframework.stereotype.Service;
 
 @Service
 public class UsuarioAtendenteService {
-    Firestore conex = FirestoreClient.getFirestore();
+    Firestore conex = FirestoreClient.getFirestore(); // gera uma conexão a qual irá fazer todo o CRUD
 
-    public boolean cadastrar(UsuarioAtendente usuarioatendente) throws InterruptedException, ExecutionException {
+    public boolean cadastrar(UsuarioAtendente atendente) throws InterruptedException, ExecutionException {
         
         //resgata todos os membros e verifica se há emails repetidos
-        ArrayList<UsuarioAtendente> usuarioatendentes = getAllUsuarioAtendentes(); boolean emailIgual = false;
-        for(UsuarioAtendente  teste : usuarioatendentes){
-            if(teste.getEmail().equals(usuarioatendente.getEmail())){
+        /*ArrayList<UsuarioAtendente> atendentes = getAllAtendentes(); boolean emailIgual = false;
+        for(UsuarioAtendente teste : atendentes){
+            if(teste.getEmail().equals(atendente.getEmail())){
                 emailIgual = true;
             }
         }
 
         if(emailIgual){
             return false;
-        }
+        }*/
         
         // cria um ID aleatório a partir da coleção "Membros" do banco de dados
         DocumentReference doc = conex.collection("UsuarioAtendentes").document(); 
 
         // bota esse ID aleatório como ID do membro
-        usuarioatendente.setId(doc.getId());
+        atendente.setId(doc.getId());
 
         // salva os dados do membro :)
-        ApiFuture<WriteResult> writeResult = doc.set(usuarioatendente); // salva os dados do membro :)
+        ApiFuture<WriteResult> writeResult = doc.set(atendente); // salva os dados do membro :)
 
         return true;
     }
-    public ArrayList<UsuarioAtendente> getAllUsuarioAtendentes() throws InterruptedException, ExecutionException {
+
+    public ArrayList<UsuarioAtendente> getAllAtendentes() throws InterruptedException, ExecutionException {
         //gera um ArrayList para Armazenar todos os membros resgatados
-        ArrayList<UsuarioAtendente> lista = new ArrayList<UsuarioAtendente>();
+        ArrayList<UsuarioAtendente> lista = new ArrayList<>();
 
         //busca no Banco de dados todos os 'documentos' da coleção 'Membros' e põe em ordem alfabética
         ApiFuture<QuerySnapshot> future = conex.collection("UsuarioAtendentes").orderBy("nome").get();
@@ -64,32 +65,62 @@ public class UsuarioAtendenteService {
         }
         return lista;
     }
-    public UsuarioAtendente getUsuarioAtendenteById(String id) throws InterruptedException, ExecutionException {
-        UsuarioAtendente usuarioatendente = new UsuarioAtendente();
+
+    public UsuarioAtendente getMembroById(String id) throws InterruptedException, ExecutionException {
+        UsuarioAtendente membro = new UsuarioAtendente();
         
         //faz referência á coleção 'Membros' do Banco de dados
-        CollectionReference usuarioatendentes = conex.collection("UsuarioAtendentes");
+        CollectionReference membros = conex.collection("UsuarioAtendentes");
 
         //pesquisa todos o membro a partir da id recebida por parâmetro
-        Query query = usuarioatendentes.whereEqualTo("id", id);
+        Query query = membros.whereEqualTo("id", id);
 
         //recebe uma lista dos 'documentos' de membros resgatados (no caso só resgatou 1 membro)
         List<QueryDocumentSnapshot> querySnapshot = query.get().get().getDocuments();
 
         //transforma o documento em uma instância da classe Membro
         for (DocumentSnapshot document : querySnapshot){
-            usuarioatendente = document.toObject(UsuarioAtendente.class);
+            membro = document.toObject(UsuarioAtendente.class);
         }
 
-        return usuarioatendente;
+        return membro;
     }
-    public UsuarioAtendente login(UsuarioAtendente usuarioatendente) throws InterruptedException, ExecutionException{
+
+    public boolean editar(UsuarioAtendente membro) throws InterruptedException, ExecutionException {
+        
+        //resgata todos os membros e verifica se há emails repetidos
+        ArrayList<UsuarioAtendente> membros = getAllAtendentes(); boolean emailIgual = false;
+        for(UsuarioAtendente teste : membros){
+            if(teste.getEmail().equals(membro.getEmail()) && !teste.getId().equals(membro.getId())){
+                emailIgual = true;
+            }
+        }
+
+        if(emailIgual){
+            return false;
+        }
+
+        //faz referência á coleção 'Membros' e resgata o 'documento' a partir da Id do membro
+        DocumentReference doc = conex.collection("UsuarioAtendentes").document(membro.getId()); // resgata o doc pelo ID
+
+        //substitui os dados antigos pelos novos registrados na instância recebida por parâmetro
+        ApiFuture<WriteResult> writeResult = doc.set(membro); // salva os dados do membro :)
+
+        return true;
+    }
+
+    public void apagar(String id){
+        //Faz referência à coleção 'Membros', resgata o 'documento' pelo Id e apaga ele
+        ApiFuture<WriteResult> writeResult = conex.collection("UsuarioAtendentes").document(id).delete();
+    }
+
+    public UsuarioAtendente login(UsuarioAtendente membro) throws InterruptedException, ExecutionException{
         
         //faz referência á coleção 'Membros'
-        CollectionReference usuarioatendentes = conex.collection("UsuarioAtendentes");
+        CollectionReference membros = conex.collection("UsuarioAtendentes");
 
         //pesquisa os membros a partir do email e senha recebidos por parâmetro
-        Query query = usuarioatendentes.whereEqualTo("email", usuarioatendente.getEmail()).whereEqualTo("senha", usuarioatendente.getSenha());
+        Query query = membros.whereEqualTo("email", membro.getEmail()).whereEqualTo("senha", membro.getSenha());
 
         //recebe uma lista dos 'documentos' de membros resgatados
         List<QueryDocumentSnapshot> querySnapshot = query.get().get().getDocuments();
@@ -102,26 +133,26 @@ public class UsuarioAtendenteService {
 
         return resultado;
     }
-    public UsuarioAtendente getUsuarioAtendenteByEmail(String email) throws InterruptedException, ExecutionException {
-        UsuarioAtendente usuarioatendente = new UsuarioAtendente();
 
-        usuarioatendente.setId(null);
+    public UsuarioAtendente getMembroByEmail(String email) throws InterruptedException, ExecutionException {
+        UsuarioAtendente membro = new UsuarioAtendente();
+
+        membro.setId(null);
         
         //faz referência á coleção 'Membros' do Banco de dados
-        CollectionReference usuarioatendentes = conex.collection("UsuarioAtendentes");
+        CollectionReference membros = conex.collection("UsuarioAtendentes");
 
         //pesquisa todos o membro a partir da id recebida por parâmetro
-        Query query = usuarioatendentes.whereEqualTo("email", email);
+        Query query = membros.whereEqualTo("email", email);
 
         //recebe uma lista dos 'documentos' de membros resgatados (no caso só resgatou 1 membro)
         List<QueryDocumentSnapshot> querySnapshot = query.get().get().getDocuments();
 
         //transforma o documento em uma instância da classe Membro
         for (DocumentSnapshot document : querySnapshot){
-            usuarioatendente = document.toObject(UsuarioAtendente.class);
+            membro = document.toObject(UsuarioAtendente.class);
         }
 
-        return usuarioatendente;
+        return membro;
     }
-
 }
