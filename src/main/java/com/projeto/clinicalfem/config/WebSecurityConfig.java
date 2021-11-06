@@ -42,8 +42,8 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter{
         .antMatchers("/tela").permitAll()
         .antMatchers("/consultas").permitAll()
         .antMatchers("/detalhesConsulta").permitAll()
-        .antMatchers("/{codigo}/deletarAgendamento").permitAll()
-        .antMatchers("{cod}/deletarMedico").permitAll()
+        .antMatchers("/deletarAgendamento").permitAll()
+        .antMatchers("/deletarMedico").permitAll()
         .anyRequest().authenticated()
         .and().logout().logoutRequestMatcher(new AntPathRequestMatcher("/logout"));
 

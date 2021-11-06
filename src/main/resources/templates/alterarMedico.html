@@ -35,7 +35,8 @@
     	
     	<!-- <th:block th:include="mensagemValidacao"></th:block> -->
             <form class="container" method="post" action="/alterarMedico" th:object="${cadmedico}">
-               
+                <input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}">
+
                 <input type="hidden" th:field="*{cod}">
               
                 Nome Completo: <input  type="text" name="nome" placeholder="Nome" required th:field="*{nome}"/>
