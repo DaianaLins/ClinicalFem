@@ -2,9 +2,9 @@ package com.projeto.clinicalfem.controllers;
 
 import java.util.concurrent.ExecutionException;
 
+import com.projeto.clinicalfem.enums.Perfil;
 import com.projeto.clinicalfem.models.Usuarios;
 import com.projeto.clinicalfem.service.UsuariosService;
-import com.projeto.clinicalfem.enums.Perfil;
 
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -15,32 +15,31 @@ import org.springframework.web.servlet.ModelAndView;
 
 @RestController
 @RequestMapping("/")
-public class UsuarioAtendenteController {
-    
+public class UsuarioMedicoController {
     UsuariosService service;
-    public UsuarioAtendenteController(UsuariosService serv) {
+    public UsuarioMedicoController(UsuariosService serv) {
         service = serv;
     }
 
-    @GetMapping("/cadastroAtendente")
+    @GetMapping("/cadastroMedico")
     public ModelAndView cadastrar() {
-        ModelAndView modelo = new ModelAndView("usuarioatendenteform");
-        modelo.addObject("usuarioatendente", new Usuarios());
+        ModelAndView modelo = new ModelAndView("usuariomedicoform");
+        modelo.addObject("usuariomedico", new Usuarios());
         
         return modelo;
     }
 
-    @PostMapping("/cadastroAtendente")
-    public ModelAndView cadastrar(Usuarios atendente)
+    @PostMapping("/cadastroMedico")
+    public ModelAndView cadastrar(Usuarios medico)
             throws InterruptedException, ExecutionException {
-        ModelAndView modelo = new ModelAndView("redirect:/loginAtendente");
+        ModelAndView modelo = new ModelAndView("redirect:/loginMedico");
         
-        atendente.setTipo(Perfil.ATENDENTE.toString());
+        medico.setTipo(Perfil.MEDICO.toString());
         
         BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
-        String senhaEncript = encoder.encode(atendente.getSenha());
-        atendente.setSenha(senhaEncript);
-        service.cadastrar(atendente);
+        String senhaEncript = encoder.encode(medico.getSenha());
+        medico.setSenha(senhaEncript);
+        service.cadastrar(medico);
 
        
         /*if (!service.cadastrar(atendente)) {
