@@ -29,6 +29,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter{
         .antMatchers("/loginPaciente").permitAll()
         .antMatchers("/loginAtendente").permitAll()
         .antMatchers("/loginMedico").permitAll()
+        .antMatchers("/cadastroAtendente").permitAll()
         .antMatchers("/cadastrarAtendente").permitAll()
         .antMatchers("/cadastrarPaciente").permitAll()
         .antMatchers("/cadastrarMedico").permitAll()
