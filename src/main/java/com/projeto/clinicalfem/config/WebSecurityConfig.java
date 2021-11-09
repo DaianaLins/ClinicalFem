@@ -33,11 +33,11 @@ public class WebSecurityConfig {
 
         @Override
         protected void configure(HttpSecurity http) throws Exception {
-            http.authorizeRequests().antMatchers("/pageHome").permitAll().antMatchers("/").permitAll().antMatchers("/servicos").permitAll()
-                    .antMatchers("/selecionar").permitAll().antMatchers("/loginPaciente").permitAll()
-                    .antMatchers("/cadastroPaciente").permitAll().antMatchers("/cadastroMedico").permitAll()
-                    .antMatchers("/cadastroAtendente").permitAll().antMatchers("/loginAtendente").permitAll()
-                    .antMatchers("/loginMedico").permitAll().antMatchers("/cadastrarAtendente")
+            http.authorizeRequests().antMatchers("/pageHome/").permitAll().antMatchers("/").permitAll().antMatchers("/servicos/").permitAll()
+                    .antMatchers("/selecionar/").permitAll().antMatchers("/loginPaciente/").permitAll()
+                    .antMatchers("/cadastroPaciente/").permitAll().antMatchers("/cadastroMedico/").permitAll()
+                    .antMatchers("/cadastroAtendente/").permitAll().antMatchers("/loginAtendente/").permitAll()
+                    .antMatchers("/loginMedico/").permitAll().antMatchers("/cadastrarAtendente/")
                     .hasAuthority(Perfil.ATENDENTE.toString()).antMatchers("/cadastrarPaciente")
                     .hasAuthority(Perfil.ATENDENTE.toString()).antMatchers("/cadastrarMedico")
                     .hasAuthority(Perfil.ATENDENTE.toString()).antMatchers("/alterarPaciente")
