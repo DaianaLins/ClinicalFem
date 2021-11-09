@@ -7,7 +7,6 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.core.annotation.Order;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
-import org.springframework.security.config.annotation.web.builders.WebSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
@@ -17,16 +16,8 @@ import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 @Configuration
 @EnableWebSecurity
 public class WebSecurityConfig {
+    
 
-    @Bean
-    public static PasswordEncoder encoder() {
-        return new BCryptPasswordEncoder();
-    }
-
-    @Bean
-    public void configure(WebSecurity web) throws Exception {
-        web.ignoring().antMatchers("/materialize/**", "/static/**", "/bootstrap/**", "/style/**");
-    }
 
     @Configuration
     @Order(1)
@@ -38,7 +29,7 @@ public class WebSecurityConfig {
 
         @Override
         protected void configure(AuthenticationManagerBuilder auth) throws Exception {
-            auth.inMemoryAuthentication().withUser("admin").password(encoder().encode("adminPass")).roles("ADMIN");
+            auth.inMemoryAuthentication().withUser("atendente").password(encoder().encode("atendentePass")).roles("ATENDENTE");
         } // vamo tentar assim com coisos individuais k
 
         @Override
@@ -66,7 +57,10 @@ public class WebSecurityConfig {
             http.formLogin().loginPage("/loginAtendente").defaultSuccessUrl("/tela").permitAll();
 
         }
-
+        public static PasswordEncoder encoder() {
+            return new BCryptPasswordEncoder();
+        }
+    
     }
 
     @Configuration
@@ -79,7 +73,7 @@ public class WebSecurityConfig {
 
         @Override
         protected void configure(AuthenticationManagerBuilder auth) throws Exception {
-            auth.inMemoryAuthentication().withUser("user").password(encoder().encode("userPass")).roles("USER");
+            auth.inMemoryAuthentication().withUser("paciente").password(encoder().encode("pacientePass")).roles("PACIENTE");
         }
 
         @Override
@@ -95,6 +89,10 @@ public class WebSecurityConfig {
             http.formLogin().loginPage("/loginPaciente").defaultSuccessUrl("/telaPaciente").permitAll();
 
         }
+        public static PasswordEncoder encoder() {
+            return new BCryptPasswordEncoder();
+        }
+    
     }
 
     @Configuration
@@ -123,9 +121,10 @@ public class WebSecurityConfig {
             http.formLogin().loginPage("/loginMedico").defaultSuccessUrl("/telaMedico").permitAll();
 
         }
+        public static PasswordEncoder encoder() {
+            return new BCryptPasswordEncoder();
+        }
+    
     }
-    @Bean
-    public AuthenticationManager customAuthenticationManager() throws Exception {
-    return authenticationManager();
-    }
+   
 }
