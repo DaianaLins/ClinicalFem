@@ -34,7 +34,7 @@ public class UsuarioAtendenteController {
     public ModelAndView cadastrar(Usuarios atendente)
             throws InterruptedException, ExecutionException {
         ModelAndView modelo = new ModelAndView("redirect:/loginAtendente");
-        
+        System.out.print("funcionou?");
         atendente.setTipo(Perfil.ATENDENTE.toString());
         
         BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
