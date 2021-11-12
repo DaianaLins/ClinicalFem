@@ -21,7 +21,7 @@ public class UsuarioMedicoController {
         service = serv;
     }
 
-    @GetMapping("/cadastroMedico")
+    @GetMapping("/cadastroMed")
     public ModelAndView cadastrar() {
         ModelAndView modelo = new ModelAndView("usuariomedicoform");
         modelo.addObject("usuariomedico", new Usuarios());
@@ -29,7 +29,7 @@ public class UsuarioMedicoController {
         return modelo;
     }
 
-    @PostMapping("/cadastroMedico")
+    @PostMapping("/cadastroMed")
     public ModelAndView cadastrar(Usuarios medico)
             throws InterruptedException, ExecutionException {
         ModelAndView modelo = new ModelAndView("redirect:/loginMedico");

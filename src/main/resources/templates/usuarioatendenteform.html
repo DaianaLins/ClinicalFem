@@ -37,7 +37,7 @@
 	<form class="row" method="post" action="admin_login" th:object="${usuarioatendente}">
 		<input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}">
 		<input type="hidden" th:field="*{id}">
-		<input type="hidden" th:field="*{adm}">
+		<input type="hidden" th:field="*{tipo}">
 		Nome Completo: <input type="text" th:field="*{nome}" required />
 		Email: <input type="text" th:field="*{email}" required />
 		Numero: <input type="text" th:field="*{numero}" required />

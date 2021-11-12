@@ -35,7 +35,7 @@ public class UsuarioPacienteController{
     @GetMapping("/cadastroPaciente")
     public ModelAndView cadastrar() {
         ModelAndView modelo = new ModelAndView("usuariopacienteform.html");
-        modelo.addObject("usuario", new Usuarios());
+        modelo.addObject("usuariopaciente", new Usuarios());
         
         return modelo;
     }
@@ -80,7 +80,7 @@ public class UsuarioPacienteController{
         if (!service.cadastrar(usu)) {
             modelo.setViewName("usuariopacienteform");
             usu.setId(null);
-            modelo.addObject("usuario", usu);
+            modelo.addObject("usuariopaciente", usu);
         }
 
         return modelo;
