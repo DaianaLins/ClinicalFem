@@ -1,15 +1,8 @@
 package com.projeto.clinicalfem.models;
 
 import java.util.Base64;
-import java.util.Collection;
-import java.util.Set;
-import java.util.stream.Collectors;
 
 import com.google.cloud.firestore.annotation.Exclude;
-import com.projeto.clinicalfem.enums.Perfil;
-
-import org.springframework.security.core.GrantedAuthority;
-import org.springframework.security.core.authority.SimpleGrantedAuthority;
 
 
 

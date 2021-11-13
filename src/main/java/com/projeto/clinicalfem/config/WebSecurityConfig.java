@@ -91,7 +91,7 @@ public class WebSecurityConfig {
                     .antMatchers("/telaPaciente").hasAuthority(Perfil.PACIENTE.toString()).anyRequest().authenticated()
                     .and().logout().logoutRequestMatcher(new AntPathRequestMatcher("/logout"));
 
-            http.formLogin().loginPage("/loginPaciente/").defaultSuccessUrl("/telaPaciente").permitAll();
+            http.formLogin().loginPage("/loginPaciente").defaultSuccessUrl("/telaPaciente").permitAll();
 
         }
 
@@ -127,7 +127,7 @@ public class WebSecurityConfig {
                     .antMatchers("/telaMedico").hasAuthority(Perfil.MEDICO.toString()).anyRequest().authenticated()
                     .and().logout().logoutRequestMatcher(new AntPathRequestMatcher("/logout"));
 
-            http.formLogin().loginPage("/loginPaciente/").defaultSuccessUrl("/telaPaciente").permitAll();
+            http.formLogin().loginPage("/loginMedico").defaultSuccessUrl("/telaMedico").permitAll();
 
         }
 
