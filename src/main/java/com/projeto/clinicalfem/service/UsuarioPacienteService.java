@@ -1,8 +1,9 @@
 package com.projeto.clinicalfem.service;
 
+import java.util.concurrent.ExecutionException;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.concurrent.ExecutionException;
+
 
 import com.google.api.core.ApiFuture;
 import com.google.cloud.firestore.CollectionReference;
@@ -19,7 +20,7 @@ import com.projeto.clinicalfem.models.Usuarios;
 import org.springframework.stereotype.Service;
 
 @Service
-public class UsuariosService{
+public class UsuarioPacienteService {
     Firestore conex = FirestoreClient.getFirestore(); // gera uma conexão a qual irá fazer todo o CRUD
 
     public boolean cadastrar(Usuarios usuario) throws InterruptedException, ExecutionException {
@@ -37,7 +38,7 @@ public class UsuariosService{
         }*/
         
         // cria um ID aleatório a partir da coleção "Membros" do banco de dados
-        DocumentReference doc = conex.collection("Usuarios").document(); 
+        DocumentReference doc = conex.collection("UsuarioPacientes").document(); 
 
         // bota esse ID aleatório como ID do membro
         usuario.setId(doc.getId());
@@ -53,7 +54,7 @@ public class UsuariosService{
         ArrayList<Usuarios> lista = new ArrayList<>();
 
         //busca no Banco de dados todos os 'documentos' da coleção 'Membros' e põe em ordem alfabética
-        ApiFuture<QuerySnapshot> future = conex.collection("Usuarios").orderBy("nome").get();
+        ApiFuture<QuerySnapshot> future = conex.collection("UsuarioPacientes").orderBy("nome").get();
 
         //recebe uma lista dos 'documentos' de membros resgatados 
         List<QueryDocumentSnapshot> documents = future.get().getDocuments();
@@ -70,7 +71,7 @@ public class UsuariosService{
         Usuarios membro = new Usuarios();
         
         //faz referência á coleção 'Membros' do Banco de dados
-        CollectionReference membros = conex.collection("Usuarios");
+        CollectionReference membros = conex.collection("UsuarioPacientes");
 
         //pesquisa todos o membro a partir da id recebida por parâmetro
         Query query = membros.whereEqualTo("id", id);
@@ -101,7 +102,7 @@ public class UsuariosService{
         }
 
         //faz referência á coleção 'Membros' e resgata o 'documento' a partir da Id do membro
-        DocumentReference doc = conex.collection("Usuarios").document(membro.getId()); // resgata o doc pelo ID
+        DocumentReference doc = conex.collection("UsuarioPacientes").document(membro.getId()); // resgata o doc pelo ID
 
         //substitui os dados antigos pelos novos registrados na instância recebida por parâmetro
         ApiFuture<WriteResult> writeResult = doc.set(membro); // salva os dados do membro :)
@@ -111,13 +112,13 @@ public class UsuariosService{
 
     public void apagar(String id){
         //Faz referência à coleção 'Membros', resgata o 'documento' pelo Id e apaga ele
-        ApiFuture<WriteResult> writeResult = conex.collection("Usuarios").document(id).delete();
+        ApiFuture<WriteResult> writeResult = conex.collection("UsuarioPacientes").document(id).delete();
     }
 
     public Usuarios login(Usuarios membro) throws InterruptedException, ExecutionException{
         
         //faz referência á coleção 'Membros'
-        CollectionReference membros = conex.collection("Usuarios");
+        CollectionReference membros = conex.collection("UsuarioPacientes");
 
         //pesquisa os membros a partir do email e senha recebidos por parâmetro
         Query query = membros.whereEqualTo("email", membro.getEmail()).whereEqualTo("senha", membro.getSenha());
@@ -140,7 +141,7 @@ public class UsuariosService{
         membro.setId(null);
         
         //faz referência á coleção 'Membros' do Banco de dados
-        CollectionReference membros = conex.collection("Usuarios");
+        CollectionReference membros = conex.collection("UsuarioPacientes");
 
         //pesquisa todos o membro a partir da id recebida por parâmetro
         Query query = membros.whereEqualTo("email", email);
@@ -155,5 +156,4 @@ public class UsuariosService{
 
         return membro;
     }
-
 }

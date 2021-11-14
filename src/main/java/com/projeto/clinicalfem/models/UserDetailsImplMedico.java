@@ -6,18 +6,18 @@ import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.AuthorityUtils;
 import org.springframework.security.core.userdetails.UserDetails;
 
-public class UserDetailsImpl implements UserDetails{
+public class UserDetailsImplMedico implements UserDetails{
 
-    private Usuarios usuario;
+    private UsuarioMedico medico;
 
-    public UserDetailsImpl(Usuarios usuario){
-        this.usuario = usuario;
+    public UserDetailsImplMedico(UsuarioMedico medico){
+        this.medico = medico;
     }
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
     
-        String perfil = usuario.getTipo();
+        String perfil = medico.getTipo();
         return AuthorityUtils.createAuthorityList(perfil);
         //só isso ja basta k KKK OXI
     }
@@ -25,13 +25,13 @@ public class UserDetailsImpl implements UserDetails{
     @Override
     public String getPassword() {
         // TODO Auto-generated method stub
-        return usuario.getSenha();
+        return medico.getSenha();
     }
 
     @Override
     public String getUsername() {
         // TODO Auto-generated method stub
-        return usuario.getEmail();
+        return medico.getEmail();
     }
 
     @Override

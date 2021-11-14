@@ -2,24 +2,24 @@ package com.projeto.clinicalfem.service;
 
 import java.util.concurrent.ExecutionException;
 
-import com.projeto.clinicalfem.models.UserDetailsImpl;
-import com.projeto.clinicalfem.models.Usuarios;
+import com.projeto.clinicalfem.models.UserDetailsImplAtendente;
+import com.projeto.clinicalfem.models.UsuarioAtendente;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
 @Service
-public class UserDetailsImplService implements UserDetailsService{
-    UsuariosService service;
+public class UserDetailsImplAtendenteService implements UserDetailsService{
+    UsuarioAtendenteService service;
 
-    public UserDetailsImplService(UsuariosService service){
+    public UserDetailsImplAtendenteService(UsuarioAtendenteService service){
         this.service = service;
     }
 
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-        Usuarios usuario = null;
+        UsuarioAtendente usuario = null;
         // TODO Auto-generated method stub
         try{
             usuario = service.getMembroByEmail(username);
@@ -29,6 +29,6 @@ public class UserDetailsImplService implements UserDetailsService{
         if (usuario.getId() == null || usuario == null) {
             throw new UsernameNotFoundException("Usuário não encontrado");
         }
-        return new UserDetailsImpl(usuario);
+        return new UserDetailsImplAtendente(usuario);
     }
 }

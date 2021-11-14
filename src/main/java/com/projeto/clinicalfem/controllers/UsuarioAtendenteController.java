@@ -2,8 +2,8 @@ package com.projeto.clinicalfem.controllers;
 
 import java.util.concurrent.ExecutionException;
 
-import com.projeto.clinicalfem.models.Usuarios;
-import com.projeto.clinicalfem.service.UsuariosService;
+import com.projeto.clinicalfem.models.UsuarioAtendente;
+import com.projeto.clinicalfem.service.UsuarioAtendenteService;
 import com.projeto.clinicalfem.enums.Perfil;
 
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
@@ -17,21 +17,21 @@ import org.springframework.web.servlet.ModelAndView;
 @RequestMapping("/")
 public class UsuarioAtendenteController {
     
-    UsuariosService service;
-    public UsuarioAtendenteController(UsuariosService serv) {
+    UsuarioAtendenteService service;
+    public UsuarioAtendenteController(UsuarioAtendenteService serv) {
         service = serv;
     }
 
     @GetMapping("/cadastroAtendente")
     public ModelAndView cadastrar() {
         ModelAndView modelo = new ModelAndView("usuarioatendenteform");
-        modelo.addObject("usuarioatendente", new Usuarios());
+        modelo.addObject("usuarioatendente", new UsuarioAtendente());
         
         return modelo;
     }
 
     @PostMapping("/cadastroAtendente")
-    public ModelAndView cadastrar(Usuarios atendente)
+    public ModelAndView cadastrar(UsuarioAtendente atendente)
             throws InterruptedException, ExecutionException {
         ModelAndView modelo = new ModelAndView("redirect:/loginAtendente");
         

@@ -1,7 +1,9 @@
 package com.projeto.clinicalfem.config;
 
 import com.projeto.clinicalfem.enums.Perfil;
-import com.projeto.clinicalfem.service.UserDetailsImplService;
+import com.projeto.clinicalfem.service.UserDetailsImplAtendenteService;
+import com.projeto.clinicalfem.service.UserDetailsImplMedicoService;
+import com.projeto.clinicalfem.service.UserDetailsImplServicePaciente;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Configuration;
@@ -23,7 +25,7 @@ public class WebSecurityConfig {
     public static class App1ConfigurationAdapter extends WebSecurityConfigurerAdapter {
 
         @Autowired
-        private UserDetailsImplService detalhes;
+        private UserDetailsImplAtendenteService detalhes;
 
         public App1ConfigurationAdapter() {
             super();
@@ -33,27 +35,35 @@ public class WebSecurityConfig {
 
         @Override
         protected void configure(HttpSecurity http) throws Exception {
-            http.authorizeRequests().antMatchers("/pageHome").permitAll().antMatchers("/").permitAll()
-                    .antMatchers("/servicos").permitAll().antMatchers("/selecionar").permitAll()
-                    .antMatchers("/loginPaciente").permitAll().antMatchers("/cadastroPaciente").permitAll()
-                    .antMatchers("/cadastroMed").permitAll().antMatchers("/cadastroAtendente").permitAll()
-                    .antMatchers("/servicos").permitAll().antMatchers("/loginAtendente").permitAll()
-                    .antMatchers("/loginMedico").permitAll().antMatchers("/cadastrarAtendente")
-                    .hasAuthority(Perfil.ATENDENTE.toString()).antMatchers("/cadastrarPaciente")
-                    .hasAuthority(Perfil.ATENDENTE.toString()).antMatchers("/cadastrarMedico")
-                    .hasAuthority(Perfil.ATENDENTE.toString()).antMatchers("/alterarPaciente")
-                    .hasAuthority(Perfil.ATENDENTE.toString()).antMatchers("/alterarMedico")
-                    .hasAuthority(Perfil.ATENDENTE.toString()).antMatchers("/").permitAll()// .hasAuthority(Perfil.ADMIN.toString())
-                    .antMatchers("/agendarConsulta").hasAuthority(Perfil.ATENDENTE.toString())
-                    .antMatchers("/alterarAgendamento").hasAuthority(Perfil.ATENDENTE.toString())
-                    .antMatchers("/pacientes").hasAuthority(Perfil.ATENDENTE.toString()).antMatchers("/medicos")
-                    .hasAuthority(Perfil.ATENDENTE.toString()).antMatchers("/tela")
-                    .hasAuthority(Perfil.ATENDENTE.toString()).antMatchers("/consultas")
-                    .hasAuthority(Perfil.ATENDENTE.toString()).antMatchers("/detalhesConsulta")
-                    .hasAuthority(Perfil.ATENDENTE.toString()).antMatchers("/deletarAgendamento")
-                    .hasAuthority(Perfil.ATENDENTE.toString()).antMatchers("/deletarMedico")
-                    .hasAuthority(Perfil.ATENDENTE.toString()).anyRequest().authenticated().and().logout()
-                    .logoutRequestMatcher(new AntPathRequestMatcher("/logout"));
+            http.authorizeRequests()
+                .antMatchers("/pageHome").permitAll()
+                .antMatchers("/").permitAll()
+                .antMatchers("/servicos").permitAll()
+                .antMatchers("/selecionar").permitAll()
+                .antMatchers("/loginPaciente").permitAll()
+                .antMatchers("/cadastroPaciente").permitAll()
+                .antMatchers("/cadastroAtendente").permitAll()
+                .antMatchers("/loginAtendente").permitAll()
+                .antMatchers("/loginMedico").permitAll()
+                .antMatchers("/cadastroMed").permitAll()
+                .antMatchers("/telaMedico").hasAuthority(Perfil.MEDICO.toString())
+                .antMatchers("/telaPaciente").hasAuthority(Perfil.PACIENTE.toString())
+                .antMatchers("/cadastrarAtendente").hasAuthority(Perfil.ATENDENTE.toString())
+                .antMatchers("/cadastrarPaciente").hasAuthority(Perfil.ATENDENTE.toString())
+                .antMatchers("/cadastrarMedico").hasAuthority(Perfil.ATENDENTE.toString())
+                .antMatchers("/alterarPaciente").hasAuthority(Perfil.ATENDENTE.toString())
+                .antMatchers("/alterarMedico").hasAuthority(Perfil.ATENDENTE.toString())
+                .antMatchers("/agendarConsulta").hasAuthority(Perfil.ATENDENTE.toString())
+                .antMatchers("/alterarAgendamento").hasAuthority(Perfil.ATENDENTE.toString())
+                .antMatchers("/pacientes").hasAuthority(Perfil.ATENDENTE.toString())
+                .antMatchers("/medicos").hasAuthority(Perfil.ATENDENTE.toString())
+                .antMatchers("/tela").hasAuthority(Perfil.ATENDENTE.toString())
+                .antMatchers("/consultas").hasAuthority(Perfil.ATENDENTE.toString())
+                .antMatchers("/detalhesConsulta").hasAuthority(Perfil.ATENDENTE.toString())
+                .antMatchers("/deletarAgendamento").hasAuthority(Perfil.ATENDENTE.toString())
+                .antMatchers("/deletarMedico").hasAuthority(Perfil.ATENDENTE.toString())
+                .anyRequest().authenticated().and()
+                .logout().logoutRequestMatcher(new AntPathRequestMatcher("/logout"));
 
             http.formLogin().loginPage("/loginAtendente").defaultSuccessUrl("/tela").permitAll();
 
@@ -75,7 +85,7 @@ public class WebSecurityConfig {
     @Order(2)
     public static class App2ConfigurationAdapter extends WebSecurityConfigurerAdapter {
         @Autowired
-        private UserDetailsImplService detalhes;
+        private UserDetailsImplMedicoService paciente;
 
         public App2ConfigurationAdapter() {
             super();
@@ -83,13 +93,37 @@ public class WebSecurityConfig {
 
         @Override
         protected void configure(HttpSecurity http) throws Exception {
-            http.authorizeRequests().antMatchers("/pageHome").permitAll().antMatchers("/").permitAll()
-                    .antMatchers("/servicos/").permitAll().antMatchers("/selecionar").permitAll()
-                    .antMatchers("/loginPaciente").permitAll().antMatchers("/cadastroPaciente").permitAll()
-                    .antMatchers("/cadastroAtendente").permitAll().antMatchers("/loginAtendente").permitAll()
-                    .antMatchers("/loginMedico").permitAll().antMatchers("/cadastroMed").permitAll()
-                    .antMatchers("/telaPaciente").hasAuthority(Perfil.PACIENTE.toString()).anyRequest().authenticated()
-                    .and().logout().logoutRequestMatcher(new AntPathRequestMatcher("/logout"));
+            http.authorizeRequests()
+                .antMatchers("/pageHome").permitAll()
+                .antMatchers("/").permitAll()
+                .antMatchers("/servicos").permitAll()
+                .antMatchers("/selecionar").permitAll()
+                .antMatchers("/loginPaciente").permitAll()
+                .antMatchers("/cadastroPaciente").permitAll()
+                .antMatchers("/cadastroAtendente").permitAll()
+                .antMatchers("/loginAtendente").permitAll()
+                .antMatchers("/loginMedico").permitAll()
+                .antMatchers("/cadastroMed").permitAll()
+                .antMatchers("/telaMedico").hasAuthority(Perfil.MEDICO.toString())
+                .antMatchers("/telaPaciente").hasAuthority(Perfil.PACIENTE.toString())
+                .antMatchers("/cadastrarAtendente").hasAuthority(Perfil.ATENDENTE.toString())
+                .antMatchers("/cadastrarPaciente").hasAuthority(Perfil.ATENDENTE.toString())
+                .antMatchers("/cadastrarMedico").hasAuthority(Perfil.ATENDENTE.toString())
+                .antMatchers("/alterarPaciente").hasAuthority(Perfil.ATENDENTE.toString())
+                .antMatchers("/alterarMedico").hasAuthority(Perfil.ATENDENTE.toString())
+                .antMatchers("/agendarConsulta").hasAuthority(Perfil.ATENDENTE.toString())
+                .antMatchers("/alterarAgendamento").hasAuthority(Perfil.ATENDENTE.toString())
+                .antMatchers("/pacientes").hasAuthority(Perfil.ATENDENTE.toString())
+                .antMatchers("/medicos").hasAuthority(Perfil.ATENDENTE.toString())
+                .antMatchers("/tela").hasAuthority(Perfil.ATENDENTE.toString())
+                .antMatchers("/consultas").hasAuthority(Perfil.ATENDENTE.toString())
+                .antMatchers("/detalhesConsulta").hasAuthority(Perfil.ATENDENTE.toString())
+                .antMatchers("/deletarAgendamento").hasAuthority(Perfil.ATENDENTE.toString())
+                .antMatchers("/deletarMedico").hasAuthority(Perfil.ATENDENTE.toString())
+                .anyRequest().authenticated().and()
+                .logout().logoutRequestMatcher(new AntPathRequestMatcher("/logout"));
+
+
 
             http.formLogin().loginPage("/loginPaciente").defaultSuccessUrl("/telaPaciente").permitAll();
 
@@ -97,7 +131,7 @@ public class WebSecurityConfig {
 
         @Override
         protected void configure(AuthenticationManagerBuilder auth) throws Exception {
-            auth.userDetailsService(detalhes).passwordEncoder(new BCryptPasswordEncoder());
+            auth.userDetailsService(paciente).passwordEncoder(new BCryptPasswordEncoder());
 
         }
 
@@ -111,7 +145,7 @@ public class WebSecurityConfig {
     @Order(3)
     public static class App3ConfigurationAdapter extends WebSecurityConfigurerAdapter {
         @Autowired
-        private UserDetailsImplService detalhes;
+        private UserDetailsImplServicePaciente medico;
 
         public App3ConfigurationAdapter() {
             super();
@@ -119,13 +153,34 @@ public class WebSecurityConfig {
 
         @Override
         protected void configure(HttpSecurity http) throws Exception {
-            http.authorizeRequests().antMatchers("/pageHome").permitAll().antMatchers("/").permitAll()
-                    .antMatchers("/servicos/").permitAll().antMatchers("/selecionar").permitAll()
-                    .antMatchers("/loginPaciente").permitAll().antMatchers("/cadastroPaciente").permitAll()
-                    .antMatchers("/cadastroAtendente").permitAll().antMatchers("/loginAtendente").permitAll()
-                    .antMatchers("/loginMedico").permitAll().antMatchers("/cadastroMed").permitAll()
-                    .antMatchers("/telaMedico").hasAuthority(Perfil.MEDICO.toString()).anyRequest().authenticated()
-                    .and().logout().logoutRequestMatcher(new AntPathRequestMatcher("/logout"));
+            http.authorizeRequests() .antMatchers("/pageHome").permitAll()
+                .antMatchers("/").permitAll()
+                .antMatchers("/servicos").permitAll()
+                .antMatchers("/selecionar").permitAll()
+                .antMatchers("/loginPaciente").permitAll()
+                .antMatchers("/cadastroPaciente").permitAll()
+                .antMatchers("/cadastroAtendente").permitAll()
+                .antMatchers("/loginAtendente").permitAll()
+                .antMatchers("/loginMedico").permitAll()
+                .antMatchers("/cadastroMed").permitAll()
+                .antMatchers("/telaMedico").hasAuthority(Perfil.MEDICO.toString())
+                .antMatchers("/telaPaciente").hasAuthority(Perfil.PACIENTE.toString())
+                .antMatchers("/cadastrarAtendente").hasAuthority(Perfil.ATENDENTE.toString())
+                .antMatchers("/cadastrarPaciente").hasAuthority(Perfil.ATENDENTE.toString())
+                .antMatchers("/cadastrarMedico").hasAuthority(Perfil.ATENDENTE.toString())
+                .antMatchers("/alterarPaciente").hasAuthority(Perfil.ATENDENTE.toString())
+                .antMatchers("/alterarMedico").hasAuthority(Perfil.ATENDENTE.toString())
+                .antMatchers("/agendarConsulta").hasAuthority(Perfil.ATENDENTE.toString())
+                .antMatchers("/alterarAgendamento").hasAuthority(Perfil.ATENDENTE.toString())
+                .antMatchers("/pacientes").hasAuthority(Perfil.ATENDENTE.toString())
+                .antMatchers("/medicos").hasAuthority(Perfil.ATENDENTE.toString())
+                .antMatchers("/tela").hasAuthority(Perfil.ATENDENTE.toString())
+                .antMatchers("/consultas").hasAuthority(Perfil.ATENDENTE.toString())
+                .antMatchers("/detalhesConsulta").hasAuthority(Perfil.ATENDENTE.toString())
+                .antMatchers("/deletarAgendamento").hasAuthority(Perfil.ATENDENTE.toString())
+                .antMatchers("/deletarMedico").hasAuthority(Perfil.ATENDENTE.toString())
+                .anyRequest().authenticated().and()
+                .logout().logoutRequestMatcher(new AntPathRequestMatcher("/logout"));
 
             http.formLogin().loginPage("/loginMedico").defaultSuccessUrl("/telaMedico").permitAll();
 
@@ -133,7 +188,7 @@ public class WebSecurityConfig {
 
         @Override
         protected void configure(AuthenticationManagerBuilder auth) throws Exception {
-            auth.userDetailsService(detalhes).passwordEncoder(new BCryptPasswordEncoder());
+            auth.userDetailsService(medico).passwordEncoder(new BCryptPasswordEncoder());
 
         }
 

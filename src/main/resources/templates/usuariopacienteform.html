@@ -39,7 +39,7 @@
 	<!-- <h3><a href="/consultas" class="waves-effect waves-light btn #ef9a9a red lighten-3"><i class="material-icons left">format_list_bulleted</i>Consultas Agendadas</a></h3>
  <h4><a href="/tela" class="waves-effect waves-light btn #ef9a9a red lighten-3"><i class="material-icons left">home</i>Início</a></h3> -->
 	<!-- <th:block th:include="mensagemValidacao"></th:block> -->
-	<form class="row" method="post" th:action="@{/cadastrar}"  th:object="${usuariopaciente}" enctype="multipart/form-data">
+	<form class="row" method="post" th:object="${usuariopaciente}" enctype="multipart/form-data">
 		<input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}">
 
 		<input type="hidden" th:field="*{tipo}">

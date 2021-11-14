@@ -1,6 +1,5 @@
 package com.projeto.clinicalfem.controllers;
 
-
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
@@ -8,10 +7,10 @@ import java.nio.file.Paths;
 import java.util.concurrent.ExecutionException;
 import java.util.concurrent.TimeUnit;
 
+import com.projeto.clinicalfem.enums.Perfil;
 import com.projeto.clinicalfem.models.CropImageToSquare;
 import com.projeto.clinicalfem.models.Usuarios;
-import com.projeto.clinicalfem.service.UsuariosService;
-import com.projeto.clinicalfem.enums.Perfil;
+import com.projeto.clinicalfem.service.UsuarioPacienteService;
 
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -21,14 +20,15 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
+
 import net.coobird.thumbnailator.Thumbnails;
 
 @RestController
 @RequestMapping("/")
 public class UsuarioPacienteController{
    
-    UsuariosService service;
-    public UsuarioPacienteController(UsuariosService serv){
+    UsuarioPacienteService service;
+    public UsuarioPacienteController(UsuarioPacienteService serv){
         service = serv;
     }
 
@@ -75,7 +75,7 @@ public class UsuarioPacienteController{
             }
         }
 
-        TimeUnit.SECONDS.sleep(3);
+        TimeUnit.SECONDS.sleep(2);
         
         if (!service.cadastrar(usu)) {
             modelo.setViewName("usuariopacienteform");

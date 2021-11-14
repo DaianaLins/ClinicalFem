@@ -31,7 +31,8 @@
  <!-- <h2> <a th:href="@{/selecionar}" class="waves-effect waves-light btn #e57373 red lighten-2" style="margin: 0 10px;"><i class="material-icons left">undo</i>Voltar</a></h4>  -->
     <main>
         <article>
-            <form th:action="@{/loginMed}" method="POST" class="row">
+            <!-- esse Th:action não é necessário!!!, pq ele vai redirecionar pra uma página mas o PostMapping  -->
+            <form  method="Post" th:action="@{/loginMed/}" class="row">
                 <h3>LOGIN - MÉDICO</h3><br>
                 <label>
                 <i class="material-icons left">face</i>
