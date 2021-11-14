@@ -62,10 +62,11 @@ public class WebSecurityConfig {
                 .antMatchers("/detalhesConsulta").hasAuthority(Perfil.ATENDENTE.toString())
                 .antMatchers("/deletarAgendamento").hasAuthority(Perfil.ATENDENTE.toString())
                 .antMatchers("/deletarMedico").hasAuthority(Perfil.ATENDENTE.toString())
-                .anyRequest().authenticated().and()
+                .and()
                 .logout().logoutRequestMatcher(new AntPathRequestMatcher("/logout"));
 
-            http.formLogin().loginPage("/loginAtendente").defaultSuccessUrl("/tela").permitAll();
+            http.formLogin().loginPage("/loginAtendente").loginProcessingUrl("/loginAtendente").defaultSuccessUrl("/tela").permitAll().and().csrf().disable();
+            http.csrf().disable();
 
         }
 
@@ -77,7 +78,7 @@ public class WebSecurityConfig {
 
         @Override
         public void configure(WebSecurity web) throws Exception {
-            web.ignoring().antMatchers("/materialize/**", "/static/**", "/bootstrap/**", "/style/**");
+            web.ignoring().antMatchers("/materialize/**", "/static/**", "/bootstrap/**", "/style/**","/loginMedico","/loginPaciente");
         }
     }
 
@@ -85,7 +86,7 @@ public class WebSecurityConfig {
     @Order(2)
     public static class App2ConfigurationAdapter extends WebSecurityConfigurerAdapter {
         @Autowired
-        private UserDetailsImplMedicoService paciente;
+        private UserDetailsImplServicePaciente paciente;
 
         public App2ConfigurationAdapter() {
             super();
@@ -120,12 +121,13 @@ public class WebSecurityConfig {
                 .antMatchers("/detalhesConsulta").hasAuthority(Perfil.ATENDENTE.toString())
                 .antMatchers("/deletarAgendamento").hasAuthority(Perfil.ATENDENTE.toString())
                 .antMatchers("/deletarMedico").hasAuthority(Perfil.ATENDENTE.toString())
-                .anyRequest().authenticated().and()
+                .and()
                 .logout().logoutRequestMatcher(new AntPathRequestMatcher("/logout"));
 
 
 
-            http.formLogin().loginPage("/loginPaciente").defaultSuccessUrl("/telaPaciente").permitAll();
+            http.formLogin().loginPage("/loginPaciente").defaultSuccessUrl("/telaPaciente").permitAll().and().csrf().disable();
+            http.csrf().disable();
 
         }
 
@@ -137,7 +139,7 @@ public class WebSecurityConfig {
 
         @Override
         public void configure(WebSecurity web) throws Exception {
-            web.ignoring().antMatchers("/materialize/**", "/static/**", "/bootstrap/**", "/style/**");
+            web.ignoring().antMatchers("/materialize/**", "/static/**", "/bootstrap/**", "/style/**","/loginAtendente","/loginMedico");
         }
     }
 
@@ -145,7 +147,7 @@ public class WebSecurityConfig {
     @Order(3)
     public static class App3ConfigurationAdapter extends WebSecurityConfigurerAdapter {
         @Autowired
-        private UserDetailsImplServicePaciente medico;
+        private UserDetailsImplMedicoService medico;
 
         public App3ConfigurationAdapter() {
             super();
@@ -182,8 +184,8 @@ public class WebSecurityConfig {
                 .anyRequest().authenticated().and()
                 .logout().logoutRequestMatcher(new AntPathRequestMatcher("/logout"));
 
-            http.formLogin().loginPage("/loginMedico").defaultSuccessUrl("/telaMedico").permitAll();
-
+            http.formLogin().loginPage("/loginMedico").defaultSuccessUrl("/telaMedico").permitAll().and().csrf().disable();
+            http.csrf().disable();
         }
 
         @Override
@@ -194,7 +196,7 @@ public class WebSecurityConfig {
 
         @Override
         public void configure(WebSecurity web) throws Exception {
-            web.ignoring().antMatchers("/materialize/**", "/static/**", "/bootstrap/**", "/style/**");
+            web.ignoring().antMatchers("/materialize/**", "/static/**", "/bootstrap/**", "/style/**","/loginAtendente","/loginPaciente");
         }
     }
 }
