@@ -7,6 +7,7 @@ import java.nio.file.Paths;
 import java.util.concurrent.ExecutionException;
 import java.util.concurrent.TimeUnit;
 
+
 import com.projeto.clinicalfem.enums.Perfil;
 import com.projeto.clinicalfem.models.CropImageToSquare;
 import com.projeto.clinicalfem.models.UsuarioParse;
@@ -35,27 +36,33 @@ public class UsuarioPacienteController{
         service = serv;
     }
 
-    @GetMapping("/{id}/detalhes")
+    @GetMapping("/{id}")
     public ModelAndView getPacienteDetails(@PathVariable String id) throws InterruptedException, ExecutionException, IOException{
         ModelAndView modelo = new ModelAndView("detalhespaciente");
         
-        UsuariosSpring usuario = UsuarioParse.toSpring(service.getMembroById(id));
+        UsuariosSpring paciente = UsuarioParse.toSpring(service.getMembroById(id));
       
-        Path path = Paths.get("src/main/resources/static/imagens/perfil.jpg");        
+        Path path = Paths.get("src/main/resources/static/imagens/");        
         if(path.toFile().exists()){
             Files.delete(path);
         }
-        if (usuario.getImagem() != null) {
-            Files.write(path, usuario.getImagem());
+        if (paciente.getImagem() != null) {
+            Files.write(path, paciente.getImagem());
         }
 
         TimeUnit.SECONDS.sleep(2);
 
-        modelo.addObject("paciente", usuario);
+        modelo.addObject("paciente", paciente);
 
         return modelo;
     }
 
+    @GetMapping("/calendario")
+    public ModelAndView calendario() {
+        ModelAndView modelo = new ModelAndView("calendario.html");
+        
+        return modelo;
+    }
 
     @GetMapping("/cadastroPaciente")
     public ModelAndView cadastrar() {

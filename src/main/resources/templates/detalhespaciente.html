@@ -14,12 +14,25 @@
 <link type="text/css" rel="stylesheet"
 	href="/materialize/css/materialize.min.css" media="screen,projection" />
 
+
+	
 <!--Let browser know website is optimized for mobile-->
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <meta charset="UTF-8">
 <link rel="stylesheet" href="/materialize/style/detalhesPaciente.css"/>
-<head>
 
+<head>
+<style>
+	p.card-text{
+	  font-weight: bold;
+	}
+	p.card-text > span{
+	  font-weight: normal;
+	}
+	#fotoDePerfil{
+	  border-radius: 10px;
+	}
+	</style>
 <title>Detalhes do Paciente</title>
 </head>
 <body>
@@ -35,21 +48,23 @@
     <h2>DADOS DO PACIENTE</h2>
 
 <main class="container">
-<div th:each="usuario : ${paciente}">
-	
+	<div th:each="paciente : ${paciente}">
 	<div class="card">
-    
+        <div class="card-header" th:text="${paciente.nome}">
+        </div>
+		<input type="hidden" name="id" th:field="*{id}">
         <div class="card-body">
-          <p class="card-text" th:unless="${usuario.imagem == null}">Foto de Perfil: <td><img th:src="@{/images/perfil.jpg}" alt="" width="128" height="128" class="rounded-circle me-2"></td></p>
-		  <p class="card-text" >Nome: <span th:text="${usuario.nome}"></span></p> 
-		  <p class="card-text" >Numero: <span th:text="${usuario.numero}"></span></p>
+          <p class="card-text" th:unless="${paciente.imagem == null}">Foto de Perfil: <td><img th:src="@{/imagens/}" alt="" width="128" height="128" class="rounded-circle me-2"></td></p>
+		  <p class="card-text" >Nome: <span th:text="${paciente.nome}"></span></p> 
+		  <p class="card-text" >Numero: <span th:text="${paciente.numero}"></span></p>
           <!-- <p class="card-text" >Data de Nascimento: <span th:text="${#temporals.format(usuario.datanasc,'dd/MM/yyyy')}"></span></p> -->
-          <p class="card-text" >Email: <span th:text="${usuario.email}"></span></p>
+          <p class="card-text" >Email: <span th:text="${paciente.email}"></span></p>
 		  
-          <a th:href="@{/usuario/{id}/editar (id=${usuario.id})}" class="btn btn-warning">Editar</a>
-                <a th:href="@{/usuario/{id}/excluir (id=${usuario.id})}" class="btn btn-danger" onclick="return confirm('Tem certeza de que deseja excluí-lo?')">Excluir</a>
+          <a th:href="@{/usuario/{id}/editar (id=${paciente.id})}" class="btn btn-warning">Editar</a>
+                <a th:href="@{/usuario/{id}/excluir (id=${paciente.id})}" class="btn btn-danger" onclick="return confirm('Tem certeza de que deseja excluí-lo?')">Excluir</a>
         </div>
       </div>
+	</div>
 </div></main>
  <footer>
         <p>Site criado por Daiana Lins e Letícia Almeida</p>
@@ -59,6 +74,8 @@
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js"></script>
 	<script type="text/javascript" src="/materialize/js/materialize.min.js"></script>
 	   
+	
+
 	<!--JavaScript at end of body for optimized loading-->
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js"></script>
 	<script type="text/javascript" src="/materialize/js/materialize.min.js"></script>

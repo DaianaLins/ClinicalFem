@@ -48,7 +48,7 @@ public class Usuarios {
         this.imagem = imagem;
     }
    
-    public Usuarios(String nome, String email, String senha, String id, String numero, boolean adm ,String tipo, String datanasc, String imagem){
+    public Usuarios(String id, String nome, String imagem, String tipo, boolean adm, String datanasc, String email, String senha,  String numero){
         this.nome = nome;
         this.email = email;
         this.senha = senha;
