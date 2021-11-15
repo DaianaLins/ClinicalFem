@@ -26,7 +26,7 @@
 		<h1><img class="responsive-img" src="materialize/style/logos/logos/LOGOBRANCA.png" style="margin:-60px 0px; width: 25%;"></h1>
 	</header>
 	<nav>
-        <a href="/tela" class="waves-effect waves-light btn center-align #ef9a9a red lighten-3"><i class="material-icons left" style="margin-top:-10px" >home</i>Início</a>
+        <a href="/atendente/tela" class="waves-effect waves-light btn center-align #ef9a9a red lighten-3"><i class="material-icons left" style="margin-top:-10px" >home</i>Início</a>
         <a href="/medicos" class="waves-effect waves-light btn #ef9a9a red lighten-3"><i class="material-icons left" style="margin-top:-10px">format_list_bulleted</i>Médicos Cadastrados</a>
 	</nav>
 		<h2 style="padding-top: 30px;" >CADASTRAR MÉDICO</h2>
@@ -34,7 +34,7 @@
     	 <h4><a href="/tela" class="waves-effect waves-light btn #ef9a9a red lighten-3"><i class="material-icons left">home</i>Início</a></h3> -->
             <!-- <th:block th:include="mensagemValidacao"></th:block> -->
             <form class="container" method="post" th:object="${cadmedico}">
-                <input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}">
+                <!--   <input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}"> -->
 
                 <input type="hidden" name="id" th:field="*{cod}">
               

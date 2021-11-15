@@ -11,19 +11,19 @@
 	rel="stylesheet" />
 <!--Import materialize.css-->
 <link type="text/css" rel="stylesheet"
-	href="materialize/css/materialize.min.css" media="screen,projection" />
+	href="/materialize/css/materialize.min.css" media="screen,projection" />
 
 <!--Let browser know website is optimized for mobile-->
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <meta charset="UTF-8">
-<link rel="stylesheet" href="materialize/style/telaloginat.css"/>
+<link rel="stylesheet" href="/materialize/style/telaloginat.css"/>
 <head>
      <title>Login do Paciente</title>
 </head>
 
 <body>
     <header>
-        <h1><img class="responsive-img" src="materialize/style/logos/logos/LOGOBRANCA.png" style="margin:-30px 0px; width: 25%;"></h1>
+        <h1><img class="responsive-img" src="/materialize/style/logos/logos/LOGOBRANCA.png" style="margin:-30px 0px; width: 25%;"></h1>
     </header>
     <nav>
         <a th:href="@{/selecionar}" class="waves-effect waves-light btn center-align #ef9a9a red lighten-3"><i class="material-icons left" style="margin-top:-10px" >undo</i>voltar</a>
@@ -32,7 +32,7 @@
  <!-- <h2> <a th:href="@{/selecionar}" class="waves-effect waves-light btn #e57373 red lighten-2" style="margin: 0 10px;"><i class="material-icons left">undo</i>Voltar</a></h4>  -->
     <main>
         <article>
-            <form th:action="@{/loginPaciente/}" method="POST" class="row">
+            <form  method="POST" class="row">
                 <h3>LOGIN - PACIENTE</h3><br>
                 <label>
                 <i class="material-icons left">face</i>

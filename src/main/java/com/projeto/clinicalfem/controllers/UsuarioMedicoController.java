@@ -32,7 +32,7 @@ public class UsuarioMedicoController {
     @PostMapping("/cadastroMed")
     public ModelAndView cadastrar(UsuarioMedico medico)
             throws InterruptedException, ExecutionException {
-        ModelAndView modelo = new ModelAndView("redirect:/loginMedico");
+        ModelAndView modelo = new ModelAndView("redirect:/medico/login");
         
         medico.setTipo(Perfil.MEDICO.toString());
         

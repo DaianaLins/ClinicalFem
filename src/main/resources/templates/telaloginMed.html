@@ -11,19 +11,19 @@
 	rel="stylesheet" />
 <!--Import materialize.css-->
 <link type="text/css" rel="stylesheet"
-	href="materialize/css/materialize.min.css" media="screen,projection" />
+	href="/materialize/css/materialize.min.css" media="screen,projection" />
 
 <!--Let browser know website is optimized for mobile-->
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <meta charset="UTF-8">
-<link rel="stylesheet" href="materialize/style/telaloginat.css"/>
+<link rel="stylesheet" href="/materialize/style/telaloginat.css"/>
 <head>
      <title>Login do Medico</title>
 </head>
 
 <body>
     <header>
-        <h1><img class="responsive-img" src="materialize/style/logos/logos/LOGOBRANCA.png" style="margin:-30px 0px; width: 25%;"></h1>
+        <h1><img class="responsive-img" src="/materialize/style/logos/logos/LOGOBRANCA.png" style="margin:-30px 0px; width: 25%;"></h1>
     </header>
     <nav>
         <a th:href="@{/selecionar}" class="waves-effect waves-light btn center-align #ef9a9a red lighten-3"><i class="material-icons left" style="margin-top:-10px" >undo</i>voltar</a>
@@ -32,7 +32,7 @@
     <main>
         <article>
             <!-- esse Th:action não é necessário!!!, pq ele vai redirecionar pra uma página mas o PostMapping  -->
-            <form  method="Post" th:action="@{/loginMedico}" class="row">
+            <form  method="Post" class="row">
                 <h3>LOGIN - MÉDICO</h3><br>
                 <label>
                 <i class="material-icons left">face</i>

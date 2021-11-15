@@ -7,12 +7,12 @@
 
 <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
 <!--Import materialize.css-->
-<link type="text/css" rel="stylesheet" href="materialize/css/materialize.min.css" media="screen,projection" />
+<link type="text/css" rel="stylesheet" href="/materialize/css/materialize.min.css" media="screen,projection" />
 
 <!--Let browser know website is optimized for mobile-->
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <meta charset="UTF-8">
-<link rel="stylesheet" href="materialize/style/styleformAgendamento.css" />
+<link rel="stylesheet" href="/materialize/style/styleformAgendamento.css" />
 
 <head>
 	<style>
@@ -27,7 +27,7 @@
 <body>
 
 	<header>
-		<h1><img class="responsive-img" src="materialize/style/logos/logos/LOGOBRANCA.png"
+		<h1><img class="responsive-img" src="/materialize/style/logos/logos/LOGOBRANCA.png"
 				style="margin:-60px 0px; width: 25%;"></h1>
 	</header>
 	<nav>
@@ -40,7 +40,7 @@
  <h4><a href="/tela" class="waves-effect waves-light btn #ef9a9a red lighten-3"><i class="material-icons left">home</i>Início</a></h3> -->
 	<!-- <th:block th:include="mensagemValidacao"></th:block> -->
 	<form class="row" method="post" th:object="${usuariopaciente}" enctype="multipart/form-data">
-		<input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}">
+		<!--  <input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}"> -->
 
 		<input type="hidden" th:field="*{tipo}">
 		<input type="hidden" th:field="*{id}">

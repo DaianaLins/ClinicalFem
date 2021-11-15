@@ -7,21 +7,21 @@
 <link rel="stylesheet" href="materialize/style/styleformAgendamento.css"/>
 <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
 <!--Import materialize.css-->
-<link type="text/css" rel="stylesheet" href="materialize/css/materialize.min.css" media="screen,projection" />
+<link type="text/css" rel="stylesheet" href="/materialize/css/materialize.min.css" media="screen,projection" />
 	
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ClinicalFem</title>
-    <link rel="stylesheet" href="materialize/style/telageral.css">
+    <link rel="stylesheet" href="/materialize/style/telageral.css">
 
 </head>
 <body>
     <header>
-        <h1><img class="responsive-img" src="materialize/style/logos/logos/LOGOBRANCA.png" style="margin:-60px 0px; width: 25%;"></h1>
+        <h1><img class="responsive-img" src="/materialize/style/logos/logos/LOGOBRANCA.png" style="margin:-60px 0px; width: 25%;"></h1>
     </header>
     <nav>
-        <a th:href="@{/logout}" class="waves-effect waves-light btn center-align #ef9a9a red lighten-3"><i class="material-icons left" style="margin-top:-10px" >exit_to_app</i>SAIR</a>
+        <a th:href="@{/logout}" class="waves-effect waves-light btn #e57373 red lighten-2" style="margin: 0 10px;"><i class="material-icons left" style="margin-top:-10px" >exit_to_app</i>Sair</a>
     </nav>
   <!-- <h4> <a th:href="@{/logout}" class="waves-effect waves-light btn #e57373 red lighten-2" style="margin: 0 10px;"><i class="material-icons left">exit_to_app</i>Sair</a></h4>  -->
   
@@ -30,25 +30,25 @@
     <hr color="white">
     <section class="flex">
         <div >
-             <img class="responsive-img" src="materialize/style/logos/logos/cliente.png" style="margin: 0 15px;">
+             <img class="responsive-img" src="/materialize/style/logos/logos/cliente.png" style="margin: 0 15px;">
             <a href="/cadastrarPaciente" class="waves-effect waves-light btn #e57373 red lighten-2" style="margin: 0 -5px;"> Cadastrar Paciente </a>
         </div>
         <div>
-        	<img class="responsive-img" src="materialize/style/logos/logos/medico (1).png" style="margin: 0 15px;">
+        	<img class="responsive-img" src="/materialize/style/logos/logos/medico (1).png" style="margin: 0 15px;">
             <a href="/cadastrarMedico" class="waves-effect waves-light btn #e57373 red lighten-2"  style="margin: 0 3px;">Cadastrar Médico </a>
         </div>
         <div>
             
-            <img class="responsive-img" src="materialize/style/logos/logos/apoio-suporte.png" style="margin: 0 15px;">
+            <img class="responsive-img" src="/materialize/style/logos/logos/apoio-suporte.png" style="margin: 0 15px;">
             <a href="/agendarConsulta" class="waves-effect waves-light btn #e57373 red lighten-2" style="margin: 0 12px;" >Agendar Atendimento </a>
         </div>
         <div>
           
-            <img class="responsive-img" src="materialize/style/logos/logos/lista-de-controle.png" style="margin: 0 15px;">
+            <img class="responsive-img" src="/materialize/style/logos/logos/lista-de-controle.png" style="margin: 0 15px;">
             <a href="/medicos" class="waves-effect waves-light btn #e57373 red lighten-2"  style="margin: 0 20px;">Corpo Clínico </a>
         </div>
         <div >
-            <img class="responsive-img" src="materialize/style/logos/logos/news.png" style="margin: 0 25px;">
+            <img class="responsive-img" src="/materialize/style/logos/logos/news.png" style="margin: 0 25px;">
            <a href="/novaNoticia" class="waves-effect waves-light btn #e57373 red lighten-2" style="margin: 0 30px;"> Cadastrar Notícias </a>
        </div>
     </section>

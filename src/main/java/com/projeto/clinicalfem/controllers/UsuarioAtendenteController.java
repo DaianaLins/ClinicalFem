@@ -33,7 +33,7 @@ public class UsuarioAtendenteController {
     @PostMapping("/cadastroAtendente")
     public ModelAndView cadastrar(UsuarioAtendente atendente)
             throws InterruptedException, ExecutionException {
-        ModelAndView modelo = new ModelAndView("redirect:/loginAtendente");
+        ModelAndView modelo = new ModelAndView("redirect:/atendente/login");
         
         atendente.setTipo(Perfil.ATENDENTE.toString());
         

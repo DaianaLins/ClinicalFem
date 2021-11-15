@@ -43,7 +43,7 @@ public class UsuarioPacienteController{
     @PostMapping("/cadastroPaciente")
     public ModelAndView cadastrar(@RequestParam("file") MultipartFile file, Usuarios usu)
             throws InterruptedException, ExecutionException {
-        ModelAndView modelo = new ModelAndView("redirect:/loginPaciente");
+        ModelAndView modelo = new ModelAndView("redirect:/paciente/login");
         
         usu.setTipo(Perfil.PACIENTE.toString());
         
