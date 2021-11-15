@@ -41,7 +41,7 @@
     <h1><img class="responsive-img" src="materialize/style/logos/logos/LOGOBRANCA.png" style="margin:-60px 0px; width: 25%;"></h1>
 </header>
     <nav>
-       <a href="/tela" class="waves-effect waves-light btn #ef9a9a red lighten-3  white-text"><i class="material-icons left"style="margin-top:-15px">home</i>Início</a>
+       <a href="/atendente/tela" class="waves-effect waves-light btn #ef9a9a red lighten-3  white-text"><i class="material-icons left"style="margin-top:-15px">home</i>Início</a>
     <a href="/noticias" class="waves-effect waves-light btn #ef9a9a red lighten-3  white-text"><i class="material-icons left"style="margin-top:-15px">description</i>Notícias cadastradas</a>
     </nav>
 
@@ -65,7 +65,7 @@
             <small class="form-text text-muted">(*) Campos obrigatórios</small>
 
             <button type="submit" class="btn btn-primary #ef9a9a red lighten-3 white-text" style="margin-top: 10px;">Publicar</button>
-            <a href="/tela" class="btn btn-light #ef9a9a red lighten-3 white-text" role="button" style="margin-top: 10px;">Cancelar</a>
+            <a href="/atendente/tela" class="btn btn-light #ef9a9a red lighten-3 white-text" role="button" style="margin-top: 10px;">Cancelar</a>
 
      </section>   
 
@@ -89,19 +89,19 @@
     }
 });
 
-function uploadImage(image) {
+function uploadImage(imagem) {
     var data = new FormData();
-    data.append("image", image);
+    data.append("imagem", imagem);
     $.ajax({
-        url: 'Your url to deal with your image',
+        url: 'src/main/resources/static/imagens/noticia.jpg',
         cache: false,
         contentType: false,
         processData: false,
         data: data,
         type: "post",
         success: function(url) {
-            var image = $('<img>').attr('src', 'http://' + url);
-            $('#summernote').summernote("insertNode", image[0]);
+            var imagem = $('<img>').attr('src', 'http://' + url);
+            $('#summernote').summernote("insertNode", imagem[0]);
         },
         error: function(data) {
             console.log(data);

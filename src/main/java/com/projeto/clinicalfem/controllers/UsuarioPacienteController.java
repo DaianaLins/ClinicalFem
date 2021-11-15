@@ -9,11 +9,14 @@ import java.util.concurrent.TimeUnit;
 
 import com.projeto.clinicalfem.enums.Perfil;
 import com.projeto.clinicalfem.models.CropImageToSquare;
+import com.projeto.clinicalfem.models.UsuarioParse;
 import com.projeto.clinicalfem.models.Usuarios;
+import com.projeto.clinicalfem.models.UsuariosSpring;
 import com.projeto.clinicalfem.service.UsuarioPacienteService;
 
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -31,6 +34,28 @@ public class UsuarioPacienteController{
     public UsuarioPacienteController(UsuarioPacienteService serv){
         service = serv;
     }
+
+    @GetMapping("/{id}/detalhes")
+    public ModelAndView getPacienteDetails(@PathVariable String id) throws InterruptedException, ExecutionException, IOException{
+        ModelAndView modelo = new ModelAndView("detalhespaciente");
+        
+        UsuariosSpring usuario = UsuarioParse.toSpring(service.getMembroById(id));
+      
+        Path path = Paths.get("src/main/resources/static/imagens/perfil.jpg");        
+        if(path.toFile().exists()){
+            Files.delete(path);
+        }
+        if (usuario.getImagem() != null) {
+            Files.write(path, usuario.getImagem());
+        }
+
+        TimeUnit.SECONDS.sleep(2);
+
+        modelo.addObject("paciente", usuario);
+
+        return modelo;
+    }
+
 
     @GetMapping("/cadastroPaciente")
     public ModelAndView cadastrar() {

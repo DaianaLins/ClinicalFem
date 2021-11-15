@@ -40,7 +40,7 @@
 	<!-- <th:block th:include="mensagemValidacao"></th:block> -->
 	<form class="container"  method="post" action="/alterarAgendamento" th:object="${agendamento}">
 		<input type="hidden" name="id" th:field="*{codigo}" > 
-		<input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}">
+		<!--<input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}"> -->
 
 		Nome Completo: <input  type="text" name="nome"  th:field="*{nome}" required/>
 		

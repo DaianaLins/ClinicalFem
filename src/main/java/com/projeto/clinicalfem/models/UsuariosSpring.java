@@ -12,10 +12,18 @@ public class UsuariosSpring {
     private String senha;
     private String id;
     private String numero;
+    private String tipo;
     private boolean adm;
     private byte[] imagem;
     private LocalDate datanasc;
+
     public UsuariosSpring(){
+    }
+    public String getTipo() {
+        return tipo;
+    }
+    public void setTipo(String tipo) {
+        this.tipo = tipo;
     }
     public String getDataNascLocal() {
         return datanasc.toString();
@@ -30,18 +38,21 @@ public class UsuariosSpring {
     }
 
     
-    public UsuariosSpring(String nome, String email, String senha, String id, String numero, boolean adm, String datanasc, String imagem){
+    public UsuariosSpring(String nome, String tipo , String email, String senha, String id, String numero, boolean adm, String datanasc, String imagem){
         this.nome = nome;
         this.email = email;
         this.senha = senha;
         this.id = id;
         this.numero = numero;
         this.adm = adm;
+        this.tipo = tipo;
         setImagemLocal(imagem);
         setDataNascLocal(datanasc);
     }
   
+
     
+   
     public String getNome() {
         return nome;
     }
@@ -103,4 +114,10 @@ public class UsuariosSpring {
         return encodedString;
     }
 
+    @Override
+    public String toString() {
+        return "UsuariosSpring [adm=" + adm + ", datanasc=" + datanasc + ", tipo="  + ", email=" + email 
+                + ", id=" + id + ", imagem=" + Arrays.toString(imagem) + ", nome=" + nome
+                + ", numero=" + numero + ", senha=" + senha + "]";
+    }
 }

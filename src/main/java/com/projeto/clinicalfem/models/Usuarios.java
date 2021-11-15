@@ -16,10 +16,19 @@ public class Usuarios {
     private String tipo;
     private String imagem;
     private String datanasc;
-  
+    private boolean adm;
 	
+    public boolean isAdm() {
+        return adm;
+    }
+
+    public void setAdm(boolean adm) {
+        this.adm = adm;
+    }
+
     public Usuarios(){
     }
+    
     public String getTipo() {
         return tipo;
     }
@@ -39,19 +48,20 @@ public class Usuarios {
         this.imagem = imagem;
     }
    
-    public Usuarios(String nome, String email, String senha, String id, String numero, String tipo, String datanasc, String imagem){
+    public Usuarios(String nome, String email, String senha, String id, String numero, boolean adm ,String tipo, String datanasc, String imagem){
         this.nome = nome;
         this.email = email;
         this.senha = senha;
         this.id = id;
         this.numero = numero;
         this.tipo = tipo;
+        this.adm = adm;
         this.imagem = imagem;
         this.datanasc = datanasc;
     }
   
     
-    public String getNome() {
+       public String getNome() {
         return nome;
     }
     
@@ -94,5 +104,11 @@ public class Usuarios {
         String encodedString = Base64.getEncoder().encodeToString(imagem);
         this.imagem = encodedString;
     }
-    
+    @Override
+    public String toString() {
+        return "UsuariosSpring [adm=" + adm + ", datanasc=" + datanasc + ", tipo="  + ", email=" + email 
+                + ", id=" + id + ", imagem=" + imagem + ", nome=" + nome
+                + ", numero=" + numero + ", senha=" + senha + "]";
+    }
+  
 }

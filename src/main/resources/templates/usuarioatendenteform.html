@@ -29,7 +29,7 @@
 		<a href="/selecionar" class="waves-effect waves-light btn center-align #ef9a9a red lighten-3"><i
 				class="material-icons left" style="margin-top:-10px">home</i>Início</a>
 	</nav>
-	<h2 style="padding-top: 30px;">Cadastro</h2>
+	<h2 style="padding-top: 30px;">Cadastro - Atendente</h2>
 
 	<!-- <h3><a href="/consultas" class="waves-effect waves-light btn #ef9a9a red lighten-3"><i class="material-icons left">format_list_bulleted</i>Consultas Agendadas</a></h3>
  <h4><a href="/tela" class="waves-effect waves-light btn #ef9a9a red lighten-3"><i class="material-icons left">home</i>Início</a></h3> -->
@@ -39,6 +39,10 @@
 		<input type="hidden" th:field="*{id}">
 		<input type="hidden" th:field="*{tipo}">
 		Nome Completo: <input type="text" th:field="*{nome}" required />
+		<div class="input-field ">
+			Data de Nascimento:
+			<input type="date" name="data" id="data" th:field="*{datanasc}">
+			</div>
 		Email: <input type="text" th:field="*{email}" required />
 		Numero: <input type="text" th:field="*{numero}" required />
 		Senha: <input type="password" th:field="*{senha}" required />

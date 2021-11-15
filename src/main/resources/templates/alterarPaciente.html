@@ -42,7 +42,7 @@
 	<!-- <th:block th:include="mensagemValidacao"></th:block> -->
 	
 	<form class="container" method="post" action="/alterarPaciente" th:object="${cadpaciente}">
-		<input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}">
+		<!--<input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}"> -->
 
 		<input type="hidden" th:field="*{id}">
 		
