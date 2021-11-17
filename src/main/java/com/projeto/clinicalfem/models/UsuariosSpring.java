@@ -16,6 +16,15 @@ public class UsuariosSpring {
     private boolean adm;
     private byte[] imagem;
     private LocalDate datanasc;
+    private String nomeImagem;
+
+    public String getNomeImagem() {
+        return nomeImagem;
+    }
+
+    public void setNomeImagem(String nomeImagem) {
+        this.nomeImagem = nomeImagem;
+    }
 
     public UsuariosSpring(){
     }
@@ -38,7 +47,7 @@ public class UsuariosSpring {
     }
 
     
-    public UsuariosSpring(String id, String nome, String imagem, String tipo, boolean adm, String datanasc, String email, String senha, String numero){
+    public UsuariosSpring(String id, String nome, String imagem, String tipo, boolean adm, String datanasc, String email, String senha, String numero, String nomeImagem){
         this.nome = nome;
         this.email = email;
         this.senha = senha;
@@ -48,6 +57,7 @@ public class UsuariosSpring {
         this.tipo = tipo;
         setImagemLocal(imagem);
         setDataNascLocal(datanasc);
+        this.nomeImagem = nomeImagem;
     }
   
 

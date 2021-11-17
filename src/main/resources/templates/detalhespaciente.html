@@ -54,14 +54,14 @@
         </div>
 		
         <div class="card-body">
-          <p class="card-text" th:unless="${usuariopaciente.imagem == null}">Foto de Perfil: <td><img th:src="@{src/main/resources/static/imagens/}" alt="" width="128" height="128" class="rounded-circle me-2"></td></p>
+          Foto de Perfil: <td><img th:src="@{/paciente/mostrarImagem/{imagem}(imagem=${usuariopaciente.nomeImagem})}" alt="" width="128" height="128" class="rounded-circle me-2"/></td>
 		  <p class="card-text" >Nome: <span th:text="${usuariopaciente.nome}"></span></p> 
 		  <p class="card-text" >Numero: <span th:text="${usuariopaciente.numero}"></span></p>
           <!-- <p class="card-text" >Data de Nascimento: <span th:text="${#temporals.format(usuario.datanasc,'dd/MM/yyyy')}"></span></p> -->
           <p class="card-text" >Email: <span th:text="${usuariopaciente.email}"></span></p>
 		  
-          <a th:href="@{/usuario/{id}/editar (id=${usuariopaciente.id})}" class="btn btn-warning">Editar</a>
-                <a th:href="@{/usuario/{id}/excluir (id=${usuariopaciente.id})}" class="btn btn-danger" onclick="return confirm('Tem certeza de que deseja excluí-lo?')">Excluir</a>
+          <!-- <a th:href="@{/usuario/{id}/editar (id=${usuariopaciente.id})}" class="btn btn-warning">Editar</a>
+                <a th:href="@{/usuario/{id}/excluir (id=${usuariopaciente.id})}" class="btn btn-danger" onclick="return confirm('Tem certeza de que deseja excluí-lo?')">Excluir</a> -->
         </div>
       </div>
 	</div>

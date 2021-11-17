@@ -17,7 +17,16 @@ public class Usuarios {
     private String imagem;
     private String datanasc;
     private boolean adm;
+    private String nomeImagem;
 	
+    public String getNomeImagem() {
+        return nomeImagem;
+    }
+
+    public void setNomeImagem(String nomeImagem) {
+        this.nomeImagem = nomeImagem;
+    }
+
     public boolean isAdm() {
         return adm;
     }
@@ -48,7 +57,7 @@ public class Usuarios {
         this.imagem = imagem;
     }
    
-    public Usuarios(String id, String nome, String imagem, String tipo, boolean adm, String datanasc, String email, String senha,  String numero){
+    public Usuarios(String id, String nome, String imagem, String tipo, boolean adm, String datanasc, String email, String senha,  String numero, String nomeImagem){
         this.nome = nome;
         this.email = email;
         this.senha = senha;
@@ -57,6 +66,7 @@ public class Usuarios {
         this.tipo = tipo;
         this.adm = adm;
         this.imagem = imagem;
+        this.nomeImagem = nomeImagem;
         this.datanasc = datanasc;
     }
   

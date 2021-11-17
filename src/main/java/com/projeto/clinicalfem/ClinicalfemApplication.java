@@ -16,6 +16,7 @@ public class ClinicalfemApplication {
 
 	public static void main(String[] args) throws IOException {
 
+
 		//carregando arquivo com as chaves de permissão de manipulação  do Firebase
 		FileInputStream serviceAccount = new FileInputStream("src/main/resources/serviceAccountKey.json");
 

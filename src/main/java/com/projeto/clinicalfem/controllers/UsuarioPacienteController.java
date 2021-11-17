@@ -1,9 +1,11 @@
 package com.projeto.clinicalfem.controllers;
 
+import java.io.File;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.security.Principal;
 import java.util.concurrent.ExecutionException;
 import java.util.concurrent.TimeUnit;
 
@@ -20,6 +22,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
@@ -30,32 +33,35 @@ import net.coobird.thumbnailator.Thumbnails;
 @RequestMapping("/")
 public class UsuarioPacienteController{
 
-    private static String caminhoImagens = "src/main/resources/static/imagens";
+    private static String caminhoImagens = "src/main/resources/static/imagens/";
    
     UsuarioPacienteService service;
     public UsuarioPacienteController(UsuarioPacienteService serv){
         service = serv;
     }
 
-    @GetMapping("/{id}")
-    public ModelAndView detalhar(@PathVariable String id) throws InterruptedException, ExecutionException, IOException {
-        ModelAndView modelo = new ModelAndView("detalhespaciente");
-        UsuariosSpring usuariopaciente = UsuarioParse.toSpring(service.getMembroById(id));
-
-        Path path = Paths.get("src/main/resources/static/imagens/");        
-        if(path.toFile().exists()){
-            Files.delete(path);
-        }
-        if (usuariopaciente.getImagem() != null) {
-            Files.write(path, usuariopaciente.getImagem());
-        }
-
-        TimeUnit.SECONDS.sleep(2);
-
-        modelo.addObject("usuariopaciente", usuariopaciente);
-
-        return modelo;
+    @GetMapping("/paciente/dados")
+    public ModelAndView dados(Principal principal) throws InterruptedException, ExecutionException {
+    	ModelAndView mv = new ModelAndView("detalhesPaciente");
+    	
+    	 UsuariosSpring usuariopaciente = UsuarioParse.toSpring(service.getMembroByEmail(principal.getName()));
+         
+    	  mv.addObject("usuariopaciente", usuariopaciente);
+    	return mv;
     }
+        
+    @GetMapping("/paciente/mostrarImagem/{imagem}")
+    @ResponseBody
+	public byte[] ImagemPaciente(@PathVariable("imagem") String imagem) throws IOException {
+		System.out.println(imagem);
+		File imagemArquivo = new File(caminhoImagens + imagem);
+		if (imagem == null && imagem.trim().length() <= 0) {
+			System.out.println("No IF");
+			return Files.readAllBytes(imagemArquivo.toPath());
+		}
+		return null;
+	}
+        
 
     @GetMapping("/calendario")
     public ModelAndView calendario() {
@@ -99,8 +105,8 @@ public class UsuarioPacienteController{
                 //corta a imagem em um quadrado
                 CropImageToSquare.crop(path);
                
+                usu.setNomeImagem(String.valueOf(usu.getId())+file.getOriginalFilename());
                 usu.setImagemLocal(Files.readAllBytes(path));
-                Files.delete(path);
 
             } catch (IOException e) {
                 e.printStackTrace();
