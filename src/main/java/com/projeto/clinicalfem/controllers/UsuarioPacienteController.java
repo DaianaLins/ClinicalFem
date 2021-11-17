@@ -7,7 +7,6 @@ import java.nio.file.Paths;
 import java.util.concurrent.ExecutionException;
 import java.util.concurrent.TimeUnit;
 
-
 import com.projeto.clinicalfem.enums.Perfil;
 import com.projeto.clinicalfem.models.CropImageToSquare;
 import com.projeto.clinicalfem.models.UsuarioParse;
@@ -39,22 +38,21 @@ public class UsuarioPacienteController{
     }
 
     @GetMapping("/{id}")
-    public ModelAndView detalhes(@PathVariable String id) throws InterruptedException, ExecutionException, IOException{
+    public ModelAndView detalhar(@PathVariable String id) throws InterruptedException, ExecutionException, IOException {
         ModelAndView modelo = new ModelAndView("detalhespaciente");
-        
-        UsuariosSpring paciente = UsuarioParse.toSpring(service.getMembroById(id));
-      
-        Path path = Paths.get(caminhoImagens);        
+        UsuariosSpring usuariopaciente = UsuarioParse.toSpring(service.getMembroById(id));
+
+        Path path = Paths.get("src/main/resources/static/imagens/");        
         if(path.toFile().exists()){
             Files.delete(path);
         }
-        if (paciente.getImagem() != null) {
-            Files.write(path, paciente.getImagem());
+        if (usuariopaciente.getImagem() != null) {
+            Files.write(path, usuariopaciente.getImagem());
         }
 
         TimeUnit.SECONDS.sleep(2);
 
-        modelo.addObject("paciente", paciente);
+        modelo.addObject("usuariopaciente", usuariopaciente);
 
         return modelo;
     }
@@ -101,13 +99,15 @@ public class UsuarioPacienteController{
                 //corta a imagem em um quadrado
                 CropImageToSquare.crop(path);
                
+                usu.setImagemLocal(Files.readAllBytes(path));
+                Files.delete(path);
 
             } catch (IOException e) {
                 e.printStackTrace();
             }
         }
 
-        TimeUnit.SECONDS.sleep(2);
+        TimeUnit.SECONDS.sleep(3);
         
         if (!service.cadastrar(usu)) {
             modelo.setViewName("usuariopacienteform");
