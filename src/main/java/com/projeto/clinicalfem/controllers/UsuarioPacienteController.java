@@ -30,6 +30,8 @@ import net.coobird.thumbnailator.Thumbnails;
 @RestController
 @RequestMapping("/")
 public class UsuarioPacienteController{
+
+    private static String caminhoImagens = "src/main/resources/static/imagens";
    
     UsuarioPacienteService service;
     public UsuarioPacienteController(UsuarioPacienteService serv){
@@ -37,12 +39,12 @@ public class UsuarioPacienteController{
     }
 
     @GetMapping("/{id}")
-    public ModelAndView getPacienteDetails(@PathVariable String id) throws InterruptedException, ExecutionException, IOException{
+    public ModelAndView detalhes(@PathVariable String id) throws InterruptedException, ExecutionException, IOException{
         ModelAndView modelo = new ModelAndView("detalhespaciente");
         
         UsuariosSpring paciente = UsuarioParse.toSpring(service.getMembroById(id));
       
-        Path path = Paths.get("src/main/resources/static/imagens/");        
+        Path path = Paths.get(caminhoImagens);        
         if(path.toFile().exists()){
             Files.delete(path);
         }
@@ -89,7 +91,7 @@ public class UsuarioPacienteController{
                 // tranforma a imagem em Bytes
                 byte[] bytes = file.getBytes();
                 //diz o caminho pra onde a imagem vai ser armazenada
-                Path path = Paths.get("src/main/resources/static/imagens/" + file.getOriginalFilename());
+                Path path = Paths.get(caminhoImagens+String.valueOf(usu.getId())+file.getOriginalFilename());
                 //cria o arquivo na pasta solicitada
                 Files.write(path, bytes);
 
@@ -98,9 +100,7 @@ public class UsuarioPacienteController{
 
                 //corta a imagem em um quadrado
                 CropImageToSquare.crop(path);
-
-                usu.setImagemLocal(Files.readAllBytes(path));
-                Files.delete(path);
+               
 
             } catch (IOException e) {
                 e.printStackTrace();

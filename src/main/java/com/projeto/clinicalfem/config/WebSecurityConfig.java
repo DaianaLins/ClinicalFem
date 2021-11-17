@@ -70,7 +70,7 @@ public class WebSecurityConfig {
      	
          @Override
          public void configure(WebSecurity web) throws Exception {
-             web.ignoring().antMatchers("/materialize/**", "/static/**", "/bootstrap/**", "/style/**");
+             web.ignoring().antMatchers("/materialize/**", "/static/**", "/bootstrap/**", "/style/**", "/imagens/**");
          }
     }
     
@@ -129,7 +129,7 @@ public class WebSecurityConfig {
 
         @Override
         public void configure(WebSecurity web) throws Exception {
-            web.ignoring().antMatchers("/materialize/**", "/static/**", "/bootstrap/**", "/style/**");
+            web.ignoring().antMatchers("/materialize/**", "/static/**", "/bootstrap/**", "/style/**","/imagens/**");
         }
     }
     
@@ -188,7 +188,7 @@ public class WebSecurityConfig {
         }
         @Override
         public void configure(WebSecurity web) throws Exception {
-            web.ignoring().antMatchers("/materialize/**", "/static/**", "/bootstrap/**", "/style/**");
+            web.ignoring().antMatchers("/materialize/**", "/static/**", "/bootstrap/**", "/style/**", "/imagens/**");
         }
     }
 

@@ -48,13 +48,13 @@
     <h2>DADOS DO PACIENTE</h2>
 
 <main class="container">
-	<div th:each="paciente : ${paciente}">
+	<th></th>
 	<div class="card">
         <div class="card-header" th:text="${paciente.nome}">
         </div>
-		<input type="hidden" name="id" th:field="*{id}">
+		
         <div class="card-body">
-          <p class="card-text" th:unless="${paciente.imagem == null}">Foto de Perfil: <td><img th:src="@{/imagens/}" alt="" width="128" height="128" class="rounded-circle me-2"></td></p>
+          <p class="card-text" th:unless="${paciente.imagem == null}">Foto de Perfil: <td><img th:src="@{/imagens}" alt="" width="128" height="128" class="rounded-circle me-2"></td></p>
 		  <p class="card-text" >Nome: <span th:text="${paciente.nome}"></span></p> 
 		  <p class="card-text" >Numero: <span th:text="${paciente.numero}"></span></p>
           <!-- <p class="card-text" >Data de Nascimento: <span th:text="${#temporals.format(usuario.datanasc,'dd/MM/yyyy')}"></span></p> -->
