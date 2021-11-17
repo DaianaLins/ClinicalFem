@@ -1,5 +1,6 @@
 package com.projeto.clinicalfem.controllers;
 
+
 import java.io.File;
 import java.io.IOException;
 import java.nio.file.Files;
@@ -50,7 +51,7 @@ public class UsuarioPacienteController{
     	return mv;
     }
         
-    @GetMapping("/paciente/mostrarImagem/{imagem}")
+    @GetMapping("/paciente/mostrarImagem/{imagem}/")
     @ResponseBody
 	public byte[] ImagemPaciente(@PathVariable("imagem") String imagem) throws IOException {
 		System.out.println(imagem);
@@ -77,6 +78,7 @@ public class UsuarioPacienteController{
         
         return modelo;
     }
+   
    
     @PostMapping("/cadastroPaciente")
     public ModelAndView cadastrar(@RequestParam("file") MultipartFile file, Usuarios usu)
@@ -105,8 +107,9 @@ public class UsuarioPacienteController{
                 //corta a imagem em um quadrado
                 CropImageToSquare.crop(path);
                
-                usu.setNomeImagem(String.valueOf(usu.getId())+file.getOriginalFilename());
                 usu.setImagemLocal(Files.readAllBytes(path));
+                usu.setNomeImagem(String.valueOf(usu.getId())+file.getOriginalFilename());
+                
 
             } catch (IOException e) {
                 e.printStackTrace();
