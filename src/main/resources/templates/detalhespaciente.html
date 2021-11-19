@@ -19,18 +19,26 @@
 <!--Let browser know website is optimized for mobile-->
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <meta charset="UTF-8">
-<link rel="stylesheet" href="/materialize/style/detalhesPaciente.css"/>
+<link rel="stylesheet" href="/materialize/style/detalhesPacientecomfoto.css"/>
 
 <head>
 <style>
+
+	.card{
+		text-align: center;
+		position: center;
+	}
+
 	p.card-text{
 	  font-weight: bold;
+	  text-align: center;
 	}
 	p.card-text > span{
 	  font-weight: normal;
 	}
 	#fotoDePerfil{
-	  border-radius: 10px;
+	  border-radius: 50%;
+	  
 	}
 	</style>
 <title>Detalhes do Paciente</title>
@@ -47,14 +55,14 @@
     </nav>
     <h2>DADOS DO PACIENTE</h2>
 
-<main class="container">
+<main class="container" style="margin: 10px;">
 	<th></th>
-	<div class="card">
-        <div class="card-header" th:text="${usuariopaciente.nome}">
-        </div>
+	<div class="card" style="border-radius: 10px; width: 50%; height: 60%; padding: 10px;">
+        <!-- <div class="card-header" th:text="${usuariopaciente.nome}">
+        </div>  -->
 		
         <div class="card-body">
-          Foto de Perfil: <td><img th:src="@{/paciente/mostrarImagem/{imagem}(imagem=${usuariopaciente.nomeImagem})}" alt="" width="128" height="128" class="circle responsive-img"/></td>
+         <p class="card-text" id="fotoDePerfil"><td><img th:src="@{/paciente/mostrarImagem/{imagem}(imagem=${usuariopaciente.nomeImagem})}" alt="" width="128" height="128" class="circle responsive-img"/></td></p>
 		  <p class="card-text" >Nome: <span th:text="${usuariopaciente.nome}"></span></p> 
 		  <p class="card-text" >Numero: <span th:text="${usuariopaciente.numero}"></span></p>
           <!-- <p class="card-text" >Data de Nascimento: <span th:text="${#temporals.format(usuario.datanasc,'dd/MM/yyyy')}"></span></p> -->

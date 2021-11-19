@@ -16,7 +16,7 @@ public class UsuarioAtendente{
     private String tipo;
     private String imagem;
     private String datanasc;
-  
+
 	
     public UsuarioAtendente(){
     }
@@ -39,7 +39,7 @@ public class UsuarioAtendente{
         this.imagem = imagem;
     }
    
-    public UsuarioAtendente(String nome, String email, String senha, String id, String numero, String tipo, String datanasc, String imagem){
+    public UsuarioAtendente( String id, String nome, String imagem,  String tipo, String email, String senha, String numero, String datanasc ){
         this.nome = nome;
         this.email = email;
         this.senha = senha;
