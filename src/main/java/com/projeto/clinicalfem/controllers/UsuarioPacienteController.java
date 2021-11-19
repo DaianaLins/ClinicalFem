@@ -51,12 +51,12 @@ public class UsuarioPacienteController{
     	return mv;
     }
         
-    @GetMapping("/paciente/mostrarImagem/{imagem}/")
-    @ResponseBody
-	public byte[] ImagemPaciente(@PathVariable("imagem") String imagem) throws IOException {
-		System.out.println(imagem);
+    @GetMapping("/paciente/mostrarImagem/{imagem}")
+	@ResponseBody
+	public byte[] retornarImagem(@PathVariable("imagem") String imagem) throws IOException {
+//		System.out.println(imagem);
 		File imagemArquivo = new File(caminhoImagens + imagem);
-		if (imagem == null && imagem.trim().length() <= 0) {
+		if (imagem != null || imagem.trim().length() > 0) {
 			System.out.println("No IF");
 			return Files.readAllBytes(imagemArquivo.toPath());
 		}
