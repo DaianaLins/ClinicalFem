@@ -65,19 +65,23 @@
          <p class="card-text" id="fotoDePerfil"><td><img th:src="@{/medico/mostrarImagem/{imagem}(imagem=${usuariomedico.nomeImagem})}" alt="" width="128" height="128" class="circle responsive-img"/></td></p>
 		  <p class="card-text" >Nome: <span th:text="${usuariomedico.nome}"></span></p> 
 		  <p class="card-text" >Numero: <span th:text="${usuariomedico.numero}"></span></p>
+		  <p class="card-text" >CRM: <span th:text="${usuariomedico.crm}"></span></p>
           <!-- <p class="card-text" >Data de Nascimento: <span th:text="${#temporals.format(usuario.datanasc,'dd/MM/yyyy')}"></span></p> -->
           <p class="card-text" >Email: <span th:text="${usuariomedico.email}"></span></p>
-		  
+		  <p class="card-text">CPF: <span th:text="${cadmedico.cpf}"></span></p>
+		  <p class="card-text">Especialidade: <span th:text="${cadmedico.especialidade}"></span></p>
+		  <p class="card-text" >RG: <span th:text="${cadmedico.rg}"></span></p>
           <!-- <a th:href="@{/usuario/{id}/editar (id=${usuariopaciente.id})}" class="btn btn-warning">Editar</a>
                 <a th:href="@{/usuario/{id}/excluir (id=${usuariopaciente.id})}" class="btn btn-danger" onclick="return confirm('Tem certeza de que deseja excluí-lo?')">Excluir</a> -->
         </div>
-      </div>
+  
+	</div>
 	</div>
 </div></main>
- <footer>
+ 
+<!-- <footer>
         <p>Site criado por Daiana Lins e Letícia Almeida</p>
-    </footer>
-
+    </footer> -->
 	<!--JavaScript at end of body for optimized loading-->
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js"></script>
 	<script type="text/javascript" src="/materialize/js/materialize.min.js"></script>

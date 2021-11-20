@@ -51,11 +51,14 @@
         <input type="date" name="data" id="data" th:field="*{datanasc}">
 		</div>
 		
-		<div class="input-field col s5">
-			Numero: <input type="text" th:field="*{numero}" required />
+
+		<div class="input-field col s7">
+			CRM: <input type="text" th:field="*{crm}" required />
 		</div>
 
-		<br><br>
+			<div> Numero: <input type="text" th:field="*{numero}" required />  <div>
+
+			<br><br>
 		    
 			<label for="foto">Foto de Perfil:</label>
 			<label class="button btn btn-secondary" for="foto" id="labelFoto">Upload</label>

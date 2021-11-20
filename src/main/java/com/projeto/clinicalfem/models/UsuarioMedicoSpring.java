@@ -15,6 +15,14 @@ public class UsuarioMedicoSpring {
     private byte[] imagem;
     private LocalDate datanasc;
     private String nomeImagem;
+    private String crm;
+
+    public String getCrm() {
+        return crm;
+    }
+    public void setCrm(String crm) {
+        this.crm = crm;
+    }
 
     public String getNomeImagem() {
         return nomeImagem;
@@ -83,7 +91,7 @@ public class UsuarioMedicoSpring {
         }
     }
     UsuarioMedicoSpring(){}
-    UsuarioMedicoSpring(String id, String nome, String imagem, String tipo, boolean adm, String datanasc, String email, String senha, String numero, String nomeImagem){
+    UsuarioMedicoSpring(String id, String nome, String imagem, String tipo, boolean adm, String datanasc, String email, String senha, String numero, String nomeImagem, String crm){
         this.nome = nome;
         this.email = email;
         this.senha = senha;
@@ -94,6 +102,7 @@ public class UsuarioMedicoSpring {
         setImagemLocal(imagem);
         setDataNascLocal(datanasc);
         this.nomeImagem = nomeImagem;
+        this.crm = crm;
     }
     public void setImagemLocal(String imagem) {
         if(imagem != null){

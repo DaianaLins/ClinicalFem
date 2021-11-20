@@ -8,6 +8,12 @@ public class UsuarioMedico {
     public String getNome() {
         return nome;
     }
+    public String getCrm() {
+        return crm;
+    }
+    public void setCrm(String crm) {
+        this.crm = crm;
+    }
     public boolean isAdm() {
         return adm;
     }
@@ -74,9 +80,10 @@ public class UsuarioMedico {
     private String datanasc;
     private String nomeImagem;
     private boolean adm;
+    private String crm;
 
     public UsuarioMedico(){}
-    public UsuarioMedico(String id, String nome, String imagem, String tipo, boolean adm, String datanasc, String email, String senha,  String numero, String nomeImagem){
+    public UsuarioMedico(String id, String nome, String imagem, String tipo, boolean adm, String datanasc, String email, String senha,  String numero, String nomeImagem, String crm){
         this.nome = nome;
         this.email = email;
         this.senha = senha;
@@ -88,6 +95,7 @@ public class UsuarioMedico {
         this.nomeImagem = nomeImagem;
         this.datanasc = datanasc;
         this.nomeImagem = nomeImagem;
+        this.crm = crm;
     }
     @Exclude
     public byte[] getImagemLocal() {
