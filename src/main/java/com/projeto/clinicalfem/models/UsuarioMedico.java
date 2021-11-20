@@ -8,6 +8,18 @@ public class UsuarioMedico {
     public String getNome() {
         return nome;
     }
+    public boolean isAdm() {
+        return adm;
+    }
+    public void setAdm(boolean adm) {
+        this.adm = adm;
+    }
+    public String getNomeImagem() {
+        return nomeImagem;
+    }
+    public void setNomeImagem(String nomeImagem) {
+        this.nomeImagem = nomeImagem;
+    }
     public void setNome(String nome) {
         this.nome = nome;
     }
@@ -60,17 +72,22 @@ public class UsuarioMedico {
     private String tipo;
     private String imagem;
     private String datanasc;
+    private String nomeImagem;
+    private boolean adm;
 
     public UsuarioMedico(){}
-    public UsuarioMedico(String nome, String email, String senha, String id, String numero, String tipo, String datanasc, String imagem){
+    public UsuarioMedico(String id, String nome, String imagem, String tipo, boolean adm, String datanasc, String email, String senha,  String numero, String nomeImagem){
         this.nome = nome;
         this.email = email;
         this.senha = senha;
         this.id = id;
         this.numero = numero;
         this.tipo = tipo;
+        this.adm = adm;
         this.imagem = imagem;
+        this.nomeImagem = nomeImagem;
         this.datanasc = datanasc;
+        this.nomeImagem = nomeImagem;
     }
     @Exclude
     public byte[] getImagemLocal() {
@@ -82,5 +99,11 @@ public class UsuarioMedico {
     public void setImagemLocal(byte[] imagem) {
         String encodedString = Base64.getEncoder().encodeToString(imagem);
         this.imagem = encodedString;
+    }
+    @Override
+    public String toString() {
+        return "UsuariosSpring [adm=" + adm + ", datanasc=" + datanasc + ", tipo="  + ", email=" + email 
+                + ", id=" + id + ", imagem=" + imagem + ", nome=" + nome
+                + ", numero=" + numero + ", senha=" + senha + "]";
     }
 }

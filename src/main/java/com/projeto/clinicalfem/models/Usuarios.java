@@ -68,6 +68,7 @@ public class Usuarios {
         this.imagem = imagem;
         this.nomeImagem = nomeImagem;
         this.datanasc = datanasc;
+        this.nomeImagem = nomeImagem;
     }
   
     

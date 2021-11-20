@@ -1,22 +1,28 @@
 package com.projeto.clinicalfem.controllers;
 
+import java.io.File;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.security.Principal;
 import java.util.concurrent.ExecutionException;
 import java.util.concurrent.TimeUnit;
 
 import com.projeto.clinicalfem.enums.Perfil;
 import com.projeto.clinicalfem.models.CropImageToSquare;
 import com.projeto.clinicalfem.models.UsuarioMedico;
+import com.projeto.clinicalfem.models.UsuarioMedicoParse;
+import com.projeto.clinicalfem.models.UsuarioMedicoSpring;
 import com.projeto.clinicalfem.service.UsuarioMedicoService;
 
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
@@ -26,38 +32,65 @@ import net.coobird.thumbnailator.Thumbnails;
 @RestController
 @RequestMapping("/")
 public class UsuarioMedicoController {
+
+    private static String caminhoImagens = "src/main/resources/static/imagens/";
+
     UsuarioMedicoService service;
     public UsuarioMedicoController(UsuarioMedicoService serv) {
         service = serv;
     }
 
-    @GetMapping("/cadastroMed")
+    @GetMapping("/medico/dados")
+    public ModelAndView dados(Principal principal) throws InterruptedException, ExecutionException {
+    	ModelAndView mv = new ModelAndView("detalhesMedico");
+    	
+    	 UsuarioMedicoSpring usuariomedico = UsuarioMedicoParse.toSpring(service.getMembroByEmail(principal.getName()));
+         
+    	  mv.addObject("usuariomedico", usuariomedico);
+    	return mv;
+    }
+        
+    @GetMapping("/medico/mostrarImagem/{imagem}")
+	@ResponseBody
+	public byte[] retornarImagem(@PathVariable("imagem") String imagem) throws IOException {
+//		System.out.println(imagem);
+		File imagemArquivo = new File(caminhoImagens + imagem);
+		if (imagem != null || imagem.trim().length() > 0) {
+			System.out.println("No IF");
+			return Files.readAllBytes(imagemArquivo.toPath());
+		}
+		return null;
+	}
+        
+
+
+    @GetMapping("/cadastroMedico")
     public ModelAndView cadastrar() {
-        ModelAndView modelo = new ModelAndView("usuariomedicoform");
+        ModelAndView modelo = new ModelAndView("usuariomedicoform.html");
         modelo.addObject("usuariomedico", new UsuarioMedico());
         
         return modelo;
     }
-
-    
-    @PostMapping("/cadastroMed")
-    public ModelAndView cadastrar(@RequestParam("file") MultipartFile file, UsuarioMedico medico)
+   
+   
+    @PostMapping("/cadastroMedico")
+    public ModelAndView cadastrar(@RequestParam("file") MultipartFile file, UsuarioMedico usu)
             throws InterruptedException, ExecutionException {
         ModelAndView modelo = new ModelAndView("redirect:/medico/login");
         
-        medico.setTipo(Perfil.MEDICO.toString());
+        usu.setTipo(Perfil.MEDICO.toString());
         
 
         BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
-        String senhaEncriptada = encoder.encode(medico.getSenha());
-        medico.setSenha(senhaEncriptada);
+        String senhaEncriptada = encoder.encode(usu.getSenha());
+        usu.setSenha(senhaEncriptada);
 
         if (!file.isEmpty()) {
             try {
                 // tranforma a imagem em Bytes
                 byte[] bytes = file.getBytes();
                 //diz o caminho pra onde a imagem vai ser armazenada
-                Path path = Paths.get("src/main/resources/static/imagens/" + file.getOriginalFilename());
+                Path path = Paths.get(caminhoImagens+String.valueOf(usu.getId())+file.getOriginalFilename());
                 //cria o arquivo na pasta solicitada
                 Files.write(path, bytes);
 
@@ -66,21 +99,22 @@ public class UsuarioMedicoController {
 
                 //corta a imagem em um quadrado
                 CropImageToSquare.crop(path);
-
-                medico.setImagemLocal(Files.readAllBytes(path));
-                Files.delete(path);
+               
+                usu.setImagemLocal(Files.readAllBytes(path));
+                usu.setNomeImagem(String.valueOf(usu.getId())+file.getOriginalFilename());
+                
 
             } catch (IOException e) {
                 e.printStackTrace();
             }
         }
 
-        TimeUnit.SECONDS.sleep(2);
+        TimeUnit.SECONDS.sleep(3);
         
-        if (!service.cadastrar(medico)) {
+        if (!service.cadastrar(usu)) {
             modelo.setViewName("usuariomedicoform");
-            medico.setId(null);
-            modelo.addObject("usuariomedico", medico);
+            usu.setId(null);
+            modelo.addObject("usuariomedico", usu);
         }
 
         return modelo;

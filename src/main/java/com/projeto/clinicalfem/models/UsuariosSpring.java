@@ -126,7 +126,7 @@ public class UsuariosSpring {
 
     @Override
     public String toString() {
-        return "UsuariosSpring [adm=" + adm + ", datanasc=" + datanasc + ", tipo="  + ", email=" + email 
+        return "UsuariosSpring [adm=" + adm + ", datanasc=" + datanasc + ", tipo=" + tipo + ", email=" + email 
                 + ", id=" + id + ", imagem=" + Arrays.toString(imagem) + ", nome=" + nome
                 + ", numero=" + numero + ", senha=" + senha + "]";
     }
