@@ -17,9 +17,18 @@ public class UsuariosSpring {
     private byte[] imagem;
     private LocalDate datanasc;
     private String nomeImagem;
+    private String cpf;
 
     public String getNomeImagem() {
         return nomeImagem;
+    }
+
+    public String getCpf() {
+        return cpf;
+    }
+
+    public void setCpf(String cpf) {
+        this.cpf = cpf;
     }
 
     public void setNomeImagem(String nomeImagem) {
@@ -47,7 +56,7 @@ public class UsuariosSpring {
     }
 
     
-    public UsuariosSpring(String id, String nome, String imagem, String tipo, boolean adm, String datanasc, String email, String senha, String numero, String nomeImagem){
+    public UsuariosSpring(String id, String nome, String imagem, String tipo, boolean adm, String datanasc, String email, String senha, String numero, String nomeImagem, String cpf){
         this.nome = nome;
         this.email = email;
         this.senha = senha;
@@ -58,6 +67,7 @@ public class UsuariosSpring {
         setImagemLocal(imagem);
         setDataNascLocal(datanasc);
         this.nomeImagem = nomeImagem;
+        this.setCpf(cpf);
     }
   
 

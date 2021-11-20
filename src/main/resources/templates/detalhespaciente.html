@@ -62,22 +62,27 @@
         </div>  -->
 		
         <div class="card-body">
-         <p class="card-text" id="fotoDePerfil"><td><img th:src="@{/paciente/mostrarImagem/{imagem}(imagem=${usuariopaciente.nomeImagem})}" alt="" width="128" height="128" class="circle responsive-img"/></td></p>
-		  <p class="card-text" >Nome: <span th:text="${usuariopaciente.nome}"></span></p> 
-		  <p class="card-text" >Numero: <span th:text="${usuariopaciente.numero}"></span></p>
-          <!-- <p class="card-text" >Data de Nascimento: <span th:text="${#temporals.format(usuario.datanasc,'dd/MM/yyyy')}"></span></p> -->
-          <p class="card-text" >Email: <span th:text="${usuariopaciente.email}"></span></p>
-		  
+        <p class="card-text" id="fotoDePerfil"><td><img th:src="@{/paciente/mostrarImagem/{imagem}(imagem=${usuariopaciente.nomeImagem})}" alt="" width="128" height="128" class="circle responsive-img"/></td></p>
+		<p class="card-text" >Nome: <span th:text="${usuariopaciente.nome}"></span></p> 
+		<p class="card-text" >Numero: <span th:text="${usuariopaciente.numero}"></span></p>
+        <!-- <p class="card-text" >Data de Nascimento: <span th:text="${#temporals.format(usuario.datanasc,'dd/MM/yyyy')}"></span></p> -->
+    	<p class="card-text" >Email: <span th:text="${usuariopaciente.email}"></span></p>
+		<p class="card-text">Data de Nascimento: <span th:text="${cadpaciente.datanasc}"></span></p>
+		<p class="card-text">Telefone: <span th:text="${cadpaciente.telefone}"></span></p>
+		<p class="card-text">CPF: <span th:text="${cadpaciente.cpf}"></span></p>
+		<p class="card-text">RG: <span th:text="${cadpaciente.rg}"></span></p>
+		
+		
           <!-- <a th:href="@{/usuario/{id}/editar (id=${usuariopaciente.id})}" class="btn btn-warning">Editar</a>
                 <a th:href="@{/usuario/{id}/excluir (id=${usuariopaciente.id})}" class="btn btn-danger" onclick="return confirm('Tem certeza de que deseja excluí-lo?')">Excluir</a> -->
         </div>
       </div>
 	</div>
 </div></main>
- <footer>
+ <!-- <footer>
         <p>Site criado por Daiana Lins e Letícia Almeida</p>
     </footer>
-
+-->
 	<!--JavaScript at end of body for optimized loading-->
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js"></script>
 	<script type="text/javascript" src="/materialize/js/materialize.min.js"></script>

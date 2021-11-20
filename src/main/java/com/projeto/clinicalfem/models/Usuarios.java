@@ -18,9 +18,18 @@ public class Usuarios {
     private String datanasc;
     private boolean adm;
     private String nomeImagem;
-	
+	private String cpf;
+
     public String getNomeImagem() {
         return nomeImagem;
+    }
+
+    public String getCpf() {
+        return cpf;
+    }
+
+    public void setCpf(String cpf) {
+        this.cpf = cpf;
     }
 
     public void setNomeImagem(String nomeImagem) {
@@ -57,7 +66,7 @@ public class Usuarios {
         this.imagem = imagem;
     }
    
-    public Usuarios(String id, String nome, String imagem, String tipo, boolean adm, String datanasc, String email, String senha,  String numero, String nomeImagem){
+    public Usuarios(String id, String nome, String imagem, String tipo, boolean adm, String datanasc, String email, String senha,  String numero, String nomeImagem, String cpf){
         this.nome = nome;
         this.email = email;
         this.senha = senha;
@@ -69,6 +78,7 @@ public class Usuarios {
         this.nomeImagem = nomeImagem;
         this.datanasc = datanasc;
         this.nomeImagem = nomeImagem;
+        this.setCpf(cpf);
     }
   
     

@@ -11,10 +11,12 @@ import java.util.concurrent.ExecutionException;
 import java.util.concurrent.TimeUnit;
 
 import com.projeto.clinicalfem.enums.Perfil;
+import com.projeto.clinicalfem.models.CadPaciente;
 import com.projeto.clinicalfem.models.CropImageToSquare;
 import com.projeto.clinicalfem.models.UsuarioParse;
 import com.projeto.clinicalfem.models.Usuarios;
 import com.projeto.clinicalfem.models.UsuariosSpring;
+import com.projeto.clinicalfem.service.CadPacienteService;
 import com.projeto.clinicalfem.service.UsuarioPacienteService;
 
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
@@ -37,17 +39,21 @@ public class UsuarioPacienteController{
     private static String caminhoImagens = "src/main/resources/static/imagens/";
    
     UsuarioPacienteService service;
-    public UsuarioPacienteController(UsuarioPacienteService serv){
+    CadPacienteService servPaciente;
+    public UsuarioPacienteController(UsuarioPacienteService serv, CadPacienteService servp){
         service = serv;
+        servPaciente = servp; 
     }
 
     @GetMapping("/paciente/dados")
     public ModelAndView dados(Principal principal) throws InterruptedException, ExecutionException {
-    	ModelAndView mv = new ModelAndView("detalhesPaciente");
     	
-    	 UsuariosSpring usuariopaciente = UsuarioParse.toSpring(service.getMembroByEmail(principal.getName()));
-         
-    	  mv.addObject("usuariopaciente", usuariopaciente);
+        UsuariosSpring usuariopaciente = UsuarioParse.toSpring(service.getMembroByEmail(principal.getName()));
+        CadPaciente cadpaciente = servPaciente.getCadPacienteByCPF(usuariopaciente.getCpf());
+        ModelAndView mv = new ModelAndView("detalhesPaciente");
+    	
+        mv.addObject("cadpaciente", cadpaciente);
+    	mv.addObject("usuariopaciente", usuariopaciente);
     	return mv;
     }
         

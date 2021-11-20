@@ -21,7 +21,7 @@
 		}
 	</style>
 
-	<title>Cadastro do Atendente</title>
+	<title>Cadastro do Paciente</title>
 </head>
 
 <body>
@@ -53,10 +53,10 @@
         <input type="date" name="data" id="data" th:field="*{datanasc}">
 		</div>
 		
-		<div class="input-field col s5">
-			Numero: <input type="text" th:field="*{numero}" required />
+		<div class="input-field col s7">
+		CPF: <input type="text" th:field="*{cpf}" required />
 		</div>
-
+     	Numero: <input type="text" th:field="*{numero}" required />
 		<br><br>
 		    
 			<label for="foto">Foto de Perfil:</label>
