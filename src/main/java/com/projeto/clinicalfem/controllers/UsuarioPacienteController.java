@@ -93,7 +93,7 @@ public class UsuarioPacienteController{
     public ModelAndView getMedicos() throws InterruptedException, ExecutionException{
         ModelAndView modelo = new ModelAndView("medicosclinica.html");
         List<UsuarioMedico> usuariomedico = serviceM.getAllUsuarios();
-        /** List<CadMedico> cadmedico =  servMedico.getCadMedicoByCRM(usuariomedico.getCrm());
+        /**CadMedico cadmedico =  servMedico.getCadMedicoByCRM(cadmedico.getCrm());
         modelo.addObject("cadmedico", cadmedico);
         **/
         modelo.addObject("usuariomedico", usuariomedico);

@@ -6,6 +6,7 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.security.Principal;
+import java.util.List;
 import java.util.concurrent.ExecutionException;
 import java.util.concurrent.TimeUnit;
 
@@ -15,8 +16,11 @@ import com.projeto.clinicalfem.models.CropImageToSquare;
 import com.projeto.clinicalfem.models.UsuarioMedico;
 import com.projeto.clinicalfem.models.UsuarioMedicoParse;
 import com.projeto.clinicalfem.models.UsuarioMedicoSpring;
+import com.projeto.clinicalfem.models.Usuarios;
 import com.projeto.clinicalfem.service.CadMedicoService;
+import com.projeto.clinicalfem.service.CadPacienteService;
 import com.projeto.clinicalfem.service.UsuarioMedicoService;
+import com.projeto.clinicalfem.service.UsuarioPacienteService;
 
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -39,19 +43,22 @@ public class UsuarioMedicoController {
 
     UsuarioMedicoService service;
     CadMedicoService servMedico;
-    public UsuarioMedicoController(UsuarioMedicoService serv, CadMedicoService servm) {
+    UsuarioPacienteService servicep;
+    public UsuarioMedicoController(UsuarioMedicoService serv, UsuarioPacienteService servp ,CadMedicoService servm) {
         service = serv;
         servMedico = servm;
+        servicep = servp;
     }
 
     @GetMapping("/medico/pacientesclin")
-    public ModelAndView verPacientes() {
+    public ModelAndView verPacientes() throws InterruptedException, ExecutionException {
         ModelAndView modelo = new ModelAndView("pacientesclinica.html");
-        
+        List<Usuarios> usuariopaciente = servicep.getAllUsuarios();
+        modelo.addObject("usuariopaciente", usuariopaciente);
         return modelo;
     }
     @GetMapping("/medico/verificarConsultas")
-    public ModelAndView consultas() {
+    public ModelAndView consultas(){
         ModelAndView modelo = new ModelAndView("verificarcons.html");
         
         return modelo;
