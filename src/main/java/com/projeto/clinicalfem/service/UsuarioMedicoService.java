@@ -67,7 +67,7 @@ public class UsuarioMedicoService {
     public ArrayList<UsuarioMedico> getAllUsuarios() throws InterruptedException, ExecutionException {
         //gera um ArrayList para Armazenar todos os membros resgatados
         ArrayList<UsuarioMedico> lista = new ArrayList<>();
-
+        
         //busca no Banco de dados todos os 'documentos' da coleção 'Membros' e põe em ordem alfabética
         ApiFuture<QuerySnapshot> future = conex.collection("UsuarioMedicos").orderBy("nome").get();
 

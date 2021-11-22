@@ -56,11 +56,15 @@
     <h2>PACIENTES</h2>
 
 <main class="cards">
-    <div class="card" style="width: 18rem;">
-        <img class="card-img-top" src=".../100px180/" alt="Imagem de capa do card">
+    <div class="card" style="width: 18rem;" th:each="usuariopaciente : ${usuariopaciente}">
+        <img class="card-img-top" src="@{/paciente/mostrarImagem/{imagem}(imagem=${usuariopaciente.nomeImagem})}" alt="Imagem de capa do card">
         <div class="card-body">
           <h5 class="card-title">Título do card</h5>
-          <p class="card-text">paciente</p>
+          <p class="card-text" >Nome: <span th:text="${usuariopaciente.nome}"></span></p> 
+		<p class="card-text" >Numero: <span th:text="${usuariopaciente.numero}"></span></p>
+        <!-- <p class="card-text" >Data de Nascimento: <span th:text="${#temporals.format(usuario.datanasc,'dd/MM/yyyy')}"></span></p> -->
+    	<p class="card-text" >Email: <span th:text="${usuariopaciente.email}"></span></p>
+		<p class="card-text">Data de Nascimento: <span th:text="${usuariopaciente.datanasc}"></span></p>
           <a href="#" class="btn btn-primary #ef9a9a red lighten-3">Histórico</a>
         </div>
       </div>	
