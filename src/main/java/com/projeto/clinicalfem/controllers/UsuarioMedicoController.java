@@ -44,6 +44,20 @@ public class UsuarioMedicoController {
         servMedico = servm;
     }
 
+    @GetMapping("/medico/pacientesclin")
+    public ModelAndView verPacientes() {
+        ModelAndView modelo = new ModelAndView("pacientesclinica.html");
+        
+        return modelo;
+    }
+    @GetMapping("/medico/verificarConsultas")
+    public ModelAndView consultas() {
+        ModelAndView modelo = new ModelAndView("verificarcons.html");
+        
+        return modelo;
+    }
+
+
     @GetMapping("/medico/dados")
     public ModelAndView dados(Principal principal) throws InterruptedException, ExecutionException {
     	 UsuarioMedicoSpring usuariomedico = UsuarioMedicoParse.toSpring(service.getMembroByEmail(principal.getName()));

@@ -11,11 +11,7 @@ import org.springframework.web.servlet.ModelAndView;
 @RequestMapping("/")
 public class TelaGeralController {
 
-    @GetMapping("/")
-    public ModelAndView home() {
-        ModelAndView modelo = new ModelAndView("redirect:/TelaInicial");
-        return modelo;
-    }
+   
 
     @GetMapping("/atendente/tela")
     public ModelAndView index(Principal principal) {

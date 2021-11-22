@@ -70,9 +70,9 @@ public class UsuarioPacienteController{
 	}
         
 
-    @GetMapping("/calendario")
-    public ModelAndView calendario() {
-        ModelAndView modelo = new ModelAndView("calendario.html");
+    @GetMapping("/paciente/medicosclin")
+    public ModelAndView verMedicos() {
+        ModelAndView modelo = new ModelAndView("medicosclinica.html");
         
         return modelo;
     }

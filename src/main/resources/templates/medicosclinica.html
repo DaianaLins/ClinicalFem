@@ -1,0 +1,83 @@
+
+<!DOCTYPE html>
+
+<html xmlns:th="http://thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	lang="pt-br">
+	<!-- IMPORTAÇÕES DO MATERIALIZER -->
+<!-- SITE: https://materializecss.com/getting-started.html -->
+<!--Import Google Icon Font-->
+
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons"
+	rel="stylesheet" />
+<!--Import materialize.css-->
+<link type="text/css" rel="stylesheet"
+	href="/materialize/css/materialize.min.css" media="screen,projection" />
+
+
+	
+<!--Let browser know website is optimized for mobile-->
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta charset="UTF-8">
+<link rel="stylesheet" href="/materialize/style/detalhesPacientecomfoto.css"/>
+
+<head>
+<style>
+
+	.card{
+		text-align: center;
+		position: center;
+	}
+
+	p.card-text{
+	  font-weight: bold;
+	  text-align: center;
+	}
+	p.card-text > span{
+	  font-weight: normal;
+	}
+	#fotoDePerfil{
+	  border-radius: 50%;
+	  
+	}
+	</style>
+<title>Detalhes do Medico</title>
+</head>
+<body>
+
+	<header>
+		<h1><img class="responsive-img" src="/materialize/style/logos/logos/LOGOBRANCA.png" style="margin:-60px 0px; width: 25%;"></h1>
+</header>
+    <nav>
+       
+	   <a href="/paciente/telaPaciente" class="waves-effect waves-light btn #ef9a9a red lighten-3"><i class="material-icons left" style="margin-top:-10px" >undo</i>Retornar</a>
+
+    </nav>
+    <h2>MEDICOS DISPONÍVEIS</h2>
+
+<main class="cards">
+    <div class="card" style="width: 18rem;">
+        <img class="card-img-top" src=".../100px180/" alt="Imagem de capa do card">
+        <div class="card-body">
+          <h5 class="card-title">Título do card</h5>
+          <p class="card-text">médico</p>
+          <a href="#" class="btn btn-primary #ef9a9a red lighten-3">Agendar</a>
+        </div>
+      </div>	
+</main>
+ 
+<!-- <footer>
+        <p>Site criado por Daiana Lins e Letícia Almeida</p>
+    </footer> -->
+	<!--JavaScript at end of body for optimized loading-->
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js"></script>
+	<script type="text/javascript" src="/materialize/js/materialize.min.js"></script>
+	   
+	
+
+	<!--JavaScript at end of body for optimized loading-->
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js"></script>
+	<script type="text/javascript" src="/materialize/js/materialize.min.js"></script>
+</body>
+
+</html>
