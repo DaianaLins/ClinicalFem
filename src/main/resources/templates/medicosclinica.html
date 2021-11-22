@@ -56,11 +56,14 @@
     <h2>MEDICOS DISPONÍVEIS</h2>
 
 <main class="cards">
-    <div class="card" style="width: 18rem;">
-        <img class="card-img-top" src=".../100px180/" alt="Imagem de capa do card">
+    <div class="card" style="width: 18rem;" th:each="usuariomedico : ${usuariomedico}">
+        <img class="card-img-top" src="@{/paciente/mostrarImagem/{imagem}(imagem=${usuariomedico.nomeImagem})}" alt="Imagem de capa do card">
         <div class="card-body">
-          <h5 class="card-title">Título do card</h5>
-          <p class="card-text">médico</p>
+          
+          <p class="card-text"><span th:text="${usuariomedico.nome}"></span></p>
+		  <p class="card-text" >Numero: <span th:text="${usuariomedico.numero}"></span></p>
+		  <p class="card-text" >CRM: <span th:text="${usuariomedico.crm}"></span></p>
+		  <!-- <p class="card-text">Especialidade: <span th:text="${cadmedico.especialidade}"></span></p> -->
           <a href="#" class="btn btn-primary #ef9a9a red lighten-3">Agendar</a>
         </div>
       </div>	
