@@ -48,6 +48,22 @@ public class UsuarioMedicoService {
         return true;
     }
 
+    public UsuarioMedico getMedicoByCRM(String crm) throws InterruptedException, ExecutionException{
+        UsuarioMedico usuariomedico = new UsuarioMedico();
+        
+        CollectionReference usuariomedicos = (CollectionReference) conex.collection("CadMedicos");
+
+        Query query = (Query) usuariomedicos.whereEqualTo("crm", crm);
+        List<QueryDocumentSnapshot> querySnapshot = query.get().get().getDocuments();
+
+
+        for (DocumentSnapshot document : querySnapshot){
+            usuariomedico = document.toObject(UsuarioMedico.class);
+        }
+
+        return  usuariomedico;
+    }
+
     public ArrayList<UsuarioMedico> getAllUsuarios() throws InterruptedException, ExecutionException {
         //gera um ArrayList para Armazenar todos os membros resgatados
         ArrayList<UsuarioMedico> lista = new ArrayList<>();

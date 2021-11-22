@@ -7,16 +7,21 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.security.Principal;
+import java.util.List;
 import java.util.concurrent.ExecutionException;
 import java.util.concurrent.TimeUnit;
 
 import com.projeto.clinicalfem.enums.Perfil;
+import com.projeto.clinicalfem.models.CadMedico;
 import com.projeto.clinicalfem.models.CadPaciente;
 import com.projeto.clinicalfem.models.CropImageToSquare;
+import com.projeto.clinicalfem.models.UsuarioMedico;
 import com.projeto.clinicalfem.models.UsuarioParse;
 import com.projeto.clinicalfem.models.Usuarios;
 import com.projeto.clinicalfem.models.UsuariosSpring;
+import com.projeto.clinicalfem.service.CadMedicoService;
 import com.projeto.clinicalfem.service.CadPacienteService;
+import com.projeto.clinicalfem.service.UsuarioMedicoService;
 import com.projeto.clinicalfem.service.UsuarioPacienteService;
 
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
@@ -40,9 +45,13 @@ public class UsuarioPacienteController{
    
     UsuarioPacienteService service;
     CadPacienteService servPaciente;
-    public UsuarioPacienteController(UsuarioPacienteService serv, CadPacienteService servp){
+    UsuarioMedicoService serviceM;
+    CadMedicoService servMedico;
+    public UsuarioPacienteController(UsuarioPacienteService serv, CadPacienteService servp, UsuarioMedicoService servmed,  CadMedicoService serv2){
         service = serv;
         servPaciente = servp; 
+        serviceM = servmed;
+        servMedico = serv2;
     }
 
     @GetMapping("/paciente/dados")
@@ -68,14 +77,29 @@ public class UsuarioPacienteController{
 		}
 		return null;
 	}
-        
-
-    @GetMapping("/paciente/medicosclin")
-    public ModelAndView verMedicos() {
+    @GetMapping("/paciente/mostrarImagemMed/{imagem}")
+	@ResponseBody
+	public byte[] retornarImagemMed(@PathVariable("imagem") String imagem) throws IOException {
+//		System.out.println(imagem);
+		File imagemArquivo = new File(caminhoImagens + imagem);
+		if (imagem != null || imagem.trim().length() > 0) {
+			System.out.println("No IF");
+			return Files.readAllBytes(imagemArquivo.toPath());
+		}
+		return null;
+	}
+            
+    @GetMapping("/paciente/medicoclin")
+    public ModelAndView getMedicos() throws InterruptedException, ExecutionException{
         ModelAndView modelo = new ModelAndView("medicosclinica.html");
-        
+        List<UsuarioMedico> usuariomedico = serviceM.getAllUsuarios();
+        /** List<CadMedico> cadmedico =  servMedico.getCadMedicoByCRM(usuariomedico.getCrm());
+        modelo.addObject("cadmedico", cadmedico);
+        **/
+        modelo.addObject("usuariomedico", usuariomedico);
         return modelo;
     }
+
 
     @GetMapping("/cadastroPaciente")
     public ModelAndView cadastrar() {
