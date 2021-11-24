@@ -40,23 +40,14 @@
     <!-- <th:block th:include="mensagemValidacao"></th:block> -->
 	<form class="container" method="post" th:object="${agendamento}">
 		<!--  	<input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}"> -->
-	
+			<select type="hidden" name="pagamento" th:field="*{pagamento}" value="Pendente"/>
 			<input type="hidden" name="id" th:field="*{codigo}">
 	
-			Nome Completo: <input  type="text" name="nome" th:field="*{nome}" required />    	
+			Nome Completo: <input  type="text" name="nome" th:value="${paciente.nome}" required />    	
+			CPF do Paciente: <input type="text" th:value="${paciente.cpf}" name="cpf" required />
+			Medico: <input type="text" th:value="${medico.nome}" name="medico" required />
+			Serviço: <input type="text" th:value="${medico.especialidade}" name="servico" required />
 			
-		<!--Medico:<select name="medico" th:field="*{medico}"  required >
-				<option value=""> -- </option>
-				 <option th:each="cadm : ${cadmedicos}" th:value="${cadm.nome}" th:text="${cadm.nome}"  > </option> 
-				
-		  </select>
-	-->	
-			CPF: <input type="text" value="" name="cpf" th:field="*{cpf}" required />
-		<!--	Servico: <select  value="" name="servico" th:field="*{servico}" required >
-				<option value=""> -- </option>
-				 <option th:each="cadm : ${cadmedicos}" th:value="${cadm.especialidade}" th:text="${cadm.especialidade}"  > </option> 
-				
-			</select>-->
 			<div class="row">
 			
 			

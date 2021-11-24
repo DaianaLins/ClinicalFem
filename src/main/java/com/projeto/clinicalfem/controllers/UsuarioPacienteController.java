@@ -115,12 +115,15 @@ public class UsuarioPacienteController{
    
 
     @GetMapping("/paciente/agendarConsulta/{id}")
-    public ModelAndView agendar(@PathVariable String id) throws InterruptedException, ExecutionException {
+    public ModelAndView agendar(@PathVariable String id, Principal principal) throws InterruptedException, ExecutionException {
         List<CadMedico> cadmedico = servMedico.getAllCadMedicos() ;
-        CadMedico medico = servMedico.getCadMedicoByCod(id);
+        UsuariosSpring usuariopaciente = UsuarioParse.toSpring(service.getMembroByEmail(principal.getName()));
+        CadMedico medico = servMedico.getCadMedicoByCRM(id);
+        System.out.print(medico.getCod());
         ModelAndView modelo = new ModelAndView("formAgendamentoP");
-        modelo.addObject("cadm", cadmedico);
+        modelo.addObject("cadmedicos", cadmedico);
         modelo.addObject("medico", medico);
+        modelo.addObject("paciente", usuariopaciente);
         modelo.addObject("agendamento", new Agendamento());
         return modelo;
     }
@@ -173,6 +176,74 @@ public class UsuarioPacienteController{
         if (!service.cadastrar(usu)) {
             modelo.setViewName("usuariopacienteform");
             usu.setId(null);
+            modelo.addObject("usuariopaciente", usu);
+        }
+
+        return modelo;
+    }
+    @GetMapping("/paciente/{id}/editar")
+    public ModelAndView editar(@PathVariable String id, Principal principal) throws InterruptedException, ExecutionException {
+        ModelAndView modelo = new ModelAndView("usuariopacienteeditar");
+        CadPaciente cadpaciente = servPaciente.getCadPacienteById(id);
+        Usuarios usuariopaciente = service.getMembroByEmail(cadpaciente.getEmail());
+        
+        
+        modelo.addObject("usuariopaciente", usuariopaciente);
+        
+        modelo.addObject("cadpaciente", cadpaciente);
+
+        return modelo;
+    }
+
+    @PostMapping("/paciente/{id}/editar")
+    public ModelAndView editar(@RequestParam("file") MultipartFile file, Usuarios usu)
+            throws InterruptedException, ExecutionException {
+        ModelAndView modelo = new ModelAndView("redirect:/paciente/dados");
+
+        usu.setTipo(Perfil.PACIENTE.toString());
+
+        if(!usu.getSenha().isEmpty()){
+            BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
+            String senhaEncriptada = encoder.encode(usu.getSenha());
+            usu.setSenha(senhaEncriptada);
+        }else{
+            usu.setSenha(service.getMembroById(usu.getId()).getSenha());
+        }
+
+        if (!file.isEmpty()) {
+            try {
+                // Get the file and save it somewhere
+                byte[] bytes = file.getBytes();
+                Path path = Paths.get("src/main/resources/static/imagens/" + file.getOriginalFilename());
+                Files.write(path, bytes);
+
+                //diminui o tamanho máximo da imagem pra 300x300
+                Thumbnails.of(path.toFile()).size(300, 300).allowOverwrite(true).toFile(path.toFile());
+
+                //corta a imagem em um quadrado
+                CropImageToSquare.crop(path);
+
+                usu.setImagemLocal(Files.readAllBytes(path));
+                
+
+                path = Paths.get("src/main/resources/static/imagens/nomeImagem");
+                if (path.toFile().exists()) {
+                    
+                }
+                if (usu.getImagem() != null) {
+                    Files.write(path, usu.getImagemLocal());
+                }
+
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+
+            TimeUnit.SECONDS.sleep(2);
+        }else{
+            usu.setImagem(service.getMembroById(usu.getId()).getImagem());
+        }
+        if (!service.editar(usu)) {
+            modelo.setViewName("usuariopacienteeditar");
             modelo.addObject("usuariopaciente", usu);
         }
 

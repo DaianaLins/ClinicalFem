@@ -66,7 +66,7 @@
 		  <p class="card-text" >Numero: <span th:text="${usuariomedico.numero}"></span></p>
 		  <p class="card-text" >CRM: <span th:text="${usuariomedico.crm}"></span></p>
 		  <!--<p class="card-text" >Especialidade: <span th:text="${usuariomedico.especialidade}"></span></p> -->
-          <a th:href="@{/paciente/agendarConsulta/{id} (id = ${usuariomedico.id})} " class="btn btn-primary #ef9a9a red lighten-3">Agendar</a>
+          <a th:href="@{/paciente/agendarConsulta/{id} (id = ${usuariomedico.crm})} " class="btn btn-primary #ef9a9a red lighten-3">Agendar</a>
         </div>
       </div>	
 </main>
