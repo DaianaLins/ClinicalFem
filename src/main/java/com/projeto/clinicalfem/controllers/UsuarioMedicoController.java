@@ -64,13 +64,13 @@ public class UsuarioMedicoController {
         modelo.addObject("usuariopaciente", usuariopaciente);
         return modelo;
     }
-    @GetMapping("/medico/{codigo}/verificarConsultas")
-    public ModelAndView consultas(@PathVariable String codigo) throws InterruptedException, ExecutionException{
-        Agendamento agendamento = servAgenda.getAgendamentoByCodigo(codigo);
-        CadPaciente cadpaciente = servPaci.getCadPacienteById(agendamento.getNome());
+    @GetMapping("/medico/verificarConsultas")
+    public ModelAndView consultas() throws InterruptedException, ExecutionException{
+        List<Agendamento> agendamento = servAgenda.getAllAgendamentos();
+        List<UsuarioMedico> usuariomedico = service.getAllUsuarios();
         ModelAndView modelo = new ModelAndView("verificarcons.html");
         modelo.addObject("agendamento", agendamento);
-        modelo.addObject("paciente", cadpaciente);
+        modelo.addObject("usuariomedico", usuariomedico);
         return modelo;
     }
 

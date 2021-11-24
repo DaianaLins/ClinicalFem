@@ -39,22 +39,22 @@
 		<thead>
 			<tr>
 				<th>Paciente</th>
-				<th>Serviço</th>
 				<th>Data</th>
 				<th>Horário</th>
 			</tr>
 		</thead>
 		<tbody>
 
+			<div th:each="usuariomedicos : ${usuariomedico}">
+				<div th:each="agendamentos: ${agendamento}"> 
+					<div th:if = "${agendamentos.medico == usuariomedicos.nome}" > 
+					<td> <span th:text="${agendamentos.nome}"></span></td>
+					<td> <span th:text="${agendamentos.dataC}"></span></td>
+					<td> <span th:text="${agendamentos.horario}"></span></td> 
+					</div>
+				</div>
+			
 
-			<tr th:each="agendamento : ${agendamentos}">
-
-				<td>
-						<a th:href=""><span th:text="${agendamento.nome}"> </span>
-				</a></td>
-				<td><span th:text="${agendamento.servico}"></span></td>
-				<td><span th:text="${agendamento.dataC}"></span></td>
-				<td><span th:text="${agendamento.horario}"></span></td>
 				
 				
 			</tr>
