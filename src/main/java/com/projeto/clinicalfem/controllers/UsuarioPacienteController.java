@@ -114,16 +114,18 @@ public class UsuarioPacienteController{
     }
    
 
-    @GetMapping("/paciente/agendarConsulta")
-    public ModelAndView agendar() throws InterruptedException, ExecutionException {
+    @GetMapping("/paciente/agendarConsulta/{id}")
+    public ModelAndView agendar(@PathVariable String id) throws InterruptedException, ExecutionException {
         List<CadMedico> cadmedico = servMedico.getAllCadMedicos() ;
+        CadMedico medico = servMedico.getCadMedicoByCod(id);
         ModelAndView modelo = new ModelAndView("formAgendamentoP");
         modelo.addObject("cadm", cadmedico);
+        modelo.addObject("medico", medico);
         modelo.addObject("agendamento", new Agendamento());
         return modelo;
     }
 
-    @PostMapping("/paciente/agendarConsulta")
+    @PostMapping("/paciente/agendarConsulta/{id}")
     public ModelAndView agendarpost(Agendamento agendamento) throws InterruptedException, ExecutionException{
             ModelAndView modelo = new ModelAndView("redirect:/paciente/telaPaciente");
             servAgenda.cadastrar(agendamento);
