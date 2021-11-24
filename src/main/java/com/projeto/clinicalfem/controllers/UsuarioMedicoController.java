@@ -155,4 +155,71 @@ public class UsuarioMedicoController {
 
         return modelo;
     }
+    @GetMapping("/medico/{cod}/editar")
+    public ModelAndView editar(@PathVariable String cod, Principal principal) throws InterruptedException, ExecutionException {
+        ModelAndView modelo = new ModelAndView("usuariomedicoeditar");
+        CadMedico cadmedico = servMedico.getCadMedicoByCod(cod);
+        UsuarioMedico usuariomedico = service.getMembroByEmail(principal.getName());
+        
+        System.out.println(cadmedico.getCpf());
+        modelo.addObject("usuariomedico", usuariomedico);
+        
+        modelo.addObject("cadmedico", cadmedico);
+
+        return modelo;
+    }
+
+    @PostMapping("/medico/{cod}/editar")
+    public ModelAndView editar(@RequestParam("file") MultipartFile file, UsuarioMedico usu)
+            throws InterruptedException, ExecutionException {
+        ModelAndView modelo = new ModelAndView("redirect:/medico/dados");
+
+        if(!usu.getSenha().isEmpty()){
+            BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
+            String senhaEncriptada = encoder.encode(usu.getSenha());
+            usu.setSenha(senhaEncriptada);
+        }else{
+            usu.setSenha(service.getMembroById(usu.getId()).getSenha());
+        }
+
+        usu.setTipo(Perfil.MEDICO.toString());
+
+        if (!file.isEmpty()) {
+            try {
+                // tranforma a imagem em Bytes
+                byte[] bytes = file.getBytes();
+                //diz o caminho pra onde a imagem vai ser armazenada
+                Path path = Paths.get(caminhoImagens+String.valueOf(usu.getId())+file.getOriginalFilename());
+                //cria o arquivo na pasta solicitada
+                Files.write(path, bytes);
+
+                //diminui o tamanho máximo da imagem pra 300x300
+                Thumbnails.of(path.toFile()).size(300, 300).allowOverwrite(true).toFile(path.toFile());
+
+                //corta a imagem em um quadrado
+                CropImageToSquare.crop(path);
+               
+                usu.setImagemLocal(Files.readAllBytes(path));
+                usu.setNomeImagem(String.valueOf(usu.getId())+file.getOriginalFilename());
+                
+
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+
+        if (!service.editar(usu)) {
+            modelo.setViewName("usuariomedicoeditar");
+            modelo.addObject("usuariomedico", usu);
+        }
+
+        return modelo;
+    }
+    @GetMapping("/medico/{cod}/excluir")
+    public ModelAndView excluir(@PathVariable String cod) {
+        ModelAndView modelo = new ModelAndView("redirect:/paciente/login");
+        service.apagar(cod);
+        servMedico.deletar(cod);
+        return modelo;
+    }
 }

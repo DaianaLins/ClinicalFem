@@ -41,6 +41,7 @@
 				<th>Paciente</th>
 				<th>Data</th>
 				<th>Horário</th>
+				<th>Deletar</th>
 			</tr>
 		</thead>
 		<tbody>
@@ -50,8 +51,10 @@
 					<div th:if = "${agendamentos.medico == usuariomedicos.nome}" > 
 					<td> <span th:text="${agendamentos.nome}"></span></td>
 					<td> <span th:text="${agendamentos.dataC}"></span></td>
-					<td> <span th:text="${agendamentos.horario}"></span></td> 
-					</div>
+					<td> <span th:text="${agendamentos.horario}"></span></td>
+					<td><a class="waves-effect waves-light " ><i class="material-icons left">delete</i></a></td> 
+				</div>
+					
 				</div>
 			
 
