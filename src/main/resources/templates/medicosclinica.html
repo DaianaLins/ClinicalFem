@@ -59,20 +59,20 @@
 
 <main class="cards"style="padding-left: 5%">
     <div class="card" style="border-radius: 10px; width: 18rem; padding: 10px; margin: 10px; display: inline-block;" th:each="usuariomedico : ${usuariomedico}">
-        <img class="card-img-top" src="@{/medico/mostrarImagem/{imagem}(imagem=${usuariomedico.nomeImagem})}" alt="Imagem de capa do card">
+        <img authorize access="perfil.PACIENTE" class="card-img-top" th:src="@{/medico/mostrarImagem/{imagem}(imagem=${usuariomedico.nomeImagem})}" alt="Imagem de capa do card">
         <div class="card-body">
           
           <p class="card-text"><span th:text="${usuariomedico.nome}"></span></p>
 		  <p class="card-text" >Numero: <span th:text="${usuariomedico.numero}"></span></p>
 		  <p class="card-text" >CRM: <span th:text="${usuariomedico.crm}"></span></p>
-		  <!--<p class="card-text">Especialidade: <span th:text="${usuariomedico.especialidade}"></span></p> -->
+		  <!--<p class="card-text" >Especialidade: <span th:text="${usuariomedico.especialidade}"></span></p> -->
           <a href="/agendarConsulta" class="btn btn-primary #ef9a9a red lighten-3">Agendar</a>
         </div>
       </div>	
 </main>
 </section>  
 <!-- <footer>
-        <p>Site criado por Daiana Lins e Letícia Almeida</p>
+<p>Site criado por Daiana Lins e Letícia Almeida</p>
     </footer> -->
 	<!--JavaScript at end of body for optimized loading-->
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js"></script>
