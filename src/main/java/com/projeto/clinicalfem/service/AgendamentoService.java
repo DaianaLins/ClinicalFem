@@ -53,7 +53,7 @@ public class AgendamentoService {
         return agendamento;
     }
 
-    public Agendamento getAgendamentoByName(String medico) throws InterruptedException, ExecutionException{
+    public Agendamento getAgendamentoByMedico(String medico) throws InterruptedException, ExecutionException{
         Agendamento agendamento = new Agendamento();
         
         CollectionReference agendamentos = (CollectionReference) conex.collection("Agendamentos");

@@ -12,6 +12,7 @@ import java.util.concurrent.ExecutionException;
 import java.util.concurrent.TimeUnit;
 
 import com.projeto.clinicalfem.enums.Perfil;
+import com.projeto.clinicalfem.models.Agendamento;
 import com.projeto.clinicalfem.models.CadMedico;
 import com.projeto.clinicalfem.models.CadPaciente;
 import com.projeto.clinicalfem.models.CropImageToSquare;
@@ -19,6 +20,7 @@ import com.projeto.clinicalfem.models.UsuarioMedico;
 import com.projeto.clinicalfem.models.UsuarioParse;
 import com.projeto.clinicalfem.models.Usuarios;
 import com.projeto.clinicalfem.models.UsuariosSpring;
+import com.projeto.clinicalfem.service.AgendamentoService;
 import com.projeto.clinicalfem.service.CadMedicoService;
 import com.projeto.clinicalfem.service.CadPacienteService;
 import com.projeto.clinicalfem.service.UsuarioMedicoService;
@@ -47,11 +49,13 @@ public class UsuarioPacienteController{
     CadPacienteService servPaciente;
     UsuarioMedicoService serviceM;
     CadMedicoService servMedico;
-    public UsuarioPacienteController(UsuarioPacienteService serv, CadPacienteService servp, UsuarioMedicoService servmed,  CadMedicoService serv2){
+    AgendamentoService servAgenda;
+    public UsuarioPacienteController(UsuarioPacienteService serv, CadPacienteService servp, UsuarioMedicoService servmed,  CadMedicoService serv2,  AgendamentoService servA){
         service = serv;
         servPaciente = servp; 
         serviceM = servmed;
         servMedico = serv2;
+        servAgenda = servA;
     }
 
     @GetMapping("/paciente/dados")
@@ -109,6 +113,22 @@ public class UsuarioPacienteController{
         return modelo;
     }
    
+
+    @GetMapping("/paciente/agendarConsulta")
+    public ModelAndView agendar() throws InterruptedException, ExecutionException {
+        List<CadMedico> cadmedico = servMedico.getAllCadMedicos() ;
+        ModelAndView modelo = new ModelAndView("formAgendamentoP");
+        modelo.addObject("cadmedicos", cadmedico);
+        modelo.addObject("agendamento", new Agendamento());
+        return modelo;
+    }
+
+    @PostMapping("/paciente/agendarConsulta")
+    public ModelAndView agendarpost(Agendamento agendamento) throws InterruptedException, ExecutionException{
+            ModelAndView modelo = new ModelAndView("redirect:/paciente/telaPaciente");
+            servAgenda.cadastrar(agendamento);
+            return modelo;
+    }
    
     @PostMapping("/cadastroPaciente")
     public ModelAndView cadastrar(@RequestParam("file") MultipartFile file, Usuarios usu)

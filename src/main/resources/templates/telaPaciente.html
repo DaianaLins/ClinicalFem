@@ -1,5 +1,7 @@
 <!DOCTYPE html>
-<html lang="pt-br">
+<html xmlns:th="http://thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	lang="pt-br">
 <head>
 	<!-- IMPORTAÇÕES DO MATERIALIZER -->
 <!-- SITE: https://materializecss.com/getting-started.html -->
@@ -36,7 +38,7 @@
            <a href="/paciente/dados" class="waves-effect waves-light btn #e57373 red lighten-2" style="margin: 0 5px;"> DADOS DO PERFIL </a>
        </div>
 
-        <div >
+        <div sec:authorize="hasAuthority('ATENDENTE')" >
              
         	<img class="responsive-img" src="/materialize/style/logos/logos/medico (1).png" style="margin: 0 15px;">
             <a href="/paciente/medicoclin" class="waves-effect waves-light btn #e57373 red lighten-2"  style="margin: 0 12px;"> Médicos </a>
@@ -45,7 +47,7 @@
         
         <div >
             <img class="responsive-img" src="/materialize/style/logos/logos/news.png" style="margin: 0 25px;">
-           <a href="/noticias" class="waves-effect waves-light btn #e57373 red lighten-2" style="margin: 0 25px;"> Notícias </a>
+           <a href="/paciente/noticias" class="waves-effect waves-light btn #e57373 red lighten-2" style="margin: 0 25px;"> Notícias </a>
        </div>
     </section>
     

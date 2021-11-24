@@ -30,12 +30,21 @@
  </style>
 
 <header>
-  <h1><img class="responsive-img" src="materialize/style/logos/logos/LOGOBRANCA.png" style="margin:-60px 0px; width: 25%;"></h1>
+  <h1><img class="responsive-img" src="/materialize/style/logos/logos/LOGOBRANCA.png" style="margin:-60px 0px; width: 25%;"></h1>
 </header>
     <nav>
-    
+    <div th:if= "${usuariopaciente.tipo == 'ATENDENTE'}"> 
        <a href="/atendente/tela" class="waves-effect waves-light btn #ef9a9a red lighten-3 white-text"><i class="material-icons left"style="margin-top:-15px" >home</i>Início</a>
+      
        <a href="/novaNoticia" class="waves-effect waves-light btn #ef9a9a red lighten-3  white-text"><i class="material-icons left"style="margin-top:-15px">add_circle_outline</i>CADASTRAR NOTÍCIA</a> 
+  	</div>
+        <div th:if= "${usuariopaciente.tipo == 'PACIENTE'}"> 
+       <a href="/paciente/telaPaciente" class="waves-effect waves-light btn #ef9a9a red lighten-3 white-text"><i class="material-icons left"style="margin-top:-15px" >home</i>Início</a>
+       </div>
+         <div th:if= "${usuariopaciente.tipo == 'MEDICO'}"> 
+       <a href="/medico/telaMedico" class="waves-effect waves-light btn #ef9a9a red lighten-3 white-text"><i class="material-icons left"style="margin-top:-15px" >home</i>Início</a>
+       </div>
+      
     </nav>
 
     <!-- <h1>NOTÍCIAS</h1> -->
@@ -58,8 +67,15 @@
                       <span th:text="${noticia.autor}"></span>
                       <span th:text="${noticia.data}"></span>
                       </p>
-                      <a th:href="@{/{id}/noticias/(id=${noticia.id})}"><h4 class="card-title" style="font-weight: bold; color: black; padding-top: 5px;"><span th:text="${noticia.titulo}"></span></h4></a>
-                      
+                      <div th:if= "${usuariopaciente.tipo == 'ATENDENTE'}"> 
+                      <a th:href="@{/atendente/{id}/noticias/(id=${noticia.id})}"><h4 class="card-title" style="font-weight: bold; color: black; padding-top: 5px;"><span th:text="${noticia.titulo}"></span></h4></a>
+                      </div>
+                       <div th:if= "${usuariopaciente.tipo == 'PACIENTE'}"> 
+                      <a th:href="@{/paciente/{id}/noticias/(id=${noticia.id})}"><h4 class="card-title" style="font-weight: bold; color: black; padding-top: 5px;"><span th:text="${noticia.titulo}"></span></h4></a>
+                      </div>
+                       <div th:if= "${usuariopaciente.tipo == 'MEDICO'}"> 
+                      <a th:href="@{/medico/{id}/noticias/(id=${noticia.id})}"><h4 class="card-title" style="font-weight: bold; color: black; padding-top: 5px;"><span th:text="${noticia.titulo}"></span></h4></a>
+                      </div>
                       <p class="card-text"> <span th:utext="${#strings.abbreviate(noticia.texto,400)}"></span></p>
                     </div>
                     <br>
