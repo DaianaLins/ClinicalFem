@@ -50,13 +50,12 @@
 			 <tr th:each="agendamento : ${agendamento}">
 
 				<td>
-						<a th:href="@{/{codigo}/detalhesConsulta/(codigo=${agendamento.codigo})}"><span th:text="${agendamento.nome}"> </span>
+						<a th:href=""><span th:text="${agendamento.nome}"> </span>
 				</a></td>
 				<td><span th:text="${agendamento.servico}"></span></td>
-				<td><span th:text="${agendamento.medico}"></span></td>
 				<td><span th:text="${agendamento.dataC}"></span></td>
 				<td><span th:text="${agendamento.horario}"></span></td>
-				<td><span th:text="${agendamento.pagamento}"></span></td>
+				
 				
 			</tr>
 		</tbody>

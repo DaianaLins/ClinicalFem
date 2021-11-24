@@ -81,6 +81,7 @@ public class CadPacienteService {
 
         return cadpaciente;
     }
+   
 
     public CadPaciente getCadPacienteByEmail(String email) throws InterruptedException, ExecutionException{
         CadPaciente cadpaciente = new CadPaciente();
