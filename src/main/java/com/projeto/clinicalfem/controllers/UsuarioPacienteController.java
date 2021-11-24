@@ -118,7 +118,7 @@ public class UsuarioPacienteController{
     public ModelAndView agendar() throws InterruptedException, ExecutionException {
         List<CadMedico> cadmedico = servMedico.getAllCadMedicos() ;
         ModelAndView modelo = new ModelAndView("formAgendamentoP");
-        modelo.addObject("cadmedicos", cadmedico);
+        modelo.addObject("cadm", cadmedico);
         modelo.addObject("agendamento", new Agendamento());
         return modelo;
     }

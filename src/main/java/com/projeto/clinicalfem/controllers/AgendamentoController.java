@@ -81,9 +81,9 @@ public class AgendamentoController {
     @GetMapping("/{codigo}/alterarAgendamento")
 	public ModelAndView alterarAgendamento(@PathVariable String codigo) throws InterruptedException, ExecutionException{
 		ModelAndView mv = new ModelAndView("alterarAgendamento");
-
+        List<CadMedico> cadmedico = servicemed.getAllCadMedicos() ;
 		mv.addObject("agendamento", service.getAgendamentoByCodigo(codigo));
-	
+        mv.addObject("cadmedicos", cadmedico);
 		return mv;
 	}
     @PostMapping("/alterarAgendamento")

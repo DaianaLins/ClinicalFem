@@ -45,7 +45,7 @@
 	
 			Nome Completo: <input  type="text" name="nome" th:field="*{nome}" required />    	
 			
-			Medico:<select type="hidden" name="medico" th:field="*{medico}"  required >
+			Medico:<select type="text" name="medico" th:field="*{medico}"  required >
 				<option value=""> -- </option>
 				 <option th:each="cadmedico : ${cadmedicos}" th:value="${cadmedico.nome}" th:text="${cadmedico.nome}"  > </option> 
 				

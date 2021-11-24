@@ -44,8 +44,16 @@
 
 		Nome Completo: <input  type="text" name="nome"  th:field="*{nome}" required/>
 		
-		Médico: <input  type="text" value="" name="medico"  th:field="*{medico}" required />
-		Servico: <input  type="text" value="" name="servico"  th:field="*{servico}" required />
+		Medico:<select type="text" name="medico" th:field="*{medico}"  required >
+			<option value=""> -- </option>
+			 <option th:each="cadmedico : ${cadmedicos}" th:value="${cadmedico.nome}" th:text="${cadmedico.nome}"  > </option> 
+			
+	  </select>
+	  Servico: <select type="text" value="" name="servico" th:field="*{servico}" required >
+		<option value=""> -- </option>
+		 <option th:each="cadmedico : ${cadmedicos}" th:value="${cadmedico.especialidade}" th:text="${cadmedico.especialidade}"  > </option> 
+		
+	</select>
 		<div class="row">
 		
 		<div class="input-field col s3">

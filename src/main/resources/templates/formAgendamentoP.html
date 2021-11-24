@@ -45,18 +45,18 @@
 	
 			Nome Completo: <input  type="text" name="nome" th:field="*{nome}" required />    	
 			
-			 Medico:<select name="medico" th:field="*{medico}"  required >
+		<!--Medico:<select name="medico" th:field="*{medico}"  required >
 				<option value=""> -- </option>
-				 <option th:each="cadmedico : ${cadmedicos}" th:value="${cadmedico.nome}" th:text="${cadmedico.nome}"  > </option> 
+				 <option th:each="cadm : ${cadmedicos}" th:value="${cadm.nome}" th:text="${cadm.nome}"  > </option> 
 				
 		  </select>
-	
+	-->	
 			CPF: <input type="text" value="" name="cpf" th:field="*{cpf}" required />
-			Servico: <select type="text" value="" name="servico" th:field="*{servico}" required >
+		<!--	Servico: <select  value="" name="servico" th:field="*{servico}" required >
 				<option value=""> -- </option>
-				 <option th:each="cadmedico : ${cadmedicos}" th:value="${cadmedico.especialidade}" th:text="${cadmedico.especialidade}"  > </option> 
+				 <option th:each="cadm : ${cadmedicos}" th:value="${cadm.especialidade}" th:text="${cadm.especialidade}"  > </option> 
 				
-			</select>
+			</select>-->
 			<div class="row">
 			
 			
