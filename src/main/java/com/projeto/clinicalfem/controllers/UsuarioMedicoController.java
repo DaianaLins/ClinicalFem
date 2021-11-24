@@ -11,12 +11,15 @@ import java.util.concurrent.ExecutionException;
 import java.util.concurrent.TimeUnit;
 
 import com.projeto.clinicalfem.enums.Perfil;
+import com.projeto.clinicalfem.models.Agendamento;
 import com.projeto.clinicalfem.models.CadMedico;
+import com.projeto.clinicalfem.models.CadPaciente;
 import com.projeto.clinicalfem.models.CropImageToSquare;
 import com.projeto.clinicalfem.models.UsuarioMedico;
 import com.projeto.clinicalfem.models.UsuarioMedicoParse;
 import com.projeto.clinicalfem.models.UsuarioMedicoSpring;
 import com.projeto.clinicalfem.models.Usuarios;
+import com.projeto.clinicalfem.service.AgendamentoService;
 import com.projeto.clinicalfem.service.CadMedicoService;
 import com.projeto.clinicalfem.service.CadPacienteService;
 import com.projeto.clinicalfem.service.UsuarioMedicoService;
@@ -44,10 +47,14 @@ public class UsuarioMedicoController {
     UsuarioMedicoService service;
     CadMedicoService servMedico;
     UsuarioPacienteService servicep;
-    public UsuarioMedicoController(UsuarioMedicoService serv, UsuarioPacienteService servp ,CadMedicoService servm) {
+    AgendamentoService servAgenda;
+    CadPacienteService servPaci;
+    public UsuarioMedicoController(UsuarioMedicoService serv, UsuarioPacienteService servp ,CadMedicoService servm,  AgendamentoService servA, CadPacienteService servP) {
         service = serv;
         servMedico = servm;
         servicep = servp;
+        servAgenda = servA;
+        servPaci = servP;
     }
 
     @GetMapping("/medico/pacientesclin")
@@ -58,7 +65,9 @@ public class UsuarioMedicoController {
         return modelo;
     }
     @GetMapping("/medico/verificarConsultas")
-    public ModelAndView consultas(){
+    public ModelAndView consultas() throws InterruptedException, ExecutionException{
+       
+        
         ModelAndView modelo = new ModelAndView("verificarcons.html");
         
         return modelo;

@@ -59,7 +59,7 @@
 
 <main class="cards"style="padding-left: 5%">
     <div class="card" style="border-radius: 10px; width: 18rem; padding: 10px; margin: 10px; display: inline-block;" th:each="usuariomedico : ${usuariomedico}">
-        <img class="card-img-top" src="@{/paciente/mostrarImagem/{imagem}(imagem=${usuariomedico.nomeImagem})}" alt="Imagem de capa do card">
+        <img class="card-img-top" src="@{/medico/mostrarImagem/{imagem}(imagem=${usuariomedico.nomeImagem})}" alt="Imagem de capa do card">
         <div class="card-body">
           
           <p class="card-text"><span th:text="${usuariomedico.nome}"></span></p>

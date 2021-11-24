@@ -70,6 +70,25 @@ public class CadMedicoService {
 
     }
 
+    public CadMedico getCadMedicoByName(String nome) throws InterruptedException, ExecutionException {
+        CadMedico cadmedico = new CadMedico();
+        
+        CollectionReference cadmedicos = (CollectionReference) conex.collection("CadMedicos");
+
+        Query query = (Query) cadmedicos.whereEqualTo("nome", nome);
+        
+        List<QueryDocumentSnapshot> querySnapshot = query.get().get().getDocuments();
+
+        
+
+        for (DocumentSnapshot document : querySnapshot){
+            cadmedico = document.toObject(CadMedico.class);
+        }
+
+        return cadmedico;
+
+    }
+
     public CadMedico getCadMedicoByCRM(String crm) throws InterruptedException, ExecutionException{
         CadMedico cadmedico = new CadMedico();
         

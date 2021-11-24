@@ -47,7 +47,7 @@
 		<tbody>
 
 
-			 <tr th:each="agendamento : ${agendamentos}">
+			 <tr th:each="agendamento : ${agendamento}">
 
 				<td>
 						<a th:href="@{/{codigo}/detalhesConsulta/(codigo=${agendamento.codigo})}"><span th:text="${agendamento.nome}"> </span>
