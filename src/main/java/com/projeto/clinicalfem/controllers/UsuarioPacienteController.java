@@ -185,9 +185,9 @@ public class UsuarioPacienteController{
     public ModelAndView editar(@PathVariable String id, Principal principal) throws InterruptedException, ExecutionException {
         ModelAndView modelo = new ModelAndView("usuariopacienteeditar");
         CadPaciente cadpaciente = servPaciente.getCadPacienteById(id);
-        Usuarios usuariopaciente = service.getMembroByEmail(cadpaciente.getEmail());
+        Usuarios usuariopaciente = service.getMembroByEmail(principal.getName());
         
-        
+        System.out.println(cadpaciente.getCpf());
         modelo.addObject("usuariopaciente", usuariopaciente);
         
         modelo.addObject("cadpaciente", cadpaciente);
@@ -202,19 +202,13 @@ public class UsuarioPacienteController{
 
         usu.setTipo(Perfil.PACIENTE.toString());
 
-        if(!usu.getSenha().isEmpty()){
-            BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
-            String senhaEncriptada = encoder.encode(usu.getSenha());
-            usu.setSenha(senhaEncriptada);
-        }else{
-            usu.setSenha(service.getMembroById(usu.getId()).getSenha());
-        }
-
         if (!file.isEmpty()) {
             try {
-                // Get the file and save it somewhere
+                // tranforma a imagem em Bytes
                 byte[] bytes = file.getBytes();
-                Path path = Paths.get("src/main/resources/static/imagens/" + file.getOriginalFilename());
+                //diz o caminho pra onde a imagem vai ser armazenada
+                Path path = Paths.get(caminhoImagens+String.valueOf(usu.getId())+file.getOriginalFilename());
+                //cria o arquivo na pasta solicitada
                 Files.write(path, bytes);
 
                 //diminui o tamanho máximo da imagem pra 300x300
@@ -222,26 +216,16 @@ public class UsuarioPacienteController{
 
                 //corta a imagem em um quadrado
                 CropImageToSquare.crop(path);
-
+               
                 usu.setImagemLocal(Files.readAllBytes(path));
+                usu.setNomeImagem(String.valueOf(usu.getId())+file.getOriginalFilename());
                 
-
-                path = Paths.get("src/main/resources/static/imagens/nomeImagem");
-                if (path.toFile().exists()) {
-                    
-                }
-                if (usu.getImagem() != null) {
-                    Files.write(path, usu.getImagemLocal());
-                }
 
             } catch (IOException e) {
                 e.printStackTrace();
             }
-
-            TimeUnit.SECONDS.sleep(2);
-        }else{
-            usu.setImagem(service.getMembroById(usu.getId()).getImagem());
         }
+
         if (!service.editar(usu)) {
             modelo.setViewName("usuariopacienteeditar");
             modelo.addObject("usuariopaciente", usu);
