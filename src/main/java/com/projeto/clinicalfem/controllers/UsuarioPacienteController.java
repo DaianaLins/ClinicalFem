@@ -147,6 +147,7 @@ public class UsuarioPacienteController{
         String senhaEncriptada = encoder.encode(usu.getSenha());
         usu.setSenha(senhaEncriptada);
 
+
         if (!file.isEmpty()) {
             try {
                 // tranforma a imagem em Bytes
@@ -200,6 +201,14 @@ public class UsuarioPacienteController{
             throws InterruptedException, ExecutionException {
         ModelAndView modelo = new ModelAndView("redirect:/paciente/dados");
 
+        if(!usu.getSenha().isEmpty()){
+            BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
+            String senhaEncriptada = encoder.encode(usu.getSenha());
+            usu.setSenha(senhaEncriptada);
+        }else{
+            usu.setSenha(service.getMembroById(usu.getId()).getSenha());
+        }
+
         usu.setTipo(Perfil.PACIENTE.toString());
 
         if (!file.isEmpty()) {
@@ -231,6 +240,13 @@ public class UsuarioPacienteController{
             modelo.addObject("usuariopaciente", usu);
         }
 
+        return modelo;
+    }
+    @GetMapping("/paciente/{id}/excluir")
+    public ModelAndView excluir(@PathVariable String id) {
+        ModelAndView modelo = new ModelAndView("redirect:/paciente/login");
+        service.apagar(id);
+        servPaciente.deletar(id);
         return modelo;
     }
 }
