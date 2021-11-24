@@ -19,7 +19,7 @@
 <!--Let browser know website is optimized for mobile-->
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <meta charset="UTF-8">
-<link rel="stylesheet" href="/materialize/style/detalhesPacientecomfoto.css"/>
+<link rel="stylesheet" href="/materialize/style/medicoscadastradoscard.css"/>
 
 <head>
 <style>
@@ -53,13 +53,13 @@
 	   <a href="/paciente/telaPaciente" class="waves-effect waves-light btn #ef9a9a red lighten-3"><i class="material-icons left" style="margin-top:-10px" >undo</i>Retornar</a>
 
     </nav>
-    <h2>MEDICOS DISPONÍVEIS</h2>
+    <h2>MÉDICOS DISPONÍVEIS</h2>
 
 	<section class="flex">
 
 <main class="cards"style="padding-left: 5%">
     <div class="card" style="border-radius: 10px; width: 18rem; padding: 10px; margin: 10px; display: inline-block;" th:each="usuariomedico : ${usuariomedico}">
-        <img authorize access="perfil.PACIENTE" class="card-img-top" th:src="@{/medico/mostrarImagem/{imagem}(imagem=${usuariomedico.nomeImagem})}" alt="Imagem de capa do card">
+        <img authorize access="perfil.PACIENTE" class="card-img-top" th:src="@{/medico/mostrarImagem/{imagem}(imagem=${usuariomedico.nomeImagem})}" style="border-radius: 50%;"alt="Imagem de capa do card" >
         <div class="card-body">
           
           <p class="card-text"><span th:text="${usuariomedico.nome}"></span></p>
