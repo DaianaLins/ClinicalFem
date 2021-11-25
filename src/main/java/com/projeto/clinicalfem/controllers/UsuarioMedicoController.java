@@ -68,13 +68,13 @@ public class UsuarioMedicoController {
     public ModelAndView consultas(Principal principal) throws InterruptedException, ExecutionException{
         UsuarioMedicoSpring usuariomedico = UsuarioMedicoParse.toSpring(service.getMembroByEmail(principal.getName()));
         Agendamento agendamento = servAgenda.getAgendamentoByMedico(usuariomedico.getNome());
-        /** List<Agendamento> agendamento = servAgenda.getAllAgendamentos();
+        List<Agendamento> agend = servAgenda.getAllAgendamentos();
         List<CadMedico> cadmedico = servMedico.getAllCadMedicos();
         ModelAndView modelo = new ModelAndView("verificarcons.html");
+        
         modelo.addObject("agendamento", agendamento);
-        modelo.addObject("cadmedico", cadmedico); **/
-        ModelAndView modelo = new ModelAndView("verificarcons.html");
-        modelo.addObject("agendamento", agendamento);
+        modelo.addObject("agend", agend);
+        modelo.addObject("cadmedico", cadmedico);
     	modelo.addObject("usuariomedico", usuariomedico);
         return modelo;
     }
