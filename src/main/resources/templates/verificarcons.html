@@ -48,13 +48,13 @@
 		<tbody  th:each="agendamentos: ${agendamento}">
 
 
-			<tr th:each="usuariomedicos : ${usuariomedico}" >
+			<tr th:each="agends : ${agend}" >
 				
-					<div th:if = "${agendamentos.medico == usuariomedicos.nome }" > 
-					<td> <span th:text="${agendamentos.nome}"></span></td>
-					<td> <span th:text="${agendamentos.servico}"></span></td>
-					<td> <span th:text="${agendamentos.dataC}"></span></td>
-					<td> <span th:text="${agendamentos.horario}"></span></td>
+					<div th:if = "${agendamentos.medico == agends.medico }" > 
+					<td> <span th:text="${agends.nome}"></span></td>
+					<td> <span th:text="${agends.servico}"></span></td>
+					<td> <span th:text="${agends.dataC}"></span></td>
+					<td> <span th:text="${agends.horario}"></span></td>
 					
 					<td><a class="waves-effect waves-light " th:href="@{/medico/{codigo}/deletarConsulta/(codigo=${agendamentos.codigo})}" ><i class="material-icons left">delete</i></a></td>
 					

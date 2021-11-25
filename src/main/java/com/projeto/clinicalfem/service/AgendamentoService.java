@@ -68,6 +68,22 @@ public class AgendamentoService {
 
         return agendamento;
     }
+    
+    public Agendamento getAgendamentoByName(String nome) throws InterruptedException, ExecutionException{
+        Agendamento agendamento = new Agendamento();
+        
+        CollectionReference agendamentos = (CollectionReference) conex.collection("Agendamentos");
+
+        Query query = (Query) agendamentos.whereEqualTo("nome", nome);
+        List<QueryDocumentSnapshot> querySnapshot = query.get().get().getDocuments();
+
+
+        for (DocumentSnapshot document : querySnapshot){
+            agendamento = document.toObject(Agendamento.class);
+        }
+
+        return agendamento;
+    }
 
     public ArrayList<Agendamento> getAllAgendamentos() throws InterruptedException, ExecutionException {
         ArrayList<Agendamento> lista = new ArrayList<Agendamento>();

@@ -70,11 +70,15 @@ public class UsuarioPacienteController{
     	return mv;
     }
     @GetMapping("/paciente/consultas")
-    public ModelAndView consultas() throws InterruptedException, ExecutionException{
-        List<Agendamento> agendamento = servAgenda.getAllAgendamentos();
-        List<Usuarios> usuariopaciente = service.getAllUsuarios();
+    public ModelAndView consultas(Principal principal) throws InterruptedException, ExecutionException{
+        UsuariosSpring usuariopaciente = UsuarioParse.toSpring(service.getMembroByEmail(principal.getName()));
+        Agendamento agendamento = servAgenda.getAgendamentoByName(usuariopaciente.getNome());
+        List<Agendamento> agend = servAgenda.getAllAgendamentos();
+        List<Usuarios> usuariop = service.getAllUsuarios();
         ModelAndView modelo = new ModelAndView("consultasp.html");
         modelo.addObject("agendamento", agendamento);
+        modelo.addObject("agend", agend);
+        modelo.addObject("usuariop", usuariop);
         modelo.addObject("usuariopaciente", usuariopaciente);
         return modelo;
     }    

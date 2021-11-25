@@ -48,13 +48,13 @@
 		<tbody  th:each="agendamentos: ${agendamento}">
 
 
-			<tr th:each="usuariopacientes : ${usuariopaciente}" >
+			<tr th:each="agends : ${agend}" >
 				
-					<div th:if = "${agendamentos.nome == usuariopacientes.nome}" > 
-					<td> <span th:text="${agendamentos.medico}"></span></td>
-                    <td> <span th:text="${agendamentos.servico}"></span></td>
-					<td> <span th:text="${agendamentos.dataC}"></span></td>
-					<td> <span th:text="${agendamentos.horario}"></span></td>
+					<div th:if = "${agendamentos.nome == agends.nome}" > 
+					<td> <span th:text="${agends.medico}"></span></td>
+                    <td> <span th:text="${agends.servico}"></span></td>
+					<td> <span th:text="${agends.dataC}"></span></td>
+					<td> <span th:text="${agends.horario}"></span></td>
 				
 					<td><a class="waves-effect waves-light " th:href="@{/paciente/{codigo}/deletarConsulta/(codigo=${agendamentos.codigo})}" onclick="return confirm('Você deseja cancelar essa consulta?')"><i class="material-icons left">cancel</i></a></td>
 					
