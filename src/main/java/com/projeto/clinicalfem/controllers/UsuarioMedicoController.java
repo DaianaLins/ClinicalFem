@@ -73,7 +73,12 @@ public class UsuarioMedicoController {
         modelo.addObject("usuariomedico", usuariomedico);
         return modelo;
     }
-
+    @GetMapping("/medico/{codigo}/deletarConsulta")
+	public ModelAndView deletarConsulta(@PathVariable String codigo) throws InterruptedException, ExecutionException{
+        ModelAndView modelo = new ModelAndView("redirect:/medico/verificarConsultas");
+        servAgenda.deletar(codigo);
+		return modelo;
+	}
 
     @GetMapping("/medico/dados")
     public ModelAndView dados(Principal principal) throws InterruptedException, ExecutionException {
