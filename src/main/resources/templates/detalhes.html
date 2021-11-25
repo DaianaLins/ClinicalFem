@@ -37,7 +37,7 @@
 
 <div th:each="cadpaciente : ${paciente}">
 	
-	<div class="container" id="nv">
+	<div class="container" th:each="agendamento : ${agendamentos}" id="nv">
 			<p>Nome: <span th:text="${cadpaciente.nome}"></span></p>
 			<p>Data de Nascimento: <span th:text="${cadpaciente.datanasc}"></span></p>
 			<p>Telefone: <span th:text="${cadpaciente.telefone}"></span></p>
@@ -45,7 +45,11 @@
 			<p>RG: <span th:text="${cadpaciente.rg}"></span></p>
 			<p>Email: <span th:text="${cadpaciente.email}"></span></p>
 		
+			<div th:if = "${agendamento.cpf == cadpaciente.cpf}" >
+				<p>Valor da Consuta: R$<span th:text="${agendamento.valorC}"></span></p>
 
+				</div>
+		
 	</div>
 	
 </div>

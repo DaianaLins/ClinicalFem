@@ -74,5 +74,8 @@ public class NoticiaService {
         }
         return lista;
     }
+    public void deletar(String id){
+        ApiFuture<WriteResult> writeResult = conex.collection("Noticias").document(id).delete();
+    }
   
 }

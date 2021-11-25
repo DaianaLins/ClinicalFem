@@ -6,6 +6,7 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.security.Principal;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.ExecutionException;
 import java.util.concurrent.TimeUnit;
@@ -18,7 +19,9 @@ import com.projeto.clinicalfem.models.CropImageToSquare;
 import com.projeto.clinicalfem.models.UsuarioMedico;
 import com.projeto.clinicalfem.models.UsuarioMedicoParse;
 import com.projeto.clinicalfem.models.UsuarioMedicoSpring;
+import com.projeto.clinicalfem.models.UsuarioParse;
 import com.projeto.clinicalfem.models.Usuarios;
+import com.projeto.clinicalfem.models.UsuariosSpring;
 import com.projeto.clinicalfem.service.AgendamentoService;
 import com.projeto.clinicalfem.service.CadMedicoService;
 import com.projeto.clinicalfem.service.CadPacienteService;
@@ -60,8 +63,12 @@ public class UsuarioMedicoController {
     @GetMapping("/medico/pacientesclin")
     public ModelAndView verPacientes() throws InterruptedException, ExecutionException {
         ModelAndView modelo = new ModelAndView("pacientesclinica.html");
+        List<UsuariosSpring> usuarios = new ArrayList<>();
         List<Usuarios> usuariopaciente = servicep.getAllUsuarios();
-        modelo.addObject("usuariopaciente", usuariopaciente);
+        for(Usuarios user : usuariopaciente ){
+            usuarios.add(UsuarioParse.toSpring(user));
+      }
+        modelo.addObject("usuariopaciente", usuarios);
         return modelo;
     }
     @GetMapping("/medico/verificarConsultas")

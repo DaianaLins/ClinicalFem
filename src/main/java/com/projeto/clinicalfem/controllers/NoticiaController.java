@@ -58,6 +58,7 @@ public class NoticiaController {
         modelo.addObject("usuariopaciente", usuariopaciente);
         return modelo;
     }
+    
     //Noticia Paciente
     @GetMapping("paciente/noticias")
     public ModelAndView getNoticiasPaciente(Principal principal) throws InterruptedException, ExecutionException{

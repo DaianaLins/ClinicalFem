@@ -48,7 +48,7 @@
                 Data de Nascimento: <input  type="date" name="datanasc" th:field="*{datanasc}" required/>
                 </div>
                 <div class="input-field col s3">  
-                Telefone: <input type="tel" name="telefone" maxlength="12" th:field="*{telefone}" placeholder="Digite o Número" required/>
+                Telefone: <input type="tel" name="telefone" maxlength="15" th:field="*{telefone}" placeholder="Digite o Número" required/>
                 </div>
                 <div class="input-field col s3">  
                 CPF: <input  type="text" name="cpf" maxlength="11" placeholder="Digite o CPF" th:field="*{cpf}" required/>  
@@ -66,6 +66,29 @@
     </footer>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js"></script>
 	<script type="text/javascript" src="materialize/js/materialize.min.js"></script>
-
+    <script>
+        function mascara(o,f){
+        v_obj=o
+        v_fun=f
+        setTimeout("execmascara()",1)
+    }
+    function execmascara(){
+        v_obj.value=v_fun(v_obj.value)
+    }
+    function mtel(v){
+        v=v.replace(/\D/g,""); //Remove tudo o que não é dígito
+        v=v.replace(/^(\d{2})(\d)/g,"($1) $2"); //Coloca parênteses em volta dos dois primeiros dígitos
+        v=v.replace(/(\d)(\d{4})$/,"$1-$2"); //Coloca hífen entre o quarto e o quinto dígitos
+        return v;
+    }
+    function id( el ){
+        return document.getElementById( el );
+    }
+    window.onload = function(){
+        id('telefone').onkeyup = function(){
+            mascara( this, mtel );
+        }
+    }
+    </script>
 </body>
 </html>

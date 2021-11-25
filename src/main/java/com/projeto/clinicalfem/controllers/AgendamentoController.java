@@ -86,6 +86,7 @@ public class AgendamentoController {
         mv.addObject("cadmedicos", cadmedico);
 		return mv;
 	}
+   
     @PostMapping("/alterarAgendamento")
 	public ModelAndView alterarAgendamento(Agendamento agendamento) throws InterruptedException, ExecutionException{
 		ModelAndView modelo = new ModelAndView("redirect:/consultas");

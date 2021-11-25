@@ -36,8 +36,12 @@
                       
                      
         <a href="/atendente/noticias" class="waves-effect waves-light btn #ef9a9a red lighten-3 white-text"><i class="material-icons left" style="margin-top:-15px" >undo</i>Retornar</a>
-       <a href="/atendente/tela" class="waves-effect waves-light btn #ef9a9a red lighten-3 white-text"><i class="material-icons left" style="margin-top:-15px">home</i>Início</a>
-     </div>
+        
+
+        <a href="/atendente/tela" class="waves-effect waves-light btn #ef9a9a red lighten-3 white-text"><i class="material-icons left" style="margin-top:-15px">home</i>Início</a>
+       <!-- <a href="/atendente/{id}/deletetarNoticia" class="waves-effect waves-light btn #ef9a9a red lighten-3 white-text"><i class="material-icons left" style="margin-top:-15px" >delete</i>Excluír</a>-->
+    
+    </div>
        <div th:if= "${usuariopaciente.tipo == 'PACIENTE'}"> 
                       
                      
@@ -50,6 +54,7 @@
         <a href="/medico/noticias" class="waves-effect waves-light btn #ef9a9a red lighten-3 white-text"><i class="material-icons left" style="margin-top:-15px" >undo</i>Retornar</a>
        <a href="/medico/telaMedico" class="waves-effect waves-light btn #ef9a9a red lighten-3 white-text"><i class="material-icons left" style="margin-top:-15px">home</i>Início</a>
      </div>
+
     </nav>
 
 

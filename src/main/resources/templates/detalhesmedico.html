@@ -67,7 +67,7 @@
 		  <p class="card-text" >Numero: <span th:text="${usuariomedico.numero}"></span></p>
 		   <p class="card-text" >Email: <span th:text="${usuariomedico.email}"></span></p>
 		  <p class="card-text" >CRM: <span th:text="${usuariomedico.crm}"></span></p>
-          <!-- <p class="card-text" >Data de Nascimento: <span th:text="${#temporals.format(usuario.datanasc,'dd/MM/yyyy')}"></span></p> -->
+          <p class="card-text" >Data de Nascimento: <span th:text="${#temporals.format(usuariomedico.datanasc,'dd/MM/yyyy')}"></span></p> 
          
 		  <div th:each="cadmedico : ${cadmedico}">
 			<div th:if = "${cadmedico.nome == usuariomedico.nome}" > 

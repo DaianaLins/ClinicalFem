@@ -79,6 +79,13 @@ public class UsuarioMedicoSpring {
     public void setImagem(byte[] imagem) {
         this.imagem = imagem;
     }
+    public LocalDate getDatanasc() {
+        return datanasc;
+    }
+
+    public void setDatanasc(LocalDate datanasc) {
+        this.datanasc = datanasc;
+    }
     public String getDataNascLocal() {
         return datanasc.toString();
     }

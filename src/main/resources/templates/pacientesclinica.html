@@ -62,10 +62,9 @@
          
           <p class="card-text" >Nome: <span th:text="${usuariopaciente.nome}"></span></p> 
 		<p class="card-text" >Numero: <span th:text="${usuariopaciente.numero}"></span></p>
-        <!-- <p class="card-text" >Data de Nascimento: <span th:text="${#temporals.format(usuario.datanasc,'dd/MM/yyyy')}"></span></p> -->
     	<p class="card-text" >Email: <span th:text="${usuariopaciente.email}"></span></p>
-		<p class="card-text">Data de Nascimento: <span th:text="${usuariopaciente.datanasc}"></span></p>
-         <!-- <a href="#" class="btn btn-primary #ef9a9a red lighten-3">Histórico</a>-->
+		<p class="card-text" >Data de Nascimento: <span th:text="${#temporals.format(usuariopaciente.datanasc,'dd/MM/yyyy')}"></span></p> 
+		<a href="#" class="btn btn-primary #ef9a9a red lighten-3">Histórico</a>
         </div>
       </div>	
 </main>
