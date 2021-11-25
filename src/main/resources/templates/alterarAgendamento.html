@@ -26,17 +26,17 @@
 <body>
 
 	<header>
-		<h1>CLINICALFEM</h1>
+		<h1><img class="responsive-img" src="/materialize/style/logos/logos/LOGOBRANCA.png"
+				style="margin:-60px 0px; width: 25%;"></h1>
 	</header>
 	<nav>
-		<a href="#">Home</a> <a href="#">Serviços</a> <a href="#">Contatos</a>
-		<a href="#">Sobre nós</a>
+		<a th:href="@{/consultas}" class="waves-effect waves-light btn #ef9a9a red lighten-3"><i class="material-icons left" style="margin-top:-10px" >format_list_bulleted</i> Consultas Agendadas</a>
 	</nav>
 	
 
-        <h2>Alterar Agendamento</h2>
+        <h2 style="padding: 30px;">ALTERAR AGENDAMENTO</h2>
  
- <h3><a th:href="@{/consultas}" class="waves-effect waves-light btn #ef9a9a red lighten-3"><i class="material-icons left">format_list_bulleted</i> Consultas Agendadas</a></h3>
+
 	<!-- <th:block th:include="mensagemValidacao"></th:block> -->
 	<form class="container"  method="post" action="/alterarAgendamento" th:object="${agendamento}">
 		<input type="hidden" name="id" th:field="*{codigo}" > 

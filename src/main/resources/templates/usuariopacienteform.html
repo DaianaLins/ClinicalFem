@@ -12,7 +12,7 @@
 <!--Let browser know website is optimized for mobile-->
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <meta charset="UTF-8">
-<link rel="stylesheet" href="/materialize/style/styleformAgendamento.css" />
+<link rel="stylesheet" href="/materialize/style/usuariopacienteform.css" />
 
 <head>
 	<style>
@@ -34,12 +34,12 @@
 		<a href="/selecionar" class="waves-effect waves-light btn center-align #ef9a9a red lighten-3"><i
 				class="material-icons left" style="margin-top:-10px">home</i>Início</a>
 	</nav>
-	<h2 >CADASTRO - PACIENTE </h2>
+	<h2 style="padding: 30px;">CADASTRO - PACIENTE </h2>
 
 	<!-- <h3><a href="/consultas" class="waves-effect waves-light btn #ef9a9a red lighten-3"><i class="material-icons left">format_list_bulleted</i>Consultas Agendadas</a></h3>
  <h4><a href="/tela" class="waves-effect waves-light btn #ef9a9a red lighten-3"><i class="material-icons left">home</i>Início</a></h3> -->
 	<!-- <th:block th:include="mensagemValidacao"></th:block> -->
-	<form style=" padding-top: -5%;"class="row" method="post"  th:object="${usuariopaciente}" enctype="multipart/form-data">
+	<form style="padding-top: -5%;"class="row" method="post"  th:object="${usuariopaciente}" enctype="multipart/form-data">
 		<!--  <input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}"> -->
 
 		<input type="hidden" th:field="*{tipo}">

@@ -24,14 +24,16 @@
 <body>
     
     <header>
-		<h1>CLINICALFEM</h1>
+		<h1><img class="responsive-img" src="/materialize/style/logos/logos/LOGOBRANCA.png"
+				style="margin:-60px 0px; width: 25%;"></h1>
 	</header>
 	<nav>
-		<a href="#">Home</a> <a href="#">Serviços</a> <a href="#">Contatos</a>
-		<a href="#">Sobre nós</a>
-	</nav>    
-	<h2>Alterar Cadastro do Médico</h2>
-    	 <h3><a href="/medicos" class="waves-effect waves-light btn #ef9a9a red lighten-3"><i class="material-icons left">format_list_bulleted</i>Médicos Cadastrados</a></h3>
+        <a href="/medicos" class="waves-effect waves-light btn #ef9a9a red lighten-3"><i class="material-icons left" style="margin-top:-10px">format_list_bulleted</i>Médicos Cadastrados</a>
+	</nav>
+	
+
+        <h2 style="padding: 30px;">ALTERAR CADASTRO MÉDICO</h2>
+
     	
     	<!-- <th:block th:include="mensagemValidacao"></th:block> -->
             <form class="container" method="post" action="/alterarMedico" th:object="${cadmedico}">
