@@ -48,9 +48,9 @@
 		<tbody  th:each="agendamentos: ${agendamento}">
 
 
-			<tr th:each="cadmedicos : ${cadmedico}" >
+			<tr th:each="usuariomedicos : ${usuariomedico}" >
 				
-					<div th:if = "${agendamentos.servico == cadmedicos.especialidade}" > 
+					<div th:if = "${agendamentos.medico == usuariomedicos.nome }" > 
 					<td> <span th:text="${agendamentos.nome}"></span></td>
 					<td> <span th:text="${agendamentos.servico}"></span></td>
 					<td> <span th:text="${agendamentos.dataC}"></span></td>
