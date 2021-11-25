@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+
+<html xmlns:th="http://thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	lang="pt-br">
+	<!-- IMPORTAÇÕES DO MATERIALIZER -->
+<!-- SITE: https://materializecss.com/getting-started.html -->
+<!--Import Google Icon Font-->
+
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons"
+	rel="stylesheet" />
+<!--Import materialize.css-->
+<link type="text/css" rel="stylesheet"
+	href="/materialize/css/materialize.min.css" media="screen,projection" />
+
+<!--Let browser know website is optimized for mobile-->
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta charset="UTF-8">
+<link rel="stylesheet" href="/materialize/style/styleformAgendamento.css" />
+<head>
+<title>Consultas Agendadas</title>
+</head>
+<body>
+
+
+	   <header>
+        <h1><img class="responsive-img" src="/materialize/style/logos/logos/LOGOBRANCA.png" style="margin:-60px 0px; width: 25%;"></h1>
+    </header>
+    <nav>
+		<a href="/paciente/telaPaciente" class="waves-effect waves-light btn center-align #ef9a9a red lighten-3"><i class="material-icons left" style="margin-top:-10px" >undo</i>Retornar</a>
+		
+ 
+    </nav>
+	<h2>CONSULTAS</h2>
+	<h3>
+	
+	</h3>
+	<table class="container">
+		<thead>
+			<tr>
+				<th>Medico</th>
+                <th>Serviço</th>
+				<th>Data</th>
+				<th>Horário</th>
+				<th>Cancelar</th>
+			</tr>
+		</thead>
+		<tbody  th:each="agendamentos: ${agendamento}">
+
+
+			<tr th:each="usuariopacientes : ${usuariopaciente}" >
+				
+					<div th:if = "${agendamentos.nome == usuariopacientes.nome}" > 
+					<td> <span th:text="${agendamentos.medico}"></span></td>
+                    <td> <span th:text="${agendamentos.servico}"></span></td>
+					<td> <span th:text="${agendamentos.dataC}"></span></td>
+					<td> <span th:text="${agendamentos.horario}"></span></td>
+				
+					<td><a class="waves-effect waves-light " th:href="@{/paciente/{codigo}/deletarConsulta/(codigo=${agendamentos.codigo})}" onclick="return confirm('Você deseja cancelar essa consulta?')"><i class="material-icons left">cancel</i></a></td>
+					
+			
+				</div>
+			
+			</tr>
+		</tbody>
+	</table>
+		 <footer>
+        <p>Copyright ® Todos os direitos reservados</p>
+    </footer>
+	<!--JavaScript at end of body for optimized loading-->
+	<script type="text/javascript" src="materialize/js/materialize.min.js"></script>
+</body>
+</html>

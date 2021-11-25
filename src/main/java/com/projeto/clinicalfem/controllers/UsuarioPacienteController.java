@@ -69,7 +69,15 @@ public class UsuarioPacienteController{
     	mv.addObject("usuariopaciente", usuariopaciente);
     	return mv;
     }
-        
+    @GetMapping("/paciente/consultas")
+    public ModelAndView consultas() throws InterruptedException, ExecutionException{
+        List<Agendamento> agendamento = servAgenda.getAllAgendamentos();
+        List<Usuarios> usuariopaciente = service.getAllUsuarios();
+        ModelAndView modelo = new ModelAndView("consultasp.html");
+        modelo.addObject("agendamento", agendamento);
+        modelo.addObject("usuariopaciente", usuariopaciente);
+        return modelo;
+    }    
     @GetMapping("/paciente/mostrarImagem/{imagem}")
 	@ResponseBody
 	public byte[] retornarImagem(@PathVariable("imagem") String imagem) throws IOException {
@@ -246,6 +254,12 @@ public class UsuarioPacienteController{
         ModelAndView modelo = new ModelAndView("redirect:/paciente/login");
         service.apagar(id);
         servPaciente.deletar(id);
+        return modelo;
+    }
+    @GetMapping("/paciente/{codigo}/deletarConsulta")
+    public ModelAndView excluirC(@PathVariable String codigo) {
+        ModelAndView modelo = new ModelAndView("redirect:/paciente/consultas");
+        servAgenda.deletar(codigo);
         return modelo;
     }
 }
