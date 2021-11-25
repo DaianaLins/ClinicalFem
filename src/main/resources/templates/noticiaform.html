@@ -50,7 +50,7 @@
 
      <section>    
 
-        <form method="post" th:object="${noticia}" action="upload.php" class="container">
+        <form method="post" th:object="${noticia}" class="container">
            <!-- <input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}">-->
 
             <div class="form-group">
@@ -60,7 +60,7 @@
                 <input type="text" class="form-control" name="autor" placeholder="Autor *">
             </div>
 
-            <textarea id="summernote" class="summernote" name="texto" placeholder="Texto *"></textarea>
+            <textarea id="summernote" type="text" class="form-control" name="texto" placeholder="Texto *"></textarea>
 
             <small class="form-text text-muted">(*) Campos obrigatórios</small>
 
@@ -80,30 +80,27 @@
 	    var elems = document.querySelectorAll('select');
 	    var instances = M.FormSelect.init(elems);
 	});
-	$(document).ready(function() {
-    $('#summernote').summernote({
-        height: 200,
-        callbacks: {
-            onImageUpload: function(image, editor, welEditable) {
-                uploadImage(image[0]);
-            }
+	$('#summernote').summernote({
+    height: ($(window).height() - 300),
+    callbacks: {
+        onImageUpload: function(image) {
+            uploadImage(image[0]);
         }
-    });
+    }
 });
 
 function uploadImage(imagem) {
     var data = new FormData();
     data.append("imagem", imagem);
     $.ajax({
-        url: '../../models/upload.php',
+        url: 'src/main/resources/static/imagens/',
         cache: false,
         contentType: false,
         processData: false,
         data: data,
         type: "post",
         success: function(url) {
-            console.log(url);
-            var image = $('<img>').attr('src', 'http://localhost:8080/atendente/novaNoticia' + url);
+            var imagem = $('<img>').attr('src', 'http://' + url);
             $('#summernote').summernote("insertNode", imagem[0]);
         },
         error: function(data) {
