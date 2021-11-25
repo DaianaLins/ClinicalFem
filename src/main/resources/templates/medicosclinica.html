@@ -59,7 +59,7 @@
 
 <main class="cards"style="padding-left: 5%; padding-bottom: 5%">
     <div class="card" style="border-radius: 10px; width: 18rem; padding: 10px; margin: 10px; display: inline-block;" th:each="usuariomedico : ${usuariomedico}">
-        <img authorize access="perfil.PACIENTE" class="card-img-top" th:src="@{/medico/mostrarImagem/{imagem}(imagem=${usuariomedico.nomeImagem})}" style="border-radius: 50%;"alt="Imagem de capa do card" >
+        <img authorize access="perfil.PACIENTE" class="card-img-top" th:src="@{/medico/mostrarImagem/{imagem}(imagem=${usuariomedico.nomeImagem})}" style="border-radius: 50%; height: 200px; overflow: hidden" alt="Imagem de capa do card" >
         <div class="card-body">
 			<div th:each="cadmedicos: ${cadmedico}"> 
 				<div th:if = "${cadmedicos.crm == usuariomedico.crm}" > 

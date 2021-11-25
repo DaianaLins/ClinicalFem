@@ -57,7 +57,7 @@
 
 <main class="cards" style="padding-left: 5%; padding-bottom: 5%;">
     <div class="card" style="border-radius: 10px; width: 18rem; padding: 10px; margin: 10px; display: inline-block; width: 18rem;" th:each="usuariopaciente : ${usuariopaciente}">
-        <img class="card-img-top" th:src="@{/paciente/mostrarImagem/{imagem}(imagem=${usuariopaciente.nomeImagem})}" alt="Imagem de capa do card" style="border-radius: 50%;">
+        <img class="card-img-top" th:src="@{/paciente/mostrarImagem/{imagem}(imagem=${usuariopaciente.nomeImagem})}" alt="Imagem de capa do card" style="border-radius: 50%; height: 200px; overflow: hidden">
         <div class="card-body">
          
           <p class="card-text" >Nome: <span th:text="${usuariopaciente.nome}"></span></p> 
