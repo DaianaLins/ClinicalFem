@@ -67,10 +67,10 @@ public class UsuarioMedicoController {
     @GetMapping("/medico/verificarConsultas")
     public ModelAndView consultas() throws InterruptedException, ExecutionException{
         List<Agendamento> agendamento = servAgenda.getAllAgendamentos();
-        List<UsuarioMedico> usuariomedico = service.getAllUsuarios();
+        List<CadMedico> cadmedico = servMedico.getAllCadMedicos();
         ModelAndView modelo = new ModelAndView("verificarcons.html");
         modelo.addObject("agendamento", agendamento);
-        modelo.addObject("usuariomedico", usuariomedico);
+        modelo.addObject("cadmedico", cadmedico);
         return modelo;
     }
     @GetMapping("/medico/{codigo}/deletarConsulta")
