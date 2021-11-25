@@ -57,9 +57,9 @@
 
 	<section class="flex">
 
-<main class="cards"style="padding-left: 5%">
+<main class="cards"style="padding-left: 5%; padding-bottom: 5%">
     <div class="card" style="border-radius: 10px; width: 18rem; padding: 10px; margin: 10px; display: inline-block;" th:each="usuariomedico : ${usuariomedico}">
-        <img authorize access="perfil.PACIENTE" class="card-img-top" th:src="@{/medico/mostrarImagem/{imagem}(imagem=${usuariomedico.nomeImagem})}" style="border-radius: 50%;"alt="Imagem de capa do card" >
+        <img authorize access="perfil.PACIENTE" class="card-img-top" th:src="@{/medico/mostrarImagem/{imagem}(imagem=${usuariomedico.nomeImagem})}" style="border-radius: 50%; height: 200px; overflow: hidden" alt="Imagem de capa do card" >
         <div class="card-body">
 			<div th:each="cadmedicos: ${cadmedico}"> 
 				<div th:if = "${cadmedicos.crm == usuariomedico.crm}" > 
@@ -67,7 +67,7 @@
 				</div>
 			</div>
 		  <p class="card-text"><span th:text="${usuariomedico.nome}"></span></p>
-		  <p class="card-text" >Numero: <span th:text="${usuariomedico.numero}"></span></p>
+		  <p class="card-text" >Número: <span th:text="${usuariomedico.numero}"></span></p>
 		  <p class="card-text" >CRM: <span th:text="${usuariomedico.crm}"></span></p>
 		  <!--<p class="card-text" >Especialidade: <span th:text="${usuariomedico.especialidade}"></span></p> -->
           <a th:href="@{/paciente/agendarConsulta/{id} (id = ${usuariomedico.crm})} " class="btn btn-primary #ef9a9a red lighten-3">Agendar</a>

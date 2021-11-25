@@ -38,7 +38,7 @@ nav > a:hover{
 
 form{
    box-shadow: 0px 0px 5px grey;
-	padding-top: 50px;
+	padding-top: 40px;
 	padding-left: 30px;
 	padding-bottom: 30px;
 	margin-bottom: 90px;
@@ -48,7 +48,7 @@ form{
     padding: 30px;
     position: absolute;
     left: 50%;
-    top: 105%;
+    top: 110%;
     transform: translate(-50%, -50%);
 	
 }
@@ -78,12 +78,12 @@ form h3 {
     font-family: Arial,'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
 }
 footer{
-    background-color: #f2a7a7;
+    background-color: white;
     color: white;
     width: 100%;
-    height: 20%;
+    height: 1%;
     position: absolute;
-    bottom: -550px; left: 0px;
+    bottom: -60px; left: 0px;
 }
 
 footer > p{
