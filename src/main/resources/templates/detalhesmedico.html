@@ -71,8 +71,8 @@
 		  <p class="card-text">CPF: <span th:text="${cadmedico.cpf}"></span></p>
 		  <p class="card-text">Especialidade: <span th:text="${cadmedico.especialidade}"></span></p>
 		  <p class="card-text" >RG: <span th:text="${cadmedico.rg}"></span></p>
-          <!-- <a th:href="@{/usuario/{id}/editar (id=${usuariopaciente.id})}" class="btn btn-warning">Editar</a>
-                <a th:href="@{/usuario/{id}/excluir (id=${usuariopaciente.id})}" class="btn btn-danger" onclick="return confirm('Tem certeza de que deseja excluí-lo?')">Excluir</a> -->
+           <a th:href="@{/medico/{id}/editar (id=${usuariomedico.id})}" class="btn btn-warning #ef9a9a red lighten-3">Editar</a>
+                <a th:href="@{/medico/{id}/excluir (id=${usuariomedico.id})}" class="btn btn-danger #ef9a9a red lighten-3" onclick="return confirm('Tem certeza de que deseja excluí-lo?')">Excluir</a>
         </div>
   
 	</div>
