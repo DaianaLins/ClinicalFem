@@ -1,6 +1,6 @@
 package com.projeto.clinicalfem.models;
 
-import java.time.LocalDate;
+
 
 public class Noticia {
     
@@ -12,7 +12,7 @@ public class Noticia {
 
     public Noticia(){
     }
-
+   
     public Noticia(String id, String titulo, String autor, String data, String texto){
         this.id = id;
         this.titulo = titulo;

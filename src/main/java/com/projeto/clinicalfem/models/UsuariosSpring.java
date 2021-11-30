@@ -16,9 +16,13 @@ public class UsuariosSpring {
     private boolean adm;
     private byte[] imagem;
     private LocalDate datanasc;
+   
+
     public LocalDate getDatanasc() {
         return datanasc;
     }
+
+    
 
     public void setDatanasc(LocalDate datanasc) {
         this.datanasc = datanasc;
@@ -76,6 +80,7 @@ public class UsuariosSpring {
         setDataNascLocal(datanasc);
         this.nomeImagem = nomeImagem;
         this.setCpf(cpf);
+      
     }
   
 

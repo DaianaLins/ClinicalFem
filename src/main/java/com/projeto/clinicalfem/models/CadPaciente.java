@@ -1,6 +1,5 @@
 package com.projeto.clinicalfem.models;
 
-import org.springframework.format.annotation.DateTimeFormat;
 
 public class CadPaciente {
     
@@ -10,7 +9,6 @@ public class CadPaciente {
 
     private String nome;
 
-    @DateTimeFormat(pattern = "dd/MM/yyyy")
     private String datanasc;
 
     private String email;

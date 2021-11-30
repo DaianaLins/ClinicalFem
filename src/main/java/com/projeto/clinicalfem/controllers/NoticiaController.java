@@ -43,11 +43,7 @@ public class NoticiaController {
         serviceA = serv4;
     }
 
-    @GetMapping("/index")
-    public ModelAndView index() {
-        ModelAndView modelo = new ModelAndView("index");
-        return modelo;
-    }
+   
     //Noticia atendente
     @GetMapping("atendente/noticias")
     public ModelAndView getNoticias(Principal principal) throws InterruptedException, ExecutionException{
@@ -89,7 +85,7 @@ public class NoticiaController {
         modelo.addObject("usuariopaciente", usuariopaciente);
         return modelo;
     }
-    //Pacente
+    //Paciente
     @GetMapping("paciente/{id}/noticias")
     public ModelAndView getNoticiasDetailsP(@PathVariable String id, Principal principal) throws InterruptedException, ExecutionException{
         ModelAndView modelo = new ModelAndView("noticiaDetails");

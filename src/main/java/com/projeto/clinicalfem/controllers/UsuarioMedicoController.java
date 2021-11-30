@@ -11,11 +11,14 @@ import java.util.List;
 import java.util.concurrent.ExecutionException;
 import java.util.concurrent.TimeUnit;
 
+import javax.websocket.server.PathParam;
+
 import com.projeto.clinicalfem.enums.Perfil;
 import com.projeto.clinicalfem.models.Agendamento;
 import com.projeto.clinicalfem.models.CadMedico;
 import com.projeto.clinicalfem.models.CadPaciente;
 import com.projeto.clinicalfem.models.CropImageToSquare;
+import com.projeto.clinicalfem.models.Historico;
 import com.projeto.clinicalfem.models.UsuarioMedico;
 import com.projeto.clinicalfem.models.UsuarioMedicoParse;
 import com.projeto.clinicalfem.models.UsuarioMedicoSpring;
@@ -25,6 +28,7 @@ import com.projeto.clinicalfem.models.UsuariosSpring;
 import com.projeto.clinicalfem.service.AgendamentoService;
 import com.projeto.clinicalfem.service.CadMedicoService;
 import com.projeto.clinicalfem.service.CadPacienteService;
+import com.projeto.clinicalfem.service.HistoricoSevice;
 import com.projeto.clinicalfem.service.UsuarioMedicoService;
 import com.projeto.clinicalfem.service.UsuarioPacienteService;
 
@@ -52,12 +56,14 @@ public class UsuarioMedicoController {
     UsuarioPacienteService servicep;
     AgendamentoService servAgenda;
     CadPacienteService servPaci;
-    public UsuarioMedicoController(UsuarioMedicoService serv, UsuarioPacienteService servp ,CadMedicoService servm,  AgendamentoService servA, CadPacienteService servP) {
+    HistoricoSevice servH;
+    public UsuarioMedicoController(UsuarioMedicoService serv, UsuarioPacienteService servp ,CadMedicoService servm,  AgendamentoService servA, CadPacienteService servP, HistoricoSevice servhis) {
         service = serv;
         servMedico = servm;
         servicep = servp;
         servAgenda = servA;
         servPaci = servP;
+        servH = servhis;
     }
 
     @GetMapping("/medico/pacientesclin")
@@ -89,6 +95,20 @@ public class UsuarioMedicoController {
 	public ModelAndView deletarConsulta(@PathVariable String codigo) throws InterruptedException, ExecutionException{
         ModelAndView modelo = new ModelAndView("redirect:/medico/verificarConsultas");
         servAgenda.deletar(codigo);
+		return modelo;
+	}
+
+    @GetMapping("/medico/historico/{id}")
+    public ModelAndView historico(@PathVariable String id)throws InterruptedException, ExecutionException {
+        ModelAndView modelo = new ModelAndView("historico");
+        
+        return modelo;
+    }
+    @PostMapping("/medico/historico/{id}")
+	public ModelAndView historico(Historico historico) throws InterruptedException, ExecutionException{
+		ModelAndView modelo = new ModelAndView("redirect:/medico/historico");
+		servH.salvar(historico);
+
 		return modelo;
 	}
 

@@ -128,7 +128,7 @@ public class WebSecurityConfig {
 
         @Override
         public void configure(WebSecurity web) throws Exception {
-            web.ignoring().antMatchers("/materialize/**", "/static/**", "/bootstrap/**", "/style/**","/imagens/**");
+            web.ignoring().antMatchers("/materialize/**", "/static/**", "/src/**" ,"/bootstrap/**", "/style/**","/imagens/**");
         }
     }
     

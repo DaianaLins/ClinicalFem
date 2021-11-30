@@ -19,11 +19,13 @@ public class Usuarios {
     private boolean adm;
     private String nomeImagem;
 	private String cpf;
+    
 
     public String getNomeImagem() {
         return nomeImagem;
     }
 
+    
     public String getCpf() {
         return cpf;
     }
@@ -79,6 +81,7 @@ public class Usuarios {
         this.datanasc = datanasc;
         this.nomeImagem = nomeImagem;
         this.setCpf(cpf);
+       
     }
   
     

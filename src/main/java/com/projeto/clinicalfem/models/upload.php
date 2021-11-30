@@ -1,17 +1,24 @@
 <?php
-    if ($_FILES['image']['name']) {
-        if (!$_FILES['image']['error']) {
-            $name = md5(rand(100, 200));
-            $ext = explode('.', $_FILES['image']['name']);
-            $filename = $name . '.' . $ext[1];
-            $destination = 'src/main/resources/static/imagens/' . $filename;
-            $location = $_FILES["image"]["tmp_name"];
-            move_uploaded_file($location, $destination);
-            echo 'src/main/resources/static/imagens/' . $filename;//change this URL
-        }
-    else
-    {
-      echo  $message = 'Ooops!  Your upload triggered the following error:  '.$_FILES['image']['error'];
-    }
+//Caminho absoluto do local que vai salvar as fotos
+$pasta    = 'gs://clinicalfem-827d7.appspot.com/';
+
+//URL que vai ser gerada
+$pastaurl = 'http://meusite.com/storage/upload/';
+
+$tmp_name = $_FILES['arquivo']['tmp_name'];
+
+//Pega o mimetype
+$finfo = finfo_open(FILEINFO_MIME_TYPE);
+$mime = finfo_file($finfo, $tmp_name);
+finfo_close($finfo);
+
+//Só permite upload de imagens
+if (strpos($mime, 'image/') === 0) {
+
+   //Gera um nome que não se repete para imagem e adiciona a extensão conforme o mimetype
+   $file = time() . '.' . str_replace('image/', '', $mime);
+
+   if (move_uploaded_file($tmp_name, $pasta . '/' . $file)) {
+       return $pastaurl . $file;
+   }
 }
-?>
