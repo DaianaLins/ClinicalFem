@@ -61,7 +61,7 @@
     </form>
   </section>
 
-  <input type="hidden" name="texto" id="texto">
+  <input type="hidden" class="form-control" name="texto" id="texto">
 
   <!--JavaScript at end of body for optimized loading-->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js"></script>
@@ -83,9 +83,9 @@
       $('.click2edit').summernote({ focus: true });
       $('.note-editor').find('textarea').attr('texto','final');
     };
-    var plainText = $($("#summernote").summernote("code")).text()
+   /** var plainText = $($("#summernote").summernote("code")).text()
     var contents = $('#summernote').summernote('code');
-    var plainText = $("<p>" + contents+ "</p>").text();
+    var plainText = $("<p>" + contents+ "</p>").text();**/
     var salvar = function () {
       var markup = $('.click2edit').summernote('code');
       $('.click2edit').summernote('destroy');
