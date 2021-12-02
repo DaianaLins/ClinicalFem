@@ -38,30 +38,31 @@
         class="material-icons left" style="margin-top:-15px">home</i>Início</a>
     <a href="/medico/pacientesclin" class="waves-effect waves-light btn #ef9a9a red lighten-3  white-text"><i
         class="material-icons left" style="margin-top:-15px">description</i>Pacientes</a>
+
+        <a href="/medico/visualizarHistorico/{id}" class="waves-effect waves-light btn #ef9a9a red lighten-3  white-text"><i
+          class="material-icons left" style="margin-top:-15px">description</i>Visualizar histórico</a>
   </nav>
 
 
-
+  
 
   <section>
+    
+    <form method="post" action="/medico/cadastrarhistorico/{id}" th:object="${historico}"  class="row">
+      Nome Completo: <input  type="text" name="nome" th:value="${paciente.nome}" required />    	
+			Medico: <input type="text" th:value="${medico.nome}" name="especialista" required />
 
-    <form method="post" action="/medico/historico/{id}" th:object="${historico}" class="row">
-      <!-- <input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}">-->
+    <textarea id="summernote" type="text" class="form-control" name="texto" ></textarea>
 
-      <button id="edit" class="btn btn-primary" onclick="editar()" type="button">Edit 1</button>
-      <button id="save" class="btn btn-primary" onclick="salvar()"  type="button">Save 2</button>
-      <div class="click2edit" id="final">click2edit</div>
+   
 
-      <!--essa-->
-      <!--<textarea id="summernote" type="text" class="form-control" name="texto" ></textarea>
-           <button class="btn btn-primary #ef9a9a red lighten-3 white-text" style="margin-top: 10px;" onclick="save()">Salvar</button>
-           <button class="btn btn-primary #ef9a9a red lighten-3 white-text" style="margin-top: 10px;" onclick="edit()">Editar</button> -->
-
+    <button type="submit" class="btn btn-primary #ef9a9a red lighten-3 white-text" style="margin-top: 10px;">salvar</button>
+    <a href="/medico/pacientesclin" class="btn btn-light #ef9a9a red lighten-3 white-text" role="button" style="margin-top: 10px;">Cancelar</a>
 
     </form>
   </section>
 
-  <input type="hidden" class="form-control" name="texto" id="texto">
+  
 
   <!--JavaScript at end of body for optimized loading-->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js"></script>
@@ -79,6 +80,8 @@
     $('#summernote').summernote({
       height: 300
     });
+    
+    /**
     var editar = function () {
       $('.click2edit').summernote({ focus: true });
       $('.note-editor').find('textarea').attr('texto','final');
@@ -86,14 +89,14 @@
    /** var plainText = $($("#summernote").summernote("code")).text()
     var contents = $('#summernote').summernote('code');
     var plainText = $("<p>" + contents+ "</p>").text();**/
-    var salvar = function () {
+    /** var salvar = function () {
       var markup = $('.click2edit').summernote('code');
       $('.click2edit').summernote('destroy');
 
       document.getElementById('code').value = document.getElementById("texto").innerText
     };
 
-
+**/
   </script>
   <script>
     /*$('#summernote').summernote({
@@ -109,7 +112,24 @@
       ]
     });*/
   </script>
- 
+ <script>
+   /**
+   $(function() {
+     $("#submit").clicl(function(e){
+       e.preventDefault();
+       var form =$("#postForm");
+
+       $.ajax({
+         url:"db_request.php",
+         data: $(form).serialize(),
+         method: "POST"
+       }).done(function(response){
+         var data = JSON.parse(response)
+       })
+     })
+    })
+  **/
+ </script>
   <footer>
     <p>Copyright ® Todos os direitos reservados</p>
   </footer>

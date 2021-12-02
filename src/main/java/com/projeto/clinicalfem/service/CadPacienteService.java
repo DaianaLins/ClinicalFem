@@ -81,6 +81,21 @@ public class CadPacienteService {
 
         return cadpaciente;
     }
+    public CadPaciente getCadPacienteByNome(String nome) throws InterruptedException, ExecutionException{
+        CadPaciente cadpaciente = new CadPaciente();
+        
+        CollectionReference cadpacientes = (CollectionReference) conex.collection("CadPacientes");
+
+        Query query = (Query) cadpacientes.whereEqualTo("nome", nome);
+        List<QueryDocumentSnapshot> querySnapshot = query.get().get().getDocuments();
+
+
+        for (DocumentSnapshot document : querySnapshot){
+            cadpaciente = document.toObject(CadPaciente.class);
+        }
+
+        return cadpaciente;
+    }
    
 
     public CadPaciente getCadPacienteByEmail(String email) throws InterruptedException, ExecutionException{

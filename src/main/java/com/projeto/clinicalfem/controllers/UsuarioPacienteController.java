@@ -132,7 +132,7 @@ public class UsuarioPacienteController{
         CadMedico medico = servMedico.getCadMedicoByCRM(id);
         System.out.print(medico.getCod());
         ModelAndView modelo = new ModelAndView("formAgendamentoP");
-        modelo.addObject("cadmedicos", cadmedico);
+        modelo.addObject("cadmedico", cadmedico);
         modelo.addObject("medico", medico);
         modelo.addObject("paciente", usuariopaciente);
         modelo.addObject("agendamento", new Agendamento());

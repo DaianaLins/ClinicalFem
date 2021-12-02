@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+
+<html xmlns:th="http://thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	lang="pt-br">
+	<!-- IMPORTAÇÕES DO MATERIALIZER -->
+<!-- SITE: https://materializecss.com/getting-started.html -->
+<!--Import Google Icon Font-->
+
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons"
+	rel="stylesheet" />
+<!--Import materialize.css-->
+<link type="text/css" rel="stylesheet"
+	href="/materialize/css/materialize.min.css" media="screen,projection" />
+<!-- Bootstrap CSS -->
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+<!--<link rel="stylesheet" href="style/styleCss.css"/>-->
+<!--Let browser know website is optimized for mobile-->
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta charset="UTF-8">
+<link rel="stylesheet" href="/materialize/style/noticias.css"/>
+
+<head>
+
+<title>Histórico</title>
+</head>
+<body>
+ <style>
+   
+ </style>
+
+<header>
+  <h1><img class="responsive-img" src="/materialize/style/logos/logos/LOGOBRANCA.png" style="margin:-60px 0px; width: 25%;"></h1>
+</header>
+    <nav>
+    <div > 
+       <a href="/medico/telaMedico" class="waves-effect waves-light btn #ef9a9a red lighten-3 white-text"><i class="material-icons left"style="margin-top:-15px" >home</i>Início</a>
+      
+       <a href="/medico/cadastrarhistorico/{id}" class="waves-effect waves-light btn #ef9a9a red lighten-3  white-text"><i class="material-icons left"style="margin-top:-15px">add_circle_outline</i>CADASTRAR HISTÓRICO</a> 
+  	</div>
+        
+      
+    </nav>
+
+    <article>
+     
+      <section>
+        <p class="card-text" style="margin-top: 40px;"><span th:utext="${historico.nome}"></span></p>
+        <p class="card-text" style="margin-top: 40px;"><span th:utext="${historico.especialista}"></span></p>
+          <p class="card-text" style="margin-top: 40px;"><span th:utext="${historico.texto}"></span></p>
+      </section>
+  </article>
+
+    
+      
+
+   
+   
+
+    <!--JavaScript at end of body for optimized loading-->
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js"></script>
+	<script type="text/javascript" src="materialize/js/materialize.min.js"></script>
+	  
+	<script>
+	document.addEventListener('DOMContentLoaded', function() {
+	    var elems = document.querySelectorAll('select');
+	    var instances = M.FormSelect.init(elems);
+	});
+  </script>
+</body>
+</html>
