@@ -101,7 +101,7 @@ public class UsuarioMedicoController {
     @GetMapping("/medico/cadastrarhistorico/{id}")
     public ModelAndView historico(@PathVariable String id, Principal principal)throws InterruptedException, ExecutionException {
         List<CadPaciente> cadpaciente = servPaci.getAllCadPacientes();
-        CadPaciente paciente = servPaci.getCadPacienteById(id);
+        Usuarios paciente = servicep.getMembroById(id);
         UsuarioMedicoSpring usuariomedico = UsuarioMedicoParse.toSpring(service.getMembroByEmail(principal.getName()));
         ModelAndView modelo = new ModelAndView("historico");
         modelo.addObject("paciente", paciente); 
@@ -111,15 +111,12 @@ public class UsuarioMedicoController {
         return modelo;
     }
     @GetMapping("/medico/visualizarHistorico/{id}")
-    public ModelAndView visualizarHistorico(@PathVariable String id,Principal principal) throws InterruptedException, ExecutionException {
-    	UsuarioMedicoSpring usuariomedico = UsuarioMedicoParse.toSpring(service.getMembroByEmail(principal.getName()));
-        CadMedico cadmedico =  servMedico.getCadMedicoByCRM(usuariomedico.getCrm());
-        Historico historico = servH.getHistoricoById(id);
-        CadPaciente cadpaciente = servPaci.getCadPacienteByNome(historico.getNome()); 
-        ModelAndView mv = new ModelAndView("visualizarHistorico");
-        mv.addObject("cadpaciente",cadpaciente); 
-        mv.addObject("cadmedico", cadmedico);
-    	mv.addObject("usuariomedico", usuariomedico);
+    public ModelAndView visualizarHistorico(@PathVariable String id) throws InterruptedException, ExecutionException {
+        Usuarios paciente = servicep.getMembroById(id);
+        Historico historico = servH.getHistoricoById(paciente.getNome());
+     
+        ModelAndView mv = new ModelAndView("visualizarHistorico.html");
+        mv.addObject("paciente", paciente); 
         mv.addObject("historico", historico);
     	return mv;
     }

@@ -36,21 +36,27 @@
     <div > 
        <a href="/medico/telaMedico" class="waves-effect waves-light btn #ef9a9a red lighten-3 white-text"><i class="material-icons left"style="margin-top:-15px" >home</i>Início</a>
       
-       <a href="/medico/cadastrarhistorico/{id}" class="waves-effect waves-light btn #ef9a9a red lighten-3  white-text"><i class="material-icons left"style="margin-top:-15px">add_circle_outline</i>CADASTRAR HISTÓRICO</a> 
+       <a href="/medico/cadastrarhistorico/{id} " class="waves-effect waves-light btn #ef9a9a red lighten-3  white-text"><i class="material-icons left"style="margin-top:-15px">add_circle_outline</i>CADASTRAR HISTÓRICO</a> 
   	</div>
         
       
     </nav>
-
+<main>
     <article>
      
-      <section>
-        <p class="card-text" style="margin-top: 40px;"><span th:utext="${historico.nome}"></span></p>
-        <p class="card-text" style="margin-top: 40px;"><span th:utext="${historico.especialista}"></span></p>
-          <p class="card-text" style="margin-top: 40px;"><span th:utext="${historico.texto}"></span></p>
-      </section>
+      <div class="card-body" th:each="pacientes : ${paciente}">
+        <div class="card" th:each="historicos : ${historico}">
+          <div th:if = "${paciente.nome == historicos.nome}" > 
+        <p class="card-text" style="margin-top: 40px;"><span th:text="${historicos.nome}"></span></p>
+        <p class="card-text" style="margin-top: 40px;"><span th:text="${historicos.especialista}"></span></p>
+        <section>
+          <p class="card-text" style="margin-top: 40px;"><span th:utext="${historicos.texto}"></span></p>
+</section>
+</div>
+        </div>
+      </div>
   </article>
-
+</main>
     
       
 
