@@ -104,7 +104,21 @@ public class CadMedicoService {
 
         return cadmedico;
     }
+    public CadMedico getCadMedicoByEspecialidade(String especialidade) throws InterruptedException, ExecutionException{
+        CadMedico cadmedico = new CadMedico();
+        
+        CollectionReference cadmedicos = (CollectionReference) conex.collection("CadMedicos");
 
+        Query query = (Query) cadmedicos.whereEqualTo("especialidade", especialidade);
+        List<QueryDocumentSnapshot> querySnapshot = query.get().get().getDocuments();
+
+
+        for (DocumentSnapshot document : querySnapshot){
+            cadmedico = document.toObject(CadMedico.class);
+        }
+
+        return cadmedico;
+    }
 
     public void deletar(String cod){
         ApiFuture<WriteResult> writeResult = conex.collection("CadMedicos").document(cod).delete();

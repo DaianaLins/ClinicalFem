@@ -7,6 +7,7 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.security.Principal;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.ExecutionException;
 import java.util.concurrent.TimeUnit;
@@ -17,6 +18,7 @@ import com.projeto.clinicalfem.models.CadMedico;
 import com.projeto.clinicalfem.models.CadPaciente;
 import com.projeto.clinicalfem.models.CropImageToSquare;
 import com.projeto.clinicalfem.models.UsuarioMedico;
+import com.projeto.clinicalfem.models.UsuarioMedicoParse;
 import com.projeto.clinicalfem.models.UsuarioParse;
 import com.projeto.clinicalfem.models.Usuarios;
 import com.projeto.clinicalfem.models.UsuariosSpring;
@@ -105,17 +107,23 @@ public class UsuarioPacienteController{
 		return null;
 	}
             
-    @GetMapping("/paciente/medicoclin")
-    public ModelAndView getMedicos() throws InterruptedException, ExecutionException{
+    @GetMapping("/paciente/{id}/medicoclin")
+    public ModelAndView getMedicos(@PathVariable("id") String id, Principal principal, String text) throws InterruptedException, ExecutionException{
         ModelAndView modelo = new ModelAndView("medicosclinica.html");
-        List<UsuarioMedico> usuariomedico = serviceM.getAllUsuarios();
-        List<CadMedico> cadmedico = servMedico.getAllCadMedicos();
-        modelo.addObject("cadmedico", cadmedico);
-        modelo.addObject("usuariomedico", usuariomedico);
+        if(text==null || text.isEmpty()){
+            List<UsuarioMedico> usuariomedico = serviceM.getAllUsuarios();
+            List<CadMedico> cadmedico = servMedico.getAllCadMedicos();
+            modelo.addObject("cadmedico", cadmedico);
+            modelo.addObject("usuariomedico", usuariomedico); 
+        }else{
+        ArrayList<UsuarioMedico> usuariomedico = serviceM.getAllUsuarios();
+        ArrayList<CadMedico> cadmedico = servMedico.getCadMedicoByEspecialidade(usuariomedico.getId());
+
+        }
+        
         return modelo;
     }
-
-
+    
     @GetMapping("/cadastroPaciente")
     public ModelAndView cadastrar() {
         ModelAndView modelo = new ModelAndView("usuariopacienteform.html");
