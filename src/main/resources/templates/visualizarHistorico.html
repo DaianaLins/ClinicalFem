@@ -36,7 +36,6 @@
     <div > 
        <a href="/medico/telaMedico" class="waves-effect waves-light btn #ef9a9a red lighten-3 white-text"><i class="material-icons left"style="margin-top:-15px" >home</i>Início</a>
       
-       <a href="/medico/cadastrarhistorico/{id} " class="waves-effect waves-light btn #ef9a9a red lighten-3  white-text"><i class="material-icons left"style="margin-top:-15px">add_circle_outline</i>CADASTRAR HISTÓRICO</a> 
   	</div>
         
       
@@ -50,7 +49,7 @@
         <p class="card-text" style="margin-top: 40px;"><span th:text="${historico.nome}"></span></p>
         <p class="card-text" style="margin-top: 40px;"><span th:text="${historico.especialista}"></span></p>
         <section>
-          <p class="card-text" style="margin-top: 40px;"><span th:utext="${historico.texto}"></span></p>
+          <p class="card-text" style="margin-top: 40px;"><span th:text="${historico.texto}"></span></p>
 </section>
 </div>
         </div>
