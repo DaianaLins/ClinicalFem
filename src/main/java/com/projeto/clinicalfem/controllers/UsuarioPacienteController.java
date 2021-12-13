@@ -25,6 +25,7 @@ import com.projeto.clinicalfem.models.UsuariosSpring;
 import com.projeto.clinicalfem.service.AgendamentoService;
 import com.projeto.clinicalfem.service.CadMedicoService;
 import com.projeto.clinicalfem.service.CadPacienteService;
+import com.projeto.clinicalfem.service.PesqService;
 import com.projeto.clinicalfem.service.UsuarioMedicoService;
 import com.projeto.clinicalfem.service.UsuarioPacienteService;
 
@@ -52,12 +53,14 @@ public class UsuarioPacienteController{
     UsuarioMedicoService serviceM;
     CadMedicoService servMedico;
     AgendamentoService servAgenda;
-    public UsuarioPacienteController(UsuarioPacienteService serv, CadPacienteService servp, UsuarioMedicoService servmed,  CadMedicoService serv2,  AgendamentoService servA){
+    PesqService servPesq;
+    public UsuarioPacienteController(UsuarioPacienteService serv, CadPacienteService servp, UsuarioMedicoService servmed,  CadMedicoService serv2,  AgendamentoService servA, PesqService serpesq){
         service = serv;
         servPaciente = servp; 
         serviceM = servmed;
         servMedico = serv2;
         servAgenda = servA;
+        servPesq = serpesq;
     }
 
     @GetMapping("/paciente/dados")
@@ -116,7 +119,10 @@ public class UsuarioPacienteController{
             modelo.addObject("cadmedico", cadmedico);
             modelo.addObject("usuariomedico", usuariomedico); 
         }else{
-       
+            List<UsuarioMedico> usuariomedico = serviceM.getAllUsuarios();
+            List<CadMedico> cadmedico = servMedico.getAllCadMedicos();
+            modelo.addObject("cadmedico", cadmedico);
+            modelo.addObject("usuariomedico", usuariomedico);
         }
         
         return modelo;

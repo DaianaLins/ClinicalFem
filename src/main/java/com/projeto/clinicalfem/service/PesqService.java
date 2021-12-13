@@ -16,7 +16,7 @@ import org.springframework.stereotype.Service;
 @Service
 public class PesqService {
     Firestore conex = FirestoreClient.getFirestore();
-    public CadMedico getCadMedcicoByEspecialidade(String especialidade) throws InterruptedException, ExecutionException{
+    public CadMedico getPesquisa(String especialidade) throws InterruptedException, ExecutionException{
         CadMedico cadmedico = new CadMedico();
         
         CollectionReference cadpacientes = (CollectionReference) conex.collection("CadMedicos");
