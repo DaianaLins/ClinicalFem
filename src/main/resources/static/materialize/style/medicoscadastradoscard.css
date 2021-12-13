@@ -35,24 +35,11 @@ nav > a:hover{
     background-color: white;
     color: #f2a7a7;
 }
-
 form{
-    border-radius: 50%;
-   box-shadow: 0px 0px 5px grey;
-	padding-top: 30px;
-	padding-left: 30px;
-	padding-bottom: 30px;
-	margin-bottom: 80px;
-	background-color: white;
-    max-width: 500px;
-    width: 70%;
-    padding: 30px;
-    position: absolute;
-    left: 50%;
-    top: 95%;
-    transform: translate(-50%, -50%);
-	
+    width: 50%; /* define a largura do campo */ 
+  position: relative;  /* cria o contexto de posicionamento do botão */ 
 }
+
 #nv{
 	 box-shadow: 0px 0px 5px grey;
 	padding-top: 30px;
