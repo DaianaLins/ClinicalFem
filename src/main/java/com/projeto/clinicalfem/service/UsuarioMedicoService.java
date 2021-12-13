@@ -25,16 +25,16 @@ public class UsuarioMedicoService {
     public boolean cadastrar(UsuarioMedico medico) throws InterruptedException, ExecutionException {
         
         //resgata todos os membros e verifica se há emails repetidos
-        /*ArrayList<UsuarioAtendente> atendentes = getAllAtendentes(); boolean emailIgual = false;
-        for(UsuarioAtendente teste : atendentes){
-            if(teste.getEmail().equals(atendente.getEmail())){
+        ArrayList<UsuarioMedico> medicos = getAllUsuarios(); boolean emailIgual = false;
+        for(UsuarioMedico teste : medicos){
+            if(teste.getEmail().equals(medico.getEmail())){
                 emailIgual = true;
             }
         }
 
         if(emailIgual){
             return false;
-        }*/
+        }
         
         // cria um ID aleatório a partir da coleção "Membros" do banco de dados
         DocumentReference doc = conex.collection("UsuarioMedicos").document(); 

@@ -43,12 +43,12 @@
 			Data de Nascimento:
 			<input type="date" name="data" id="data" th:field="*{datanasc}">
 			</div>
-		Email: <input type="text" th:field="*{email}" required />
+		Email: <input type="email" th:field="*{email}" required />
 		Numero: <input type="text" th:field="*{numero}" required />
 		Senha: <input type="password" th:field="*{senha}" required />
 
 		<button type="submit" class="waves-effect waves-light btn #ef9a9a red lighten-3"
-			th:value="${usuarioatendente.id == null ? 'cadastrar' : 'editar'}"> Cadastrar</button>
+			th:value="${usuarioatendente.id == null ? 'cadastrar' : 'editar'}" > Cadastrar</button>
 	</form>
 
 	<footer>
@@ -72,7 +72,12 @@
 
 
 	</script>
-
+	<script>
+		var emailRepetido = "[[${emailrepetido}]]";
+        if (emailRepetido != "") {
+            alert(emailRepetido);
+        }
+	</script>
 </body>
 
 </html>

@@ -47,7 +47,7 @@
 	
 		
 		Nome Completo: <input type="text" th:field="*{nome}" required />
-		Email: <input type="text" th:field="*{email}" required />
+		Email: <input type="email" th:field="*{email}" required />
 		
 		<div class="input-field col s5">
 		Data de Nascimento:
@@ -103,7 +103,12 @@
 	<script>
 		let storage = firebase.storage();
 	</script>
-
+<script>
+	var emailRepetido = "[[${emailrepetido}]]";
+        if (emailRepetido != "") {
+            alert(emailRepetido);
+        }
+</script>
 </body>
 
 </html>

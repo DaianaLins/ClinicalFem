@@ -26,7 +26,7 @@ public class UsuarioAtendenteController {
     public ModelAndView cadastrar() {
         ModelAndView modelo = new ModelAndView("usuarioatendenteform");
         modelo.addObject("usuarioatendente", new UsuarioAtendente());
-        
+        modelo.addObject("emailrepetido", "");
         return modelo;
     }
 
@@ -40,15 +40,14 @@ public class UsuarioAtendenteController {
         BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
         String senhaEncript = encoder.encode(atendente.getSenha());
         atendente.setSenha(senhaEncript);
-        service.cadastrar(atendente);
 
        
-        /*if (!service.cadastrar(atendente)) {
+        if (!service.cadastrar(atendente)) {
             modelo.setViewName("usuarioatendenteform");
             modelo.addObject("emailrepetido", "email já cadastrado");
             atendente.setId(null);
             modelo.addObject("usuarioatendente", atendente);
-        }*/
+        }
 
         return modelo;
     }

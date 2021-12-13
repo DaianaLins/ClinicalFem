@@ -175,7 +175,8 @@ public class UsuarioMedicoController {
     public ModelAndView cadastrar() {
         ModelAndView modelo = new ModelAndView("usuariomedicoform.html");
         modelo.addObject("usuariomedico", new UsuarioMedico());
-        
+        modelo.addObject("emailrepetido", "");
+
         return modelo;
     }
    
@@ -221,6 +222,7 @@ public class UsuarioMedicoController {
         if (!service.cadastrar(usu)) {
             modelo.setViewName("usuariomedicoform");
             usu.setId(null);
+            modelo.addObject("emailrepetido", "email já cadastrado");
             modelo.addObject("usuariomedico", usu);
         }
 
