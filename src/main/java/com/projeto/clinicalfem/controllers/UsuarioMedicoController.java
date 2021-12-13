@@ -108,6 +108,10 @@ public class UsuarioMedicoController {
         modelo.addObject("cadpaciente", cadpaciente);
         modelo.addObject("medico", usuariomedico);
         modelo.addObject("historico", new Historico());
+        CadPaciente cpaciente = servPaci.getCadPacienteById(id);
+        Historico chistorico = servH.getHistoricoById(cpaciente.getNome());
+        modelo.addObject("cpaciente", cpaciente); 
+        modelo.addObject("chistorico", chistorico);
         return modelo;
     }
     @GetMapping("/medico/visualizarHistorico/{id}")
