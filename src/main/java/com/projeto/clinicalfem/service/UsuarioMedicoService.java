@@ -118,7 +118,7 @@ public class UsuarioMedicoService {
 
         return membro;
     }
-
+   
     public boolean editar(UsuarioMedico membro) throws InterruptedException, ExecutionException {
         
         //resgata todos os membros e verifica se há emails repetidos
