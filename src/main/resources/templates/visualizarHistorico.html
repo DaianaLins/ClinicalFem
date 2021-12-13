@@ -44,19 +44,20 @@
 <main>
     <article>
      
-      <div class="card-body" th:each="pacientes : ${paciente}">
-        <div class="card" th:each="historicos : ${historico}">
-          <div th:if = "${paciente.nome == historicos.nome}" > 
-        <p class="card-text" style="margin-top: 40px;"><span th:text="${historicos.nome}"></span></p>
-        <p class="card-text" style="margin-top: 40px;"><span th:text="${historicos.especialista}"></span></p>
+      <div class="card-body" th:each="paciente : ${pacientes}">
+        <div class="card" th:each="historico : ${historicos}">
+          <div th:if = "${paciente.nome == historico.nome}" > 
+        <p class="card-text" style="margin-top: 40px;"><span th:text="${historico.nome}"></span></p>
+        <p class="card-text" style="margin-top: 40px;"><span th:text="${historico.especialista}"></span></p>
         <section>
-          <p class="card-text" style="margin-top: 40px;"><span th:utext="${historicos.texto}"></span></p>
+          <p class="card-text" style="margin-top: 40px;"><span th:utext="${historico.texto}"></span></p>
 </section>
 </div>
         </div>
       </div>
   </article>
-</main>
+</main>  
+  
     
       
 
