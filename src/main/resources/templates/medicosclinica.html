@@ -50,8 +50,8 @@
 </header>
     <nav>
 		<div class="right input-field">
-			<input id="search" type="search" required>
-			<label class="label-icon" for="search"><i class="material-icons">search</i></label>
+			<input id="search" type="text" onkeyup="search()" required>
+			<label class="label-icon" for="search" ><i class="material-icons">search</i></label>
 			<i class="material-icons">close</i>
 		</div>
 	   <a href="/paciente/telaPaciente" class="waves-effect waves-light btn #ef9a9a red lighten-3"><i class="material-icons left" style="margin-top:-10px" >undo</i>Retornar</a>
@@ -91,6 +91,22 @@
 	<!--JavaScript at end of body for optimized loading-->
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js"></script>
 	<script type="text/javascript" src="/materialize/js/materialize.min.js"></script>
+	<script>
+		function search() {
+    let input = document.getElementById('searchbar').value
+    input=input.toLowerCase();
+    let x = document.getElementsByClassName('especialidade');
+      
+    for (i = 0; i < x.length; i++) { 
+        if (!x[i].innerHTML.toLowerCase().includes(input)) {
+            x[i].style.display="none";
+        }
+        else {
+            x[i].style.display="list-item";                 
+        }
+    }
+}
+	</script>
 </body>
 
 </html>
