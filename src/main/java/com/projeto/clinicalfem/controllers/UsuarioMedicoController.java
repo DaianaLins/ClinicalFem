@@ -222,7 +222,7 @@ public class UsuarioMedicoController {
         if (!service.cadastrar(usu)) {
             modelo.setViewName("usuariomedicoform");
             usu.setId(null);
-            modelo.addObject("emailrepetido", "email já cadastrado");
+            modelo.addObject("emailrepetido", "Email já cadastrado");
             modelo.addObject("usuariomedico", usu);
         }
 

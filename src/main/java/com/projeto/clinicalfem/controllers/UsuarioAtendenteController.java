@@ -44,7 +44,7 @@ public class UsuarioAtendenteController {
        
         if (!service.cadastrar(atendente)) {
             modelo.setViewName("usuarioatendenteform");
-            modelo.addObject("emailrepetido", "email já cadastrado");
+            modelo.addObject("emailrepetido", "Email já cadastrado");
             atendente.setId(null);
             modelo.addObject("usuarioatendente", atendente);
         }
