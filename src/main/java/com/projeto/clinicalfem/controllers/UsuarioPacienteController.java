@@ -116,9 +116,7 @@ public class UsuarioPacienteController{
             modelo.addObject("cadmedico", cadmedico);
             modelo.addObject("usuariomedico", usuariomedico); 
         }else{
-        ArrayList<UsuarioMedico> usuariomedico = serviceM.getAllUsuarios();
-        ArrayList<CadMedico> cadmedico = servMedico.getCadMedicoByEspecialidade(usuariomedico.getId());
-
+       
         }
         
         return modelo;
