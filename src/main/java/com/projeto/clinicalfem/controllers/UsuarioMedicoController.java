@@ -107,17 +107,16 @@ public class UsuarioMedicoController {
         modelo.addObject("paciente", paciente); 
         modelo.addObject("cadpaciente", cadpaciente);
         modelo.addObject("medico", usuariomedico);
-        modelo.addObject("historico", new Historico());
+        modelo.addObject("historico", servH.getHistoricoById(id) == null ? new Historico():servH.getHistoricoById(id));
         CadPaciente cpaciente = servPaci.getCadPacienteById(id);
-        Historico chistorico = servH.getHistoricoById(cpaciente.getNome());
         modelo.addObject("cpaciente", cpaciente); 
-        modelo.addObject("chistorico", chistorico);
         return modelo;
     }
     @GetMapping("/medico/visualizarHistorico/{id}")
     public ModelAndView visualizarHistorico(@PathVariable String id) throws InterruptedException, ExecutionException {
         CadPaciente paciente = servPaci.getCadPacienteById(id);
-        Historico historico = servH.getHistoricoById(paciente.getNome());
+        Historico historico = servH.getHistoricoById(id);
+        System.out.println(historico.toString());
         ModelAndView mv = new ModelAndView("visualizarHistorico.html");
         mv.addObject("paciente", paciente); 
         mv.addObject("historico", historico);
