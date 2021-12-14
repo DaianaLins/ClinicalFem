@@ -25,10 +25,7 @@ public class HistoricoSevice {
         
         
         // cria um ID aleatório a partir da coleção "Membros" do banco de dados
-        DocumentReference doc = conex.collection("historicos").document(); 
-
-        // bota esse ID aleatório como ID do membro
-        historico.setId(doc.getId());
+        DocumentReference doc = conex.collection("historicos").document(historico.getId()); 
 
         // salva os dados do membro :)
         ApiFuture<WriteResult> writeResult = doc.set(historico); // salva os dados do membro :)

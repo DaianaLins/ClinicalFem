@@ -39,7 +39,7 @@
     <a href="/medico/pacientesclin" class="waves-effect waves-light btn #ef9a9a red lighten-3  white-text"><i
         class="material-icons left" style="margin-top:-15px">description</i>Pacientes</a>
 
-        <a th:href="@{/medico/visualizarHistorico/{id} (id=${chistorico.id})}" class="waves-effect waves-light btn #ef9a9a red lighten-3  white-text"><i
+        <a th:href="@{/medico/visualizarHistorico/{id} (id=${paciente.id})}" class="waves-effect waves-light btn #ef9a9a red lighten-3  white-text"><i
           class="material-icons left" style="margin-top:-15px">description</i>Visualizar histórico</a>
   </nav>
 
@@ -49,6 +49,7 @@
   <section>
     
     <form method="post" action="/medico/cadastrarhistorico/{id} " th:object="${historico}"  class="row">
+      <input type="hidden" name="id" th:value="${paciente.id}">
       Nome Completo: <input  type="text" name="nome" th:value="${paciente.nome}" required />    	
 			Medico: <input type="text" th:value="${medico.nome}" name="especialista" required />
       

@@ -117,7 +117,8 @@ public class UsuarioMedicoController {
     @GetMapping("/medico/visualizarHistorico/{id}")
     public ModelAndView visualizarHistorico(@PathVariable String id) throws InterruptedException, ExecutionException {
         CadPaciente paciente = servPaci.getCadPacienteById(id);
-        Historico historico = servH.getHistoricoById(paciente.getNome());
+        Historico historico = servH.getHistoricoById(id);
+        System.out.println(historico.toString());
         ModelAndView mv = new ModelAndView("visualizarHistorico.html");
         mv.addObject("paciente", paciente); 
         mv.addObject("historico", historico);

@@ -47,5 +47,10 @@ public class Historico {
         this.texto = texto;
         this.id = id;
     }
+    @Override
+    public String toString() {
+        return "Historico [data=" + data + ", especialista=" + especialista + ", id=" + id + ", nome=" + nome
+                + ", texto=" + texto + "]";
+    }
 
 }
