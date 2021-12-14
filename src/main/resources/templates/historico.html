@@ -39,31 +39,35 @@
     <a href="/medico/pacientesclin" class="waves-effect waves-light btn #ef9a9a red lighten-3  white-text"><i
         class="material-icons left" style="margin-top:-15px">description</i>Pacientes</a>
 
-        <a th:href="@{/medico/visualizarHistorico/{id} (id=${paciente.id})}" class="waves-effect waves-light btn #ef9a9a red lighten-3  white-text"><i
-          class="material-icons left" style="margin-top:-15px">description</i>Visualizar histórico</a>
+    <a th:href="@{/medico/visualizarHistorico/{id} (id=${paciente.id})}"
+      class="waves-effect waves-light btn #ef9a9a red lighten-3  white-text"><i class="material-icons left"
+        style="margin-top:-15px">description</i>Visualizar histórico</a>
   </nav>
 
 
-  
+
 
   <section>
-    
-    <form method="post" action="/medico/cadastrarhistorico/{id} " th:object="${historico}"  class="row">
+
+
+    <form class="row">
+      Nome Completo: <input type="text" name="nome" th:value="${paciente.nome}" required disabled />
+      Medico: <input type="text" th:value="${medico.nome}" name="especialista" required disabled />
+      <div th:utext="${historico.texto}" class="click2edit" id="click2edit"></div>
+
+      <button type="button" class="btn btn-light #ef9a9a red lighten-3 white-text" style="margin-top: 10px;"
+        onclick="edit()">Editar</button>
+      <button type="button" class="btn btn-primary #ef9a9a red lighten-3 white-text" style="margin-top: 10px;"
+        onclick="save()">salvar</button>
+    </form>
+
+    <form method="post" action="/medico/cadastrarhistorico/{id} " th:object="${historico}" class="row" id="formTexto" style="display: none;">
       <input type="hidden" name="id" th:value="${paciente.id}">
-      Nome Completo: <input  type="text" name="nome" th:value="${paciente.nome}" required />    	
-			Medico: <input type="text" th:value="${medico.nome}" name="especialista" required />
-      
-    <textarea id="summernote" type="text" class="form-control" name="texto" ></textarea>
-
-   
-
-    <button type="submit" class="btn btn-primary #ef9a9a red lighten-3 white-text" style="margin-top: 10px;">salvar</button>
-    <a href="/medico/pacientesclin" class="btn btn-light #ef9a9a red lighten-3 white-text" role="button" style="margin-top: 10px;">Cancelar</a>
-
+      <input type="hidden" id="textoEnviar" th:field="*{texto}">
     </form>
   </section>
 
-  
+
 
   <!--JavaScript at end of body for optimized loading-->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js"></script>
@@ -74,14 +78,30 @@
   <script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.js"></script>
 
   <script>
-    document.addEventListener('DOMContentLoaded', function() {
-	    var elems = document.querySelectorAll('select');
-	    var instances = M.FormSelect.init(elems);
-	});
+    document.addEventListener('DOMContentLoaded', function () {
+      var elems = document.querySelectorAll('select');
+      var instances = M.FormSelect.init(elems);
+    });
     $('#summernote').summernote({
       height: 300
     });
-    
+
+
+    var edit = function () {
+      $('.click2edit').summernote({ focus: true });
+    };
+
+    var save = function () {
+      var markup = $('.click2edit').summernote('code');
+      $('.click2edit').summernote('destroy');
+      enviar()
+    };
+
+    function enviar() {
+      document.getElementById("textoEnviar").value = document.getElementById("click2edit").innerHTML
+      document.getElementById("formTexto").submit()
+    }
+
     /**
     var editar = function () {
       $('.click2edit').summernote({ focus: true });
@@ -113,24 +133,24 @@
       ]
     });*/
   </script>
- <script>
-   /**
-   $(function() {
-     $("#submit").clicl(function(e){
-       e.preventDefault();
-       var form =$("#postForm");
-
-       $.ajax({
-         url:"db_request.php",
-         data: $(form).serialize(),
-         method: "POST"
-       }).done(function(response){
-         var data = JSON.parse(response)
-       })
+  <script>
+    /**
+    $(function() {
+      $("#submit").clicl(function(e){
+        e.preventDefault();
+        var form =$("#postForm");
+ 
+        $.ajax({
+          url:"db_request.php",
+          data: $(form).serialize(),
+          method: "POST"
+        }).done(function(response){
+          var data = JSON.parse(response)
+        })
+      })
      })
-    })
-  **/
- </script>
+   **/
+  </script>
   <footer>
     <p>Copyright ® Todos os direitos reservados</p>
   </footer>

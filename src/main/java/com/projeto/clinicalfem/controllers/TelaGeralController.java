@@ -11,6 +11,11 @@ import org.springframework.web.servlet.ModelAndView;
 @RequestMapping("/")
 public class TelaGeralController {
 
+
+    @GetMapping("/")
+    public ModelAndView telaInicial(){
+        return inicio();
+    }
    
 
     @GetMapping("/atendente/tela")
