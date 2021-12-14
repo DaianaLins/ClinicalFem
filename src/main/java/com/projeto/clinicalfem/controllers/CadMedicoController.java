@@ -16,6 +16,8 @@ import org.springframework.web.servlet.ModelAndView;
 @RequestMapping("/")
 public class CadMedicoController {
 
+
+    /**Revisão ok */
     CadMedicoService service;
     public CadMedicoController(CadMedicoService serv) {
         service = serv;

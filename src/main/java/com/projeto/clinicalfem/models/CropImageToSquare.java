@@ -9,6 +9,7 @@ import javax.imageio.ImageIO;
 
 import org.imgscalr.Scalr;
 
+/**Revisão ok */
 
 public class CropImageToSquare {
     public static void crop(Path path) {

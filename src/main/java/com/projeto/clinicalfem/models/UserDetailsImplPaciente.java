@@ -5,6 +5,7 @@ import java.util.Collection;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.AuthorityUtils;
 import org.springframework.security.core.userdetails.UserDetails;
+/**Revisão ok */
 
 public class UserDetailsImplPaciente implements UserDetails{
 
@@ -19,7 +20,7 @@ public class UserDetailsImplPaciente implements UserDetails{
     
         String perfil = paciente.getTipo();
         return AuthorityUtils.createAuthorityList(perfil);
-        //só isso ja basta k KKK OXI
+        
     }
 
     @Override
