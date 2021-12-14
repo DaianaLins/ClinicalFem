@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 
 <html xmlns:th="http://thymeleaf.org"
@@ -56,15 +55,15 @@
     <h2>PACIENTES</h2>
 
 <main class="cards" style="padding-left: 5%; padding-bottom: 5%;">
-    <div class="card" style="border-radius: 10px; width: 18rem; padding: 10px; margin: 10px; display: inline-block; width: 18rem;" th:each="usuariopaciente : ${usuariopaciente}">
-        <img class="card-img-top" th:src="@{/paciente/mostrarImagem/{imagem}(imagem=${usuariopaciente.nomeImagem})}" alt="Imagem de capa do card" style="border-radius: 50%; height: 200px; overflow: hidden">
+    <div class="card" style="border-radius: 10px; width: 18rem; padding: 10px; margin: 10px; display: inline-block; width: 18rem;" th:each="paciente : ${usuariopaciente}">
+        <img class="card-img-top" th:src="@{/paciente/mostrarImagem/{imagem}(imagem=${paciente.nomeImagem})}" alt="Imagem de capa do card" style="border-radius: 50%; height: 200px; overflow: hidden">
         <div class="card-body">
          
-          <p class="card-text" >Nome: <span th:text="${usuariopaciente.nome}"></span></p> 
-		<p class="card-text" >Numero: <span th:text="${usuariopaciente.numero}"></span></p>
-    	<p class="card-text" >Email: <span th:text="${usuariopaciente.email}"></span></p>
-		<p class="card-text" >Data de Nascimento: <span th:text="${#temporals.format(usuariopaciente.datanasc,'dd/MM/yyyy')}"></span></p> 
-		<a th:href="@{/medico/cadastrarhistorico/{id} (id=${usuariopaciente.id})}" class="btn btn-primary #ef9a9a red lighten-3">Histórico</a>
+          <p class="card-text" >Nome: <span th:text="${paciente.nome}"></span></p> 
+		<p class="card-text" >Numero: <span th:text="${paciente.numero}"></span></p>
+    	<p class="card-text" >Email: <span th:text="${paciente.email}"></span></p>
+		<p class="card-text" >Data de Nascimento: <span th:text="${#temporals.format(paciente.datanasc,'dd/MM/yyyy')}"></span></p> 
+		<a th:href="@{/medico/cadastrarhistorico/{id} (id=${paciente.id})}" class="btn btn-primary #ef9a9a red lighten-3">Histórico</a>
         </div>
       </div>	
 </main>

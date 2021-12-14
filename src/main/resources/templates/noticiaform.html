@@ -99,26 +99,29 @@
 **/
      </script>
       <script>
-      $('#summernote').summernote({
-  callbacks: {
-    onImageUpload: function(files) {
-        var data = new FormData();
-        data.append("file", files[0]);
-        $.ajax({
-            data: data,
-            type: "POST",
-            url: "upload.php", //arquivo de upload ou rota do laravel
-            success: function(data) {
-                if (data !== "") {
-                  var img = new Image();
-                  img.src = data;
-                  $summernote.summernote('insertNode', img);
-                }
+     $(document).ready(function() {
+        $('#summernote').summernote({
+            height: 200,
+            onImageUpload: function(files, editor, welEditable) {
+                sendFile(files[0], editor, welEditable);
             }
         });
-    }
-  }
-});
+        function sendFile(file, editor, welEditable) {
+            data = new FormData();
+            data.append("file", file);
+            $.ajax({
+                data: data,
+                type: "POST",
+                url: "upload.php",
+                cache: false,
+                contentType: false,
+                processData: false,
+                success: function(url) {
+                    editor.insertImage(welEditable, url);
+                }
+            });
+        }
+    });
     </script>
      <footer>
         <p>Copyright ® Todos os direitos reservados</p>
