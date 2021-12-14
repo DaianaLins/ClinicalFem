@@ -19,6 +19,7 @@ import com.projeto.clinicalfem.models.CadPaciente;
 import com.projeto.clinicalfem.models.CropImageToSquare;
 import com.projeto.clinicalfem.models.UsuarioMedico;
 import com.projeto.clinicalfem.models.UsuarioMedicoParse;
+import com.projeto.clinicalfem.models.UsuarioMedicoSpring;
 import com.projeto.clinicalfem.models.UsuarioParse;
 import com.projeto.clinicalfem.models.Usuarios;
 import com.projeto.clinicalfem.models.UsuariosSpring;
@@ -119,6 +120,7 @@ public class UsuarioPacienteController{
             modelo.addObject("cadmedico", cadmedico);
             modelo.addObject("usuariomedico", usuariomedico); 
         }else{
+        
             CadMedico cadmedico = servMedico.getCadMedicoByEspecialidade(text);
             UsuarioMedico usuariomedico = serviceM.getMembroById(cadmedico.getEspecialidade());
 
